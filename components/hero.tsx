@@ -2,8 +2,24 @@ import { ArrowDown } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen flex-col justify-center px-6 pt-20 lg:px-8">
-      <div className="mx-auto w-full max-w-6xl">
+    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+      {/* Background video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-20 lg:px-8">
         {/* Label */}
         <div className="mb-8 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
@@ -28,7 +44,7 @@ export function Hero() {
         </p>
 
         {/* Stats row */}
-        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border/50 pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
             { value: "10+", label: "Years at Newsroom AI" },
@@ -45,23 +61,10 @@ export function Hero() {
             </div>
           ))}
         </div>
-
-        {/* Hero video */}
-        <div className="mt-16 overflow-hidden rounded-xl border border-border bg-muted shadow-sm">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full"
-          >
-            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
-          </video>
-        </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
         <a
           href="#what-i-do"
           className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
