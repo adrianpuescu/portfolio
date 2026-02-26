@@ -45,6 +45,19 @@ export function Hero() {
             </div>
           ))}
         </div>
+
+        {/* Hero video */}
+        <div className="mt-16 overflow-hidden rounded-xl border border-border bg-muted shadow-sm">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full"
+          >
+            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
 
       {/* Scroll indicator */}
