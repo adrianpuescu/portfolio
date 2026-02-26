@@ -1,15 +1,15 @@
-import { Palette, Target, Layers, MousePointerClick, Wrench, Sparkles } from "lucide-react"
+import { Palette, Target, Layers, MousePointerClick, Wrench, Clapperboard } from "lucide-react"
 
 const capabilities = [
   {
     icon: Palette,
-    title: "Creative Direction & Visual Strategy",
+    title: "Creative Direction & Concept Development",
     description:
       "Leading visual and interaction strategy from pitch through production. Translating business goals into compelling, coherent creative output.",
   },
   {
     icon: Target,
-    title: "Product Thinking & Feature Planning",
+    title: "Product & Feature Planning",
     description:
       "Defining scope, prioritizing features, and mapping user flows. Bridging what the business needs with what users actually experience.",
   },
@@ -32,10 +32,10 @@ const capabilities = [
       "Creating WYSIWYG editors, drag-and-drop interfaces, and configuration systems that give non-engineers real creative control.",
   },
   {
-    icon: Sparkles,
-    title: "Prototyping & Creative Technology",
+    icon: Clapperboard,
+    title: "Creative Production & Animation",
     description:
-      "Rapidly exploring ideas through working prototypes. Combining design instincts with technical fluency to test concepts before they become products.",
+      "A background rooted in web animation, motion design, and interactive production. From Flash-era campaigns to modern rich media — making digital experiences feel alive.",
   },
 ]
 

@@ -21,21 +21,21 @@ const experience = [
 const currentFocus = [
   {
     label: "React & TypeScript",
-    status: "Active",
+    status: "Learning",
     detail:
-      "Modern component architectures, server-side rendering, and type-safe frontend systems.",
+      "Getting hands-on with modern component patterns, hooks, and type-safe frontend development. Building from the ground up with fresh eyes.",
+  },
+  {
+    label: "Next.js & Tailwind CSS",
+    status: "Learning",
+    detail:
+      "Picking up the modern frontend stack — server components, app router, utility-first CSS. Applying years of product intuition to new tooling.",
   },
   {
     label: "AI-Assisted Workflows",
     status: "Exploring",
     detail:
       "Integrating AI into creative tooling — from auto-layout suggestions to intelligent content generation within editorial workflows.",
-  },
-  {
-    label: "Modern Frontend Systems",
-    status: "Active",
-    detail:
-      "Next.js, Tailwind CSS, and modern state management. Applying a decade of architecture knowledge to current patterns.",
   },
 ]
 
