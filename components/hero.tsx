@@ -74,7 +74,7 @@ export function Hero() {
       </div>
 
       {/* Hero video - full width with primary background */}
-      <div id="hero-video" className="mt-16 w-full bg-primary py-8">
+      <div id="hero-video" className="mt-16 w-full bg-primary py-8 scroll-mt-20">
         {/* Video label */}
         <div className="mx-auto max-w-6xl px-6 lg:px-8 mb-4">
           <span className="font-mono text-xs tracking-widest text-primary-foreground/70 uppercase">
