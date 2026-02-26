@@ -53,9 +53,9 @@ export function ApproachSection() {
           {principles.map((p) => (
             <div
               key={p.title}
-              className="group rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/30"
+              className="group rounded-xl border border-border bg-card p-8 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
             >
-              <div className="mb-4 inline-flex rounded-lg bg-secondary p-3">
+              <div className="mb-4 inline-flex rounded-lg bg-primary/8 p-3">
                 <p.icon size={20} className="text-primary" />
               </div>
               <h3 className="text-lg font-medium text-foreground">

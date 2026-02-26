@@ -26,7 +26,7 @@ export function CaseStudyCard({
     <div className="group grid gap-8 border-t border-border py-12 first:border-t-0 md:grid-cols-2 md:gap-12 lg:gap-16">
       {/* Image — alternate left/right */}
       <div
-        className={`relative aspect-[4/3] overflow-hidden rounded-lg bg-card ${
+        className={`relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted shadow-sm ${
           index % 2 === 1 ? "md:order-2" : ""
         }`}
       >
@@ -34,10 +34,10 @@ export function CaseStudyCard({
           src={imageSrc}
           alt={imageAlt}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-background/10" />
+        <div className="absolute inset-0 bg-background/5" />
       </div>
 
       {/* Content */}

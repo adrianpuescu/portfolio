@@ -50,7 +50,7 @@ export function EvolutionSection() {
           {currentFocus.map((item) => (
             <div
               key={item.label}
-              className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/30 md:flex-row md:items-start md:gap-8 md:p-8"
+              className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md md:flex-row md:items-start md:gap-8 md:p-8"
             >
               <div className="flex shrink-0 items-center gap-3 md:w-64">
                 <ArrowUpRight size={14} className="text-primary" />
@@ -63,7 +63,7 @@ export function EvolutionSection() {
                   {item.detail}
                 </p>
               </div>
-              <span className="shrink-0 self-start rounded-full border border-primary/20 bg-primary/5 px-3 py-1 font-mono text-xs text-primary">
+              <span className="shrink-0 self-start rounded-full border border-primary/15 bg-primary/8 px-3 py-1 font-mono text-xs text-primary">
                 {item.status}
               </span>
             </div>
@@ -71,7 +71,7 @@ export function EvolutionSection() {
         </div>
 
         {/* Closing statement */}
-        <div className="mt-16 rounded-xl border border-border bg-card p-8 md:p-12">
+        <div className="mt-16 rounded-xl border border-border bg-card p-8 shadow-sm md:p-12">
           <blockquote className="text-xl leading-relaxed font-light text-foreground md:text-2xl text-pretty">
             {'"'}The best engineers I know didn{"'"}t become experts by starting
             over every two years. They became experts by going deep — and then
