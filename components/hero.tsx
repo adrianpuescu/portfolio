@@ -15,7 +15,8 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-center">
+    <section className="pt-32 pb-0">
+      {/* Hero content */}
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         {/* Label */}
         <div className="mb-8 flex items-center gap-3">
@@ -59,10 +60,27 @@ export function Hero() {
           ))}
         </div>
 
+        {/* Scroll indicator - before video */}
+        <div className="mt-16 flex justify-center">
+          <a
+            href="#what-i-do"
+            className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+            aria-label="Scroll to next section"
+          >
+            <span className="text-xs font-mono tracking-widest uppercase">Explore</span>
+            <ArrowDown size={16} className="animate-bounce" />
+          </a>
+        </div>
       </div>
 
       {/* Hero video - full width with primary background */}
       <div className="mt-16 w-full bg-primary py-8">
+        {/* Video label */}
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 mb-4">
+          <span className="font-mono text-xs tracking-widest text-primary-foreground/70 uppercase">
+            10+ years of work in 60 seconds
+          </span>
+        </div>
         <div className="group relative mx-auto max-w-6xl overflow-hidden">
           <video
             ref={videoRef}
@@ -88,18 +106,6 @@ export function Hero() {
             </button>
           )}
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="mt-8 flex justify-center pb-8">
-        <a
-          href="#what-i-do"
-          className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-          aria-label="Scroll to next section"
-        >
-          <span className="text-xs font-mono tracking-widest uppercase">Explore</span>
-          <ArrowDown size={16} className="animate-bounce" />
-        </a>
       </div>
     </section>
   )
