@@ -1,6 +1,18 @@
+"use client"
+
 import { ArrowDown } from "lucide-react"
+import { useEffect } from "react"
 
 export function Hero() {
+  useEffect(() => {
+    const bg = getComputedStyle(document.documentElement).getPropertyValue("--background")
+    const fg = getComputedStyle(document.documentElement).getPropertyValue("--foreground")
+    const bodyBg = getComputedStyle(document.body).backgroundColor
+    console.log("[v0] --background CSS var:", bg)
+    console.log("[v0] --foreground CSS var:", fg)
+    console.log("[v0] body computed backgroundColor:", bodyBg)
+  }, [])
+
   return (
     <section className="relative flex min-h-screen flex-col justify-center px-6 pt-20 lg:px-8">
       <div className="mx-auto w-full max-w-6xl">
