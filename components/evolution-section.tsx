@@ -63,7 +63,7 @@ export function EvolutionSection() {
                   {item.detail}
                 </p>
               </div>
-              <span className="shrink-0 self-start rounded-full border border-primary/15 bg-primary/8 px-3 py-1 font-mono text-xs text-primary">
+              <span className="shrink-0 self-start rounded-full border border-primary/15 bg-primary/10 px-3 py-1 font-mono text-xs text-primary">
                 {item.status}
               </span>
             </div>
