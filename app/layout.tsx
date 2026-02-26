@@ -14,8 +14,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Senior UI / Product Engineer — Portfolio',
-  description: 'Portfolio of a Senior UI/Product Engineer with 10+ years building large-scale creative platforms, UI systems, editors, and scalable design architecture.',
+  title: 'Senior UI / Product / Creative Technologist — Portfolio',
+  description: 'Portfolio of a senior creative technologist with 20+ years across design, development, and creative direction. From interactive campaigns to complex platforms used at scale.',
   icons: {
     icon: [
       {
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ colorScheme: "light" }}>
       <body className="font-sans antialiased">
         {children}
         <Analytics />

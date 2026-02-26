@@ -2,43 +2,43 @@ import { CaseStudyCard } from "./case-study-card"
 
 const caseStudies = [
   {
-    title: "Creative Platform",
-    subtitle: "Core Product",
+    title: "WYSIWYG Editor / Creative Platform",
+    subtitle: "Core System",
     description:
-      "Architected and maintained the primary creative suite — a complex, multi-layered WYSIWYG editor used by major brands and publishers to build rich content at scale. Focused on clarity, reliability, and enabling non-technical users to create professional layouts.",
+      "Architected and maintained a complex, multi-layered WYSIWYG editor used by major brands and publishers to build rich content at scale. A decade of continuous evolution across editing flows, rendering logic, and user-facing tooling.",
     impacts: [
-      "Built and evolved the platform over 10+ years of continuous development",
-      "Designed drag-and-drop editing flows for complex multi-block layouts",
-      "Enabled non-technical users to create production-ready content independently",
-      "Implemented real-time preview and responsive rendering across devices",
+      "10+ years of sustained development on a single complex product",
+      "Drag-and-drop editing for multi-block layouts and responsive content",
+      "Non-technical users creating production-ready content independently",
+      "Real-time preview and cross-device rendering at scale",
     ],
     imageSrc: "/images/creative-platform.jpg",
     imageAlt: "Creative platform WYSIWYG editor interface showing drag-and-drop content blocks",
   },
   {
-    title: "Ad Formats & Rendering",
-    subtitle: "Interactive Systems",
+    title: "Interactive Ad Systems",
+    subtitle: "Rendering & Templates",
     description:
-      "Designed and built a rendering pipeline for interactive ad formats — from expandable banners to rich media units. Focused on cross-browser compatibility, performance budgets, and giving designers full creative control within strict technical constraints.",
+      "Designed and built rendering pipelines for interactive ad formats — from expandable banners to rich media units. Full creative control within strict technical and performance constraints, delivered at scale across publishing partners.",
     impacts: [
-      "Created a scalable template system supporting 20+ ad format variations",
-      "Built rendering engine achieving consistent cross-browser output",
-      "Reduced ad load times while maintaining rich interactivity",
-      "Delivered formats adopted by major publishing partners",
+      "Scalable template system supporting 20+ format variations",
+      "Consistent cross-browser rendering with tight performance budgets",
+      "Rich interactivity without compromising load times",
+      "Formats adopted across major publishing networks",
     ],
     imageSrc: "/images/ad-formats.jpg",
     imageAlt: "Ad format rendering system showing multiple interactive ad templates",
   },
   {
-    title: "UI Systems & Architecture",
+    title: "UI Systems & Component Libraries",
     subtitle: "Design Infrastructure",
     description:
-      "Created reusable UI component libraries and scalable front-end architecture that unified the product experience. Focused on consistency, accessibility, and empowering the team to build faster without sacrificing quality.",
+      "Created reusable component libraries and scalable frontend architecture that unified the product experience. Shared foundations for consistency, accessibility, and faster delivery across the entire engineering team.",
     impacts: [
-      "Established a shared component library used across the entire product",
-      "Defined layout systems, spacing scales, and typography hierarchies",
+      "Shared component library consumed across the full product surface",
+      "Layout systems, spacing scales, and typography hierarchies",
       "Reduced UI inconsistencies and accelerated feature delivery",
-      "Built architecture patterns that scaled with team and product growth",
+      "Architecture patterns that scaled with team and product growth",
     ],
     imageSrc: "/images/ui-systems.jpg",
     imageAlt: "Design system documentation showing reusable UI components and tokens",
@@ -54,17 +54,16 @@ export function SystemsSection() {
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="font-mono text-xs tracking-widest text-primary uppercase">
-              Systems, Not Projects
+              Selected Systems
             </span>
           </div>
           <h2 className="mt-4 text-3xl font-medium tracking-tight text-foreground md:text-4xl text-balance">
-            A decade of building, refining, and scaling
+            Systems built over years, not weeks
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-            Rather than a list of short-lived projects, this work represents
-            deep, sustained commitment to a single complex product — evolving
-            its architecture, expanding its capabilities, and keeping it
-            production-ready at scale.
+            Not a list of short-lived projects. These represent sustained,
+            deep work — evolving architecture, expanding capability, and
+            keeping complex systems production-ready at scale.
           </p>
         </div>
 

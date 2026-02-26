@@ -1,50 +1,50 @@
-import { Layers, Users, Expand, GitBranch } from "lucide-react"
+import { Layers, Expand, GitBranch, ArrowLeftRight } from "lucide-react"
 
 const principles = [
   {
     icon: Layers,
-    title: "Managing Complexity",
+    title: "Systems Over One-Off Solutions",
     description:
-      "Layered architecture that isolates concerns — editor logic, rendering pipelines, and UI state are separated so changes in one system never cascade into another.",
+      "Investing in reusable foundations instead of bespoke implementations. Components, patterns, and architecture that compound over time.",
   },
   {
     icon: Expand,
-    title: "Designing for Scale",
+    title: "Structure Enables Creativity",
     description:
-      "Components and systems built with growth in mind. From template engines supporting dozens of format variations to UI libraries consumed across the entire product surface.",
-  },
-  {
-    icon: Users,
-    title: "Empowering Non-Technical Users",
-    description:
-      "Every interface decision is grounded in the question: can someone without engineering expertise use this confidently? The best systems are invisible to the people using them.",
+      "Constraints and systems aren't the enemy of creative work — they're what make it sustainable. Good structure frees people to focus on what matters.",
   },
   {
     icon: GitBranch,
-    title: "Evolving, Not Rebuilding",
+    title: "Build for Scale From the Start",
     description:
-      "10+ years on one product means constant evolution — not rewrites. Incremental refactoring, careful migration paths, and backward compatibility as a core constraint.",
+      "Every decision is made with growth in mind. From template engines supporting dozens of variations to UI libraries consumed across the entire product.",
+  },
+  {
+    icon: ArrowLeftRight,
+    title: "Bridge Design and Engineering",
+    description:
+      "The best products come from people who understand both sides. Fluency in design thinking and technical implementation removes translation loss.",
   },
 ]
 
 export function ApproachSection() {
   return (
-    <section id="approach" className="px-6 py-24 lg:px-8">
+    <section id="thinking" className="px-6 py-24 lg:px-8">
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
         <div className="mb-16">
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="font-mono text-xs tracking-widest text-primary uppercase">
-              Product Thinking
+              How I Think
             </span>
           </div>
           <h2 className="mt-4 text-3xl font-medium tracking-tight text-foreground md:text-4xl text-balance">
-            How I approach complex systems
+            Principles that guide the work
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-            Building at scale is about trade-offs, clarity, and creating
-            structures that support both the product and the team.
+            Twenty years of building teaches you patterns. These are the ones
+            that have held up.
           </p>
         </div>
 

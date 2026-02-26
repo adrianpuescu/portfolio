@@ -14,11 +14,11 @@ export function Footer() {
               </span>
             </div>
             <h2 className="mt-4 text-3xl font-medium tracking-tight text-foreground md:text-4xl text-balance">
-              {"Let's"} discuss your next challenge
+              {"Let's"} talk
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground leading-relaxed">
               Open to conversations about product engineering, UI architecture,
-              creative tooling, and opportunities to build something meaningful.
+              creative tooling, and new challenges worth solving.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export function Footer() {
             Built with Next.js, Tailwind CSS & TypeScript
           </p>
           <p className="font-mono text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} — All rights reserved
+            &copy; {new Date().getFullYear()}
           </p>
         </div>
       </div>
