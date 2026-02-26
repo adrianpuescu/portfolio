@@ -1,25 +1,22 @@
-import { ArrowDown } from "lucide-react"
+"use client"
+
+import { ArrowDown, Play } from "lucide-react"
+import { useRef, useState } from "react"
 
 export function Hero() {
-  return (
-    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
-      {/* Background video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
-        </video>
-        {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background" />
-      </div>
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-20 lg:px-8">
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }
+
+  return (
+    <section className="relative flex min-h-screen flex-col justify-center px-6 pt-20 lg:px-8">
+      <div className="mx-auto w-full max-w-6xl">
         {/* Label */}
         <div className="mb-8 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
@@ -44,7 +41,7 @@ export function Hero() {
         </p>
 
         {/* Stats row */}
-        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border/50 pt-8 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
             { value: "10+", label: "Years at Newsroom AI" },
@@ -61,10 +58,37 @@ export function Hero() {
             </div>
           ))}
         </div>
+
+        {/* Hero video */}
+        <div className="group relative mt-16 overflow-hidden rounded-xl border border-border bg-muted shadow-sm">
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+            className="w-full"
+          >
+            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Play button overlay */}
+          {!isPlaying && (
+            <button
+              onClick={handlePlayClick}
+              className="absolute inset-0 flex items-center justify-center bg-foreground/5 transition-colors hover:bg-foreground/10"
+              aria-label="Play video"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105">
+                <Play size={24} className="ml-1" />
+              </div>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <a
           href="#what-i-do"
           className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
