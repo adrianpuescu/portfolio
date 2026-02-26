@@ -15,8 +15,8 @@ export function Hero() {
   }
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-center px-6 pt-20 lg:px-8">
-      <div className="mx-auto w-full max-w-6xl">
+    <section className="relative flex min-h-screen flex-col justify-center">
+      <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         {/* Label */}
         <div className="mb-8 flex items-center gap-3">
           <span className="h-px w-8 bg-primary" />
@@ -59,48 +59,47 @@ export function Hero() {
           ))}
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex justify-center">
-          <a
-            href="#what-i-do"
-            className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-            aria-label="Scroll to next section"
+      </div>
+
+      {/* Hero video - full width with primary background */}
+      <div className="mt-16 w-full bg-primary py-8">
+        <div className="group relative mx-auto max-w-6xl overflow-hidden">
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            onEnded={() => setIsPlaying(false)}
+            className="w-full"
           >
-            <span className="text-xs font-mono tracking-widest uppercase">Explore</span>
-            <ArrowDown size={16} className="animate-bounce" />
-          </a>
+            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Play button overlay */}
+          {!isPlaying && (
+            <button
+              onClick={handlePlayClick}
+              className="absolute inset-0 flex items-center justify-center bg-foreground/5 transition-colors hover:bg-foreground/10"
+              aria-label="Play video"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-background text-primary shadow-lg transition-transform hover:scale-105">
+                <Play size={24} className="ml-1" />
+              </div>
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Hero video - full width with contrast background */}
-      <div className="mt-16 bg-secondary py-12">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="group relative overflow-hidden">
-            <video
-              ref={videoRef}
-              loop
-              muted
-              playsInline
-              onEnded={() => setIsPlaying(false)}
-              className="w-full"
-            >
-              <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
-            </video>
-            
-            {/* Play button overlay */}
-            {!isPlaying && (
-              <button
-                onClick={handlePlayClick}
-                className="absolute inset-0 flex items-center justify-center bg-foreground/5 transition-colors hover:bg-foreground/10"
-                aria-label="Play video"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105">
-                  <Play size={24} className="ml-1" />
-                </div>
-              </button>
-            )}
-          </div>
-        </div>
+      {/* Scroll indicator */}
+      <div className="mt-8 flex justify-center pb-8">
+        <a
+          href="#what-i-do"
+          className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+          aria-label="Scroll to next section"
+        >
+          <span className="text-xs font-mono tracking-widest uppercase">Explore</span>
+          <ArrowDown size={16} className="animate-bounce" />
+        </a>
       </div>
     </section>
   )
