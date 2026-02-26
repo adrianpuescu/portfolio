@@ -2,22 +2,36 @@ import { CaseStudyCard } from "./case-study-card"
 
 const caseStudies = [
   {
-    title: "Newsroom AI Studio",
-    subtitle: "Flagship Product — 10+ Years",
+    title: "Studio Platform",
+    subtitle: "SaaS Application Shell",
     description:
-      "The core WYSIWYG editor and creative platform at Newsroom AI, used by major publishers and brands worldwide to create interactive stories, rich media ads, presentations, and landing pages. I owned UI/UX planning, feature architecture, and front-end implementation (HTML/CSS/JS) across a decade of continuous development — from editing flows and template systems to dataset-driven batch generation.",
+      "The full product environment surrounding the editor — Dashboard, Projects, Assets library, Reports, Settings, Account management. I owned the UI/UX planning and front-end implementation for the entire platform surface, creating a coherent SaaS experience that supports complex creative workflows.",
     impacts: [
       "Used by Forbes, USA Today, The Guardian, Yahoo, VICE, and more",
       "Content created for brands including Google, Meta, Disney, Netflix, H&M, Adidas",
-      "Non-technical teams producing and publishing content at scale",
-      "Google AMP Web Stories support with strict format compliance",
+      "Complete SaaS product surface: navigation, CRUD flows, settings, account",
+      "Information architecture for complex multi-project workflows",
     ],
-    imageSrc: "/images/creative-platform.jpg",
-    imageAlt: "Newsroom AI Studio WYSIWYG editor interface for building stories and ads",
+    imageSrc: "/images/studio-platform.jpg",
+    imageAlt: "Studio platform dashboard showing projects, assets, and navigation",
   },
   {
-    title: "Stories, Ads & Content Pipeline",
-    subtitle: "Production Output System",
+    title: "Studio Editor",
+    subtitle: "WYSIWYG Creative Environment",
+    description:
+      "The core creative tool — a sophisticated WYSIWYG editor for building interactive stories, ads, presentations, and pages. Canvas-based editing, drag-drop blocks, real-time preview, toolbar systems, panel layouts. A unique, self-contained environment I shaped and evolved over 10+ years of continuous development.",
+    impacts: [
+      "Drag-and-drop editing with multi-block layouts",
+      "Real-time preview across devices and formats",
+      "Template systems for batch content generation",
+      "Non-technical users producing content independently",
+    ],
+    imageSrc: "/images/studio-editor.jpg",
+    imageAlt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels",
+  },
+  {
+    title: "Content Output",
+    subtitle: "Stories, Ads & Published Pages",
     description:
       "The platform's primary output: interactive stories, rich media ads, visual presentations, and landing pages — all HTML-based, published and distributed across partner networks. I developed the HTML structure and rendering logic for ad formats (including AMP with strict restrictions), built client showcase pages for Sales, and created systems for template-driven batch content generation.",
     impacts: [
@@ -26,8 +40,8 @@ const caseStudies = [
       "AMP-compliant formats with strict technical constraints",
       "Dataset-driven batch generation for campaigns at scale",
     ],
-    imageSrc: "/images/ad-formats.jpg",
-    imageAlt: "Content delivery pipeline showing interactive stories and ad formats",
+    imageSrc: "/images/content-output.jpg",
+    imageAlt: "Published content showing interactive stories and ad formats",
   },
   {
     title: "UI Systems & Shared Libraries",
