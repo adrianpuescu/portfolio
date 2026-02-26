@@ -33,7 +33,7 @@ export function Hero() {
             { value: "20+", label: "Years in Digital" },
             { value: "10+", label: "Years at Newsroom AI" },
             { value: "UI/UX", label: "Design to Implementation" },
-            { value: "POC", label: "Currently Building" },
+            { value: "AI", label: "Assisted Development" },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="font-mono text-2xl font-semibold text-primary md:text-3xl">

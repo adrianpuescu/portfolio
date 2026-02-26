@@ -32,10 +32,10 @@ const currentFocus = [
       "Picking up the modern frontend stack — server components, app router, utility-first CSS. Applying years of product intuition to new tooling.",
   },
   {
-    label: "Rive-Based Ad Editor",
-    status: "Building",
+    label: "AI-Assisted Development",
+    status: "Active",
     detail:
-      "A proof-of-concept ad editor built with Rive — exploring what's possible with AI-assisted development (Claude + Cursor) and minimal but focused coding skills.",
+      "Leaning heavily into AI-powered coding workflows — Claude, Cursor, and similar tools. Already applying this approach to personal projects and recently integrated it into production work at Studio.",
   },
 ]
 
