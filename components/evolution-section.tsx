@@ -4,17 +4,17 @@ const experience = [
   {
     label: "20+ Years in Digital",
     detail:
-      "Web, animation, interactive, and creative production. A career spanning the evolution of digital from Flash to modern frontend frameworks.",
+      "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands in Romania. Then moved into product work, spending over a decade on a single complex platform.",
   },
   {
-    label: "10+ Years on One Platform",
+    label: "10+ Years at Newsroom AI",
     detail:
-      "Deep, sustained work on a major creative platform. Not jumping between projects — going deep on one complex product and evolving it continuously.",
+      "Deep, sustained work on Studio — the flagship creative platform. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
   },
   {
-    label: "Design to Code",
+    label: "Design to Implementation",
     detail:
-      "Background spanning creative direction, interaction design, and frontend implementation. Fluent across the full stack of digital product creation.",
+      "Background spanning creative direction, UI/UX design, and front-end implementation (HTML/CSS/JS). Not a full-stack developer — but fluent across the full journey from concept to shipped product.",
   },
 ]
 
@@ -32,10 +32,10 @@ const currentFocus = [
       "Picking up the modern frontend stack — server components, app router, utility-first CSS. Applying years of product intuition to new tooling.",
   },
   {
-    label: "AI-Assisted Workflows",
-    status: "Exploring",
+    label: "Rive-Based Ad Editor",
+    status: "Building",
     detail:
-      "Integrating AI into creative tooling — from auto-layout suggestions to intelligent content generation within editorial workflows.",
+      "A proof-of-concept ad editor built with Rive — exploring what's possible with AI-assisted development (Claude + Cursor) and minimal but focused coding skills.",
   },
 ]
 

@@ -31,9 +31,9 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
-            { value: "10+", label: "Years, One Platform" },
-            { value: "Full", label: "Design to Production" },
-            { value: "AI", label: "Current Expansion" },
+            { value: "10+", label: "Years at Newsroom AI" },
+            { value: "UI/UX", label: "Design to Implementation" },
+            { value: "POC", label: "Currently Building" },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="font-mono text-2xl font-semibold text-primary md:text-3xl">

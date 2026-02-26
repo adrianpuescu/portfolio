@@ -2,40 +2,40 @@ import { CaseStudyCard } from "./case-study-card"
 
 const caseStudies = [
   {
-    title: "WYSIWYG Editor / Creative Platform",
-    subtitle: "Core System",
+    title: "Newsroom AI Studio",
+    subtitle: "Flagship Product — 10+ Years",
     description:
-      "Architected and evolved a complex WYSIWYG editor at the heart of a creative platform — primarily used to produce interactive stories, ads, and presentations. Over a decade of continuous work: editing flows, rendering logic, template systems, and user-facing tooling, all built so non-technical teams could create production-ready content independently.",
+      "The core WYSIWYG editor and creative platform at Newsroom AI, used by major publishers and brands worldwide to create interactive stories, rich media ads, presentations, and landing pages. I owned UI/UX planning, feature architecture, and front-end implementation (HTML/CSS/JS) across a decade of continuous development — from editing flows and template systems to dataset-driven batch generation.",
     impacts: [
-      "10+ years of sustained development on a single complex product",
-      "Primary output: interactive stories, rich media ads, and visual presentations",
-      "Drag-and-drop editing with multi-block layouts and real-time preview",
-      "Non-technical users producing and publishing content at scale",
+      "Used by Forbes, USA Today, The Guardian, Yahoo, VICE, and more",
+      "Content created for brands including Google, Meta, Disney, Netflix, H&M, Adidas",
+      "Non-technical teams producing and publishing content at scale",
+      "Google AMP Web Stories support with strict format compliance",
     ],
     imageSrc: "/images/creative-platform.jpg",
-    imageAlt: "Creative platform WYSIWYG editor interface for building stories and ads",
+    imageAlt: "Newsroom AI Studio WYSIWYG editor interface for building stories and ads",
   },
   {
-    title: "Stories, Ads & Online Output",
-    subtitle: "Content Delivery Pipeline",
+    title: "Stories, Ads & Content Pipeline",
+    subtitle: "Production Output System",
     description:
-      "The editor's output was a production pipeline for online content — primarily interactive stories and ad units, but also pages and presentations. Content was published, embedded, and distributed across partner networks. Template-driven, format-aware, and optimized for cross-browser delivery under strict performance constraints.",
+      "The platform's primary output: interactive stories, rich media ads, visual presentations, and landing pages — all HTML-based, published and distributed across partner networks. I developed the HTML structure and rendering logic for ad formats (including AMP with strict restrictions), built client showcase pages for Sales, and created systems for template-driven batch content generation.",
     impacts: [
-      "End-to-end pipeline from editor to published online content",
+      "End-to-end pipeline from editor to live online content",
       "Interactive stories and rich media ads as primary output formats",
-      "Template system enabling reuse across formats and campaigns",
-      "Cross-browser, cross-device delivery at scale across partner networks",
+      "AMP-compliant formats with strict technical constraints",
+      "Dataset-driven batch generation for campaigns at scale",
     ],
     imageSrc: "/images/ad-formats.jpg",
     imageAlt: "Content delivery pipeline showing interactive stories and ad formats",
   },
   {
-    title: "UI Systems & Component Libraries",
+    title: "UI Systems & Shared Libraries",
     subtitle: "Design Infrastructure",
     description:
-      "Created reusable component libraries and scalable frontend architecture that unified the product experience. Shared foundations for consistency, accessibility, and faster delivery across the entire engineering team.",
+      "Created a shared CSS library (PostCSS-based) reusable across projects, along with component patterns and layout systems that unified the product experience. Owned the visual consistency, spacing hierarchies, and UI architecture that kept the platform coherent as it scaled.",
     impacts: [
-      "Shared component library consumed across the full product surface",
+      "Shared CSS library consumed across multiple products",
       "Layout systems, spacing scales, and typography hierarchies",
       "Reduced UI inconsistencies and accelerated feature delivery",
       "Architecture patterns that scaled with team and product growth",
