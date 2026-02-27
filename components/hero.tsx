@@ -149,11 +149,14 @@ export function Hero() {
 
           {/* Hover controls - after video has started */}
           {hasStarted && (
-            <div className="absolute bottom-4 left-10 right-10 flex items-center justify-between opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="absolute bottom-4 left-10 right-10 flex items-center justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
               {/* Play/Pause button */}
               <button
-                onClick={isPlaying ? handlePauseClick : handlePlayClick}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  isPlaying ? handlePauseClick() : handlePlayClick()
+                }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105 pointer-events-auto"
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
@@ -161,8 +164,11 @@ export function Hero() {
 
               {/* Mute/Unmute button */}
               <button
-                onClick={toggleMute}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  toggleMute()
+                }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105 pointer-events-auto"
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
               >
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
