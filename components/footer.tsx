@@ -25,22 +25,26 @@ export function Footer() {
           {/* Links */}
           <div className="flex flex-col justify-center gap-6 md:items-end">
             <a
-              href="mailto:hello@example.com"
+              href="mailto:web@webz.ro"
               className="group inline-flex items-center gap-3 text-lg text-foreground transition-colors hover:text-primary"
             >
               <Mail size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
-              hello@example.com
+              web@webz.ro
             </a>
             <div className="flex items-center gap-6">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/adrianpuescu/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-primary"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
+                href="https://github.com/adrianpuescu"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-primary"
                 aria-label="GitHub"
               >
