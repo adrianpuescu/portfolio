@@ -12,5 +12,10 @@ public/video/*.mp4
 # Common ignores
 node_modules/
 .next/
+out/
 .env*.local
 .DS_Store
+
+.deploy.env
+deploy/
+deploy.zip

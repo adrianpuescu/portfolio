@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+echo "Installing dependencies..."
+pnpm install
+
+echo "Building static export..."
+pnpm build
+
+if [[ ! -d "out" ]]; then
+  echo "Error: ./out not found. Ensure next.config has output: \"export\"."
+  exit 1
+fi
+
+echo "Copying ./out to ./deploy..."
+rm -rf deploy
+mkdir -p deploy
+cp -R out/. deploy/
+
+echo "Creating deploy.zip (contents of deploy)..."
+rm -f deploy.zip
+(cd deploy && zip -rq ../deploy.zip .)
+
+# Optional auto-upload if .deploy.env exists
+if [[ -f ".deploy.env" ]]; then
+  # shellcheck disable=SC1091
+  source ".deploy.env"
+
+  : "${DEPLOY_FTP_HOST:?Missing DEPLOY_FTP_HOST in .deploy.env}"
+  : "${DEPLOY_FTP_USER:?Missing DEPLOY_FTP_USER in .deploy.env}"
+  : "${DEPLOY_FTP_PASS:?Missing DEPLOY_FTP_PASS in .deploy.env}"
+  : "${DEPLOY_REMOTE_DIR:?Missing DEPLOY_REMOTE_DIR in .deploy.env}"
+  DEPLOY_FTP_TLS="${DEPLOY_FTP_TLS:-1}"
+
+  if ! command -v lftp >/dev/null 2>&1; then
+    echo ""
+    echo "Auto-upload requested (.deploy.env found) but 'lftp' is not installed."
+    echo "Install it with: brew install lftp"
+    echo "Falling back to manual upload (deploy.zip)."
+    exit 0
+  fi
+
+  echo ""
+  echo "Uploading via FTP using lftp..."
+  TLS_CMDS=""
+  if [[ "${DEPLOY_FTP_TLS}" == "1" ]]; then
+    TLS_CMDS=$'set ftp:ssl-force true;\nset ftp:ssl-protect-data true;\nset ssl:verify-certificate no;\n'
+  else
+    TLS_CMDS=$'set ftp:ssl-force false;\nset ftp:ssl-protect-data false;\n'
+  fi
+
+  lftp -e "
+${TLS_CMDS}
+set net:max-retries 2;
+set net:reconnect-interval-base 2;
+open -u ${DEPLOY_FTP_USER},${DEPLOY_FTP_PASS} ${DEPLOY_FTP_HOST};
+mkdir -p ${DEPLOY_REMOTE_DIR};
+cd ${DEPLOY_REMOTE_DIR};
+mirror -R --delete --verbose ./deploy .;
+bye
+"
+
+  echo ""
+  echo "Done. Uploaded to ${DEPLOY_FTP_HOST}:${DEPLOY_REMOTE_DIR}"
+  echo "Verify: https://portfolio.webz.ro"
+  echo ""
+  exit 0
+fi
+
+echo ""
+echo "Done. deploy.zip is ready for manual upload."
+echo ""
+echo "Upload to cPanel:"
+echo "  1. cPanel File Manager → public_html/portfolio/"
+echo "  2. Upload deploy.zip"
+echo "  3. Extract so index.html lands in public_html/portfolio/"
+echo "  4. Visit https://portfolio.webz.ro"
+echo ""
