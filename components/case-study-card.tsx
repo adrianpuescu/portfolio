@@ -12,6 +12,7 @@ import {
 
 interface CaseStudyCardProps {
   title: string
+  titleHref?: string
   subtitle: string
   description: string
   impacts: string[]
@@ -21,6 +22,7 @@ interface CaseStudyCardProps {
 
 export function CaseStudyCard({
   title,
+  titleHref,
   subtitle,
   description,
   impacts,
@@ -68,7 +70,18 @@ export function CaseStudyCard({
           {subtitle}
         </span>
         <h3 className="mt-3 text-2xl font-medium tracking-tight text-foreground md:text-3xl text-balance">
-          {title}
+          {titleHref ? (
+            <a
+              href={titleHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {title}
+            </a>
+          ) : (
+            title
+          )}
         </h3>
         <p className="mt-4 leading-relaxed text-muted-foreground">
           {description}

@@ -8,8 +8,29 @@ const experience = [
   },
   {
     label: "8+ Years on NWS Studio",
-    detail:
-      "Deep, focused work on NWS Studio — the flagship creative platform at Newsroom AI. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
+    detail: (
+      <>
+        Deep, focused work on{" "}
+        <a
+          href="https://studio.nws.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          NWS Studio
+        </a>{" "}
+        — the flagship creative platform at{" "}
+        <a
+          href="https://nws.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Newsroom AI
+        </a>
+        . Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.
+      </>
+    ),
   },
   {
     label: "Design to Implementation",

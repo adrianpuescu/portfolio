@@ -118,16 +118,30 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
-            { value: "8+", label: "Years on NWS Studio" },
+            { value: "8+", labelPrefix: "Years on ", linkText: "NWS Studio", href: "https://studio.nws.ai" },
             { value: "UI/UX", label: "Design to Implementation" },
             { value: "AI", label: "Assisted Development" },
           ].map((stat) => (
-            <div key={stat.label}>
+            <div key={"label" in stat ? stat.label : stat.linkText}>
               <div className="font-mono text-2xl font-semibold text-primary md:text-3xl">
                 {stat.value}
               </div>
               <div className="mt-1 text-sm text-muted-foreground">
-                {stat.label}
+                {"href" in stat && stat.href ? (
+                  <>
+                    {stat.labelPrefix}
+                    <a
+                      href={stat.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      {stat.linkText}
+                    </a>
+                  </>
+                ) : (
+                  stat.label
+                )}
               </div>
             </div>
           ))}
