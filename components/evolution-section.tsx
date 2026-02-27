@@ -4,7 +4,7 @@ const experience = [
   {
     label: "20+ Years in Digital",
     detail:
-      "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands. Then transitioned into sustained product work, building tools and platforms used at scale.",
+      "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands. Then transitioned into sustained product work, spending 8+ years building and evolving a single complex platform.",
   },
   {
     label: "8+ Years on NWS Studio",
