@@ -9,6 +9,12 @@ export function Hero() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [hasStarted, setHasStarted] = useState(false)
+  const [introReady, setIntroReady] = useState(false)
+
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setIntroReady(true))
+    return () => cancelAnimationFrame(t)
+  }, [])
 
   const handlePlayClick = () => {
     if (videoRef.current) {
@@ -92,7 +98,7 @@ export function Hero() {
       {/* Hero content */}
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         {/* Label */}
-        <div className="mb-8 flex items-center gap-3">
+        <div className={introReady ? "intro-anim mb-8 flex items-center gap-3" : "intro-pending mb-8 flex items-center gap-3"}>
           <span className="h-px w-8 bg-primary" />
           <span className="font-mono text-xs tracking-widest text-primary uppercase">
             UI / Product / Creative Technologist
@@ -100,7 +106,7 @@ export function Hero() {
         </div>
 
         {/* Main heading */}
-        <h1 className="max-w-4xl text-4xl leading-tight font-light tracking-tight text-foreground md:text-6xl lg:text-7xl text-balance">
+        <h1 className={introReady ? "intro-anim intro-anim-delay-1 max-w-4xl text-4xl leading-tight font-light tracking-tight text-foreground md:text-6xl lg:text-7xl text-balance" : "intro-pending max-w-4xl text-4xl leading-tight font-light tracking-tight text-foreground md:text-6xl lg:text-7xl text-balance"}>
           Designing, building, and scaling{" "}
           <span className="font-medium text-primary">
             digital systems
@@ -109,13 +115,13 @@ export function Hero() {
         </h1>
 
         {/* Subtext */}
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+        <p className={introReady ? "intro-anim intro-anim-delay-2 mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl" : "intro-pending mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"}>
           20+ years across design, development, and creative direction.
           From interactive campaigns to complex platforms used at scale.
         </p>
 
         {/* Stats row */}
-        <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
+        <div className={introReady ? "intro-anim intro-anim-delay-3 mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4" : "intro-pending mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4"}>
           {[
             { value: "20+", label: "Years in Digital" },
             { value: "8+", labelPrefix: "Years on ", linkText: "NWS Studio", href: "https://studio.nws.ai" },
@@ -148,7 +154,7 @@ export function Hero() {
         </div>
 
         {/* Scroll indicator - links to video */}
-        <div className="mt-16 flex justify-center lg:mt-24">
+        <div className={introReady ? "intro-anim intro-anim-delay-4 mt-16 flex justify-center lg:mt-24" : "intro-pending mt-16 flex justify-center lg:mt-24"}>
           <a
             href="#hero-video"
             onClick={handleExploreClick}
@@ -162,7 +168,10 @@ export function Hero() {
       </div>
 
       {/* Hero video - full width with primary background */}
-      <div id="hero-video" className="mt-16 w-full bg-primary py-8 scroll-mt-20">
+      <div
+        id="hero-video"
+        className={introReady ? "intro-anim intro-anim-delay-5 mt-16 w-full bg-primary py-8 scroll-mt-20" : "intro-pending mt-16 w-full bg-primary py-8 scroll-mt-20"}
+      >
         {/* Video label */}
         <div className="mx-auto max-w-6xl px-6 lg:px-8 mb-4">
           <span className="font-mono text-xs tracking-widest text-primary-foreground/70 uppercase">

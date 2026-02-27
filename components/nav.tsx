@@ -14,11 +14,17 @@ const navLinks = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [introReady, setIntroReady] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setIntroReady(true))
+    return () => cancelAnimationFrame(t)
   }, [])
 
   return (
@@ -29,7 +35,7 @@ export function Nav() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav className={introReady ? "intro-anim-nav mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8" : "intro-pending-fade mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8"}>
         <a
           href="#"
           className="font-mono text-sm tracking-widest text-primary uppercase"

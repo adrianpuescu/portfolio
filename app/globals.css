@@ -80,6 +80,55 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Intro animations – applied after mount so they run */
+@keyframes intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.intro-pending {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.intro-pending-fade {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-anim,
+  .intro-anim-nav {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+.intro-anim {
+  animation: intro-fade-up 0.55s ease-out both;
+}
+.intro-anim-nav {
+  animation: intro-fade 0.4s ease-out both;
+}
+.intro-anim-delay-1 { animation-delay: 60ms; }
+.intro-anim-delay-2 { animation-delay: 120ms; }
+.intro-anim-delay-3 { animation-delay: 180ms; }
+.intro-anim-delay-4 { animation-delay: 240ms; }
+.intro-anim-delay-5 { animation-delay: 300ms; }
+.intro-anim-delay-6 { animation-delay: 360ms; }
+.intro-anim-delay-7 { animation-delay: 420ms; }
+.intro-anim-delay-8 { animation-delay: 480ms; }
+.intro-anim-delay-9 { animation-delay: 540ms; }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
