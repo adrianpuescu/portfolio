@@ -41,8 +41,8 @@ const capabilities = [
 
 export function WhatIDoSection() {
   return (
-    <section id="what-i-do" className="px-6 py-24 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="what-i-do" className="py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16">
           <div className="flex items-center gap-3">

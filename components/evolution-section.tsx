@@ -41,8 +41,8 @@ const currentFocus = [
 
 export function EvolutionSection() {
   return (
-    <section id="experience" className="px-6 py-24 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="experience" className="py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Experience */}
         <div className="mb-24">
           <div className="mb-16">

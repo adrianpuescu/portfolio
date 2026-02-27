@@ -43,9 +43,13 @@ export function Hero() {
       if (!hasAutoPlayed.current && videoRef.current) {
         hasAutoPlayed.current = true
         setTimeout(() => {
-          videoRef.current?.play()
-          setIsPlaying(true)
-          setHasStarted(true)
+          if (videoRef.current) {
+            videoRef.current.muted = false
+            videoRef.current.play()
+            setIsMuted(false)
+            setIsPlaying(true)
+            setHasStarted(true)
+          }
         }, 500) // Delay for smooth scroll to complete
       }
     }
@@ -151,7 +155,7 @@ export function Hero() {
             8+ years of product work in 60 seconds
           </span>
         </div>
-        <div 
+        <div
           ref={videoContainerRef}
           className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden"
         >
@@ -164,7 +168,7 @@ export function Hero() {
             onPause={() => setIsPlaying(false)}
             className="w-full"
           >
-            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+            <source src="/video/hero-video-optimised.mp4" type="video/mp4" />
           </video>
           
           {/* Initial play button overlay - before video has started */}

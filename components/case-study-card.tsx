@@ -2,14 +2,20 @@
 
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 interface CaseStudyCardProps {
   title: string
   subtitle: string
   description: string
   impacts: string[]
-  imageSrc: string
-  imageAlt: string
+  images: { src: string; alt: string }[]
   index: number
 }
 
@@ -18,26 +24,42 @@ export function CaseStudyCard({
   subtitle,
   description,
   impacts,
-  imageSrc,
-  imageAlt,
+  images,
   index,
 }: CaseStudyCardProps) {
+  const showNav = images.length > 1
+
   return (
     <div className="group grid gap-8 border-t border-border py-12 first:border-t-0 md:grid-cols-2 md:gap-12 lg:gap-16">
-      {/* Image — alternate left/right */}
+      {/* Slideshow — alternate left/right */}
       <div
-        className={`relative aspect-[4/3] overflow-hidden rounded-xl border border-border bg-muted shadow-sm ${
+        className={`relative aspect-[4/3] overflow-hidden bg-primary ${
           index % 2 === 1 ? "md:order-2" : ""
         }`}
       >
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-background/5" />
+        <Carousel opts={{ align: "start", loop: true }}>
+          <CarouselContent className="ml-0">
+            {images.map((img) => (
+              <CarouselItem key={img.src} className="pl-0">
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          {showNav && (
+            <>
+              <CarouselPrevious className="left-2 right-auto top-1/2 -translate-y-1/2 border-border bg-background/80 hover:bg-background" />
+              <CarouselNext className="right-2 left-auto top-1/2 -translate-y-1/2 border-border bg-background/80 hover:bg-background" />
+            </>
+          )}
+        </Carousel>
       </div>
 
       {/* Content */}

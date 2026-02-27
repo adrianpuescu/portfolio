@@ -12,8 +12,9 @@ const caseStudies = [
       "Complete SaaS product surface: navigation, CRUD flows, settings, account",
       "Information architecture for complex multi-project workflows",
     ],
-    imageSrc: "/images/studio-platform.jpg",
-    imageAlt: "Studio platform dashboard showing projects, assets, and navigation",
+    images: [
+      { src: "/images/studio-platform.jpg", alt: "Studio platform dashboard showing projects, assets, and navigation" },
+    ],
   },
   {
     title: "NWS Studio Editor",
@@ -26,8 +27,9 @@ const caseStudies = [
       "Template systems for batch content generation",
       "Non-technical users producing content independently",
     ],
-    imageSrc: "/images/studio-editor.jpg",
-    imageAlt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels",
+    images: [
+      { src: "/images/studio-editor.jpg", alt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels" },
+    ],
   },
   {
     title: "Content Output",
@@ -40,8 +42,9 @@ const caseStudies = [
       "AMP-compliant formats with strict technical constraints",
       "Dataset-driven batch generation for campaigns at scale",
     ],
-    imageSrc: "/images/content-output.jpg",
-    imageAlt: "Published content showing interactive stories and ad formats",
+    images: [
+      { src: "/images/content-output.jpg", alt: "Published content showing interactive stories and ad formats" },
+    ],
   },
   {
     title: "UI Systems & Shared Libraries",
@@ -54,15 +57,16 @@ const caseStudies = [
       "Reduced UI inconsistencies and accelerated feature delivery",
       "Architecture patterns that scaled with team and product growth",
     ],
-    imageSrc: "/images/ui-systems.jpg",
-    imageAlt: "Design system documentation showing reusable UI components and tokens",
+    images: [
+      { src: "/images/ui-systems.jpg", alt: "Design system documentation showing reusable UI components and tokens" },
+    ],
   },
 ]
 
 export function SystemsSection() {
   return (
-    <section id="systems" className="px-6 py-24 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="systems" className="py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16">
           <div className="flex items-center gap-3">

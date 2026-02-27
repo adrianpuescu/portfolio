@@ -2,8 +2,8 @@ import { Linkedin, Github, Mail } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border px-6 py-24 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <footer id="contact" className="border-t border-border py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2">
           {/* CTA */}
           <div>
