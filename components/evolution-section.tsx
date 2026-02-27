@@ -35,7 +35,7 @@ const currentFocus = [
     label: "AI-Assisted Development",
     status: "Active",
     detail:
-      "Leaning heavily into AI-powered coding workflows — Claude, Cursor, and similar tools. Already applying this approach to personal projects and recently integrated it into production work at NWS Studio.",
+      "Leaning heavily into AI-powered workflows — Claude, Cursor, v0 by Vercel. This portfolio was built with v0. Already applying this approach to personal projects and production work at NWS Studio.",
   },
 ]
 
