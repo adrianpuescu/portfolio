@@ -19,7 +19,7 @@ const caseStudies = [
     title: "Studio Editor",
     subtitle: "WYSIWYG Creative Environment",
     description:
-      "The core creative tool — a sophisticated WYSIWYG editor for building interactive stories, ads, presentations, and pages. Canvas-based editing, drag-drop blocks, real-time preview, toolbar systems, panel layouts. A unique, self-contained environment I shaped and evolved over 10+ years of continuous development.",
+      "The core creative tool — a sophisticated WYSIWYG editor for building interactive stories, ads, presentations, and pages. Canvas-based editing, drag-drop blocks, real-time preview, toolbar systems, panel layouts. A unique, self-contained environment I shaped and evolved over 8+ years of continuous development.",
     impacts: [
       "Drag-and-drop editing with multi-block layouts",
       "Real-time preview across devices and formats",

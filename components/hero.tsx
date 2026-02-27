@@ -114,7 +114,7 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
-            { value: "10+", label: "Years at Newsroom AI" },
+            { value: "18+", label: "Years at Newsroom AI" },
             { value: "UI/UX", label: "Design to Implementation" },
             { value: "AI", label: "Assisted Development" },
           ].map((stat) => (
@@ -148,7 +148,7 @@ export function Hero() {
         {/* Video label */}
         <div className="mx-auto max-w-6xl px-6 lg:px-8 mb-4">
           <span className="font-mono text-xs tracking-widest text-primary-foreground/70 uppercase">
-            10+ years of work in 60 seconds
+            8+ years of product work in 60 seconds
           </span>
         </div>
         <div 
