@@ -51,6 +51,30 @@ export function Hero() {
     return () => window.removeEventListener("hashchange", handleHashChange)
   }, [])
 
+  // Pause video when 75% out of viewport
+  useEffect(() => {
+    const video = videoRef.current
+    const container = videoContainerRef.current
+    if (!video || !container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // If less than 25% visible and video is playing, pause it
+          if (entry.intersectionRatio < 0.25 && !video.paused) {
+            video.pause()
+          }
+        })
+      },
+      {
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    )
+
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="pt-32 pb-0">
       {/* Hero content */}
