@@ -77,9 +77,11 @@ export function Hero() {
             wasPlayingBeforeHidden.current = true
             video.pause()
           }
-          // If 50% or more visible and was playing before, resume
+          // If 50% or more visible and was playing before, resume (muted when coming back)
           else if (entry.intersectionRatio >= 0.5 && wasPlayingBeforeHidden.current) {
             wasPlayingBeforeHidden.current = false
+            video.muted = true
+            setIsMuted(true)
             video.play()
           }
         })
