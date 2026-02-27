@@ -1,18 +1,55 @@
 "use client"
 
-import { ArrowDown, Play } from "lucide-react"
-import { useRef, useState } from "react"
+import { ArrowDown, Play, Pause, Volume2, VolumeX } from "lucide-react"
+import { useRef, useState, useEffect } from "react"
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
+  const [hasStarted, setHasStarted] = useState(false)
 
   const handlePlayClick = () => {
     if (videoRef.current) {
       videoRef.current.play()
       setIsPlaying(true)
+      setHasStarted(true)
     }
   }
+
+  const handlePauseClick = () => {
+    if (videoRef.current) {
+      videoRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsMuted(videoRef.current.muted)
+    }
+  }
+
+  // Auto-play when scrolling to video via Explore link
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === "#hero-video" && videoRef.current && !isPlaying) {
+        setTimeout(() => {
+          videoRef.current?.play()
+          setIsPlaying(true)
+          setHasStarted(true)
+        }, 300) // Small delay for smooth scroll to complete
+      }
+    }
+
+    // Check on mount if hash is already set
+    handleHashChange()
+
+    window.addEventListener("hashchange", handleHashChange)
+    return () => window.removeEventListener("hashchange", handleHashChange)
+  }, [isPlaying])
 
   return (
     <section className="pt-32 pb-0">
@@ -81,20 +118,24 @@ export function Hero() {
             10+ years of work in 60 seconds
           </span>
         </div>
-        <div className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden">
+        <div 
+          ref={videoContainerRef}
+          className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden"
+        >
           <video
             ref={videoRef}
             loop
             muted
             playsInline
-            onEnded={() => setIsPlaying(false)}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             className="w-full"
           >
             <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
           </video>
           
-          {/* Play button overlay */}
-          {!isPlaying && (
+          {/* Initial play button overlay - before video has started */}
+          {!hasStarted && (
             <button
               onClick={handlePlayClick}
               className="absolute inset-0 flex items-center justify-center bg-foreground/5 transition-colors hover:bg-foreground/10"
@@ -104,6 +145,29 @@ export function Hero() {
                 <Play size={24} className="ml-1" />
               </div>
             </button>
+          )}
+
+          {/* Hover controls - after video has started */}
+          {hasStarted && (
+            <div className="absolute bottom-4 left-10 right-10 flex items-center justify-between opacity-0 transition-opacity group-hover:opacity-100">
+              {/* Play/Pause button */}
+              <button
+                onClick={isPlaying ? handlePauseClick : handlePlayClick}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+              >
+                {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
+              </button>
+
+              {/* Mute/Unmute button */}
+              <button
+                onClick={toggleMute}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
+            </div>
           )}
         </div>
       </div>
