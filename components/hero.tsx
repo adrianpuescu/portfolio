@@ -51,7 +51,9 @@ export function Hero() {
     return () => window.removeEventListener("hashchange", handleHashChange)
   }, [])
 
-  // Pause video when 75% out of viewport
+  // Pause video when 75% out of viewport, resume when back in view
+  const wasPlayingBeforeHidden = useRef(false)
+  
   useEffect(() => {
     const video = videoRef.current
     const container = videoContainerRef.current
@@ -62,7 +64,13 @@ export function Hero() {
         entries.forEach((entry) => {
           // If less than 25% visible and video is playing, pause it
           if (entry.intersectionRatio < 0.25 && !video.paused) {
+            wasPlayingBeforeHidden.current = true
             video.pause()
+          }
+          // If more than 25% visible and was playing before, resume
+          else if (entry.intersectionRatio >= 0.25 && wasPlayingBeforeHidden.current) {
+            wasPlayingBeforeHidden.current = false
+            video.play()
           }
         })
       },
