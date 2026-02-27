@@ -7,9 +7,9 @@ const experience = [
       "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands. Then transitioned into sustained product work, building tools and platforms used at scale.",
   },
   {
-    label: "8+ Years on Studio",
+    label: "8+ Years on NWS Studio",
     detail:
-      "Deep, focused work on Studio — the flagship creative platform at Newsroom AI. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
+      "Deep, focused work on NWS Studio — the flagship creative platform at Newsroom AI. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
   },
   {
     label: "Design to Implementation",
@@ -35,7 +35,7 @@ const currentFocus = [
     label: "AI-Assisted Development",
     status: "Active",
     detail:
-      "Leaning heavily into AI-powered coding workflows — Claude, Cursor, and similar tools. Already applying this approach to personal projects and recently integrated it into production work at Studio.",
+      "Leaning heavily into AI-powered coding workflows — Claude, Cursor, and similar tools. Already applying this approach to personal projects and recently integrated it into production work at NWS Studio.",
   },
 ]
 

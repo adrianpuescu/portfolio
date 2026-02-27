@@ -2,7 +2,7 @@ import { CaseStudyCard } from "./case-study-card"
 
 const caseStudies = [
   {
-    title: "Studio Platform",
+    title: "NWS Studio Platform",
     subtitle: "SaaS Application Shell",
     description:
       "The full product environment surrounding the editor — Dashboard, Projects, Assets library, Reports, Settings, Account management. I owned the UI/UX planning and front-end implementation for the entire platform surface, creating a coherent SaaS experience that supports complex creative workflows.",
@@ -16,7 +16,7 @@ const caseStudies = [
     imageAlt: "Studio platform dashboard showing projects, assets, and navigation",
   },
   {
-    title: "Studio Editor",
+    title: "NWS Studio Editor",
     subtitle: "WYSIWYG Creative Environment",
     description:
       "The core creative tool — a sophisticated WYSIWYG editor for building interactive stories, ads, presentations, and pages. Canvas-based editing, drag-drop blocks, real-time preview, toolbar systems, panel layouts. A unique, self-contained environment I shaped and evolved over 8+ years of continuous development.",
