@@ -55,7 +55,7 @@ export function Hero() {
     }
   }
 
-  // Pause video when 75% out of viewport, resume when back in view
+  // Pause video when 50% or more is out of viewport, resume when back in view
   const wasPlayingBeforeHidden = useRef(false)
   
   useEffect(() => {
@@ -66,13 +66,13 @@ export function Hero() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // If less than 25% visible and video is playing, pause it
-          if (entry.intersectionRatio < 0.25 && !video.paused) {
+          // If less than 50% visible and video is playing, pause it
+          if (entry.intersectionRatio < 0.5 && !video.paused) {
             wasPlayingBeforeHidden.current = true
             video.pause()
           }
-          // If more than 25% visible and was playing before, resume
-          else if (entry.intersectionRatio >= 0.25 && wasPlayingBeforeHidden.current) {
+          // If 50% or more visible and was playing before, resume
+          else if (entry.intersectionRatio >= 0.5 && wasPlayingBeforeHidden.current) {
             wasPlayingBeforeHidden.current = false
             video.play()
           }
@@ -157,7 +157,21 @@ export function Hero() {
         </div>
         <div
           ref={videoContainerRef}
-          className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden"
+          className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden cursor-pointer"
+          onClick={() => {
+            if (hasStarted) {
+              isPlaying ? handlePauseClick() : handlePlayClick()
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (hasStarted && (e.key === " " || e.key === "Enter")) {
+              e.preventDefault()
+              isPlaying ? handlePauseClick() : handlePlayClick()
+            }
+          }}
+          aria-label={hasStarted ? (isPlaying ? "Pause video" : "Play video") : undefined}
         >
           <video
             ref={videoRef}
