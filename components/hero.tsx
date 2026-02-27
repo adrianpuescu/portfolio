@@ -32,24 +32,24 @@ export function Hero() {
     }
   }
 
-  // Auto-play when scrolling to video via Explore link
+  // Auto-play when clicking Explore link
   const hasAutoPlayed = useRef(false)
   
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === "#hero-video" && videoRef.current && !hasAutoPlayed.current) {
+  const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const videoSection = document.getElementById("hero-video")
+    if (videoSection) {
+      videoSection.scrollIntoView({ behavior: "smooth" })
+      if (!hasAutoPlayed.current && videoRef.current) {
         hasAutoPlayed.current = true
         setTimeout(() => {
           videoRef.current?.play()
           setIsPlaying(true)
           setHasStarted(true)
-        }, 300) // Small delay for smooth scroll to complete
+        }, 500) // Delay for smooth scroll to complete
       }
     }
-
-    window.addEventListener("hashchange", handleHashChange)
-    return () => window.removeEventListener("hashchange", handleHashChange)
-  }, [])
+  }
 
   // Pause video when 75% out of viewport, resume when back in view
   const wasPlayingBeforeHidden = useRef(false)
@@ -84,7 +84,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="pt-32 pb-0">
+    <section className="pt-32 pb-0 lg:pt-40 xl:pt-48">
       {/* Hero content */}
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         {/* Label */}
@@ -130,9 +130,10 @@ export function Hero() {
         </div>
 
         {/* Scroll indicator - links to video */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-16 flex justify-center lg:mt-24">
           <a
             href="#hero-video"
+            onClick={handleExploreClick}
             className="flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
             aria-label="Scroll to video"
           >
