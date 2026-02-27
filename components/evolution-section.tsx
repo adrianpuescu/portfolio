@@ -2,14 +2,14 @@ import { ArrowUpRight } from "lucide-react"
 
 const experience = [
   {
-    label: "18+ Years at Newsroom AI",
+    label: "20+ Years in Digital",
     detail:
-      "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands. Then transitioned into sustained product work on the company's flagship platform.",
+      "Started in online advertising and interactive campaigns — graphics, HTML/CSS, Flash animation — for major brands. Then transitioned into sustained product work, building tools and platforms used at scale.",
   },
   {
     label: "8+ Years on Studio",
     detail:
-      "Deep, focused work on Studio — the core creative platform. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
+      "Deep, focused work on Studio — the flagship creative platform at Newsroom AI. Owned UI/UX, feature planning, and front-end implementation. Evolved the product through countless iterations while keeping it production-ready for global publishers and brands.",
   },
   {
     label: "Design to Implementation",

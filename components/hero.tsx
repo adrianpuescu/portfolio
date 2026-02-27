@@ -114,7 +114,7 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-2 gap-8 border-t border-border pt-8 md:grid-cols-4">
           {[
             { value: "20+", label: "Years in Digital" },
-            { value: "18+", label: "Years at Newsroom AI" },
+            { value: "8+", label: "Years on Studio" },
             { value: "UI/UX", label: "Design to Implementation" },
             { value: "AI", label: "Assisted Development" },
           ].map((stat) => (
