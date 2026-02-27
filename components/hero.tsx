@@ -33,9 +33,12 @@ export function Hero() {
   }
 
   // Auto-play when scrolling to video via Explore link
+  const hasAutoPlayed = useRef(false)
+  
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === "#hero-video" && videoRef.current && !isPlaying) {
+      if (window.location.hash === "#hero-video" && videoRef.current && !hasAutoPlayed.current) {
+        hasAutoPlayed.current = true
         setTimeout(() => {
           videoRef.current?.play()
           setIsPlaying(true)
@@ -44,12 +47,9 @@ export function Hero() {
       }
     }
 
-    // Check on mount if hash is already set
-    handleHashChange()
-
     window.addEventListener("hashchange", handleHashChange)
     return () => window.removeEventListener("hashchange", handleHashChange)
-  }, [isPlaying])
+  }, [])
 
   return (
     <section className="pt-32 pb-0">
