@@ -3,6 +3,12 @@ __v0_runtime_loader.js
 __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
 
+# Next.js
+next-env.d.ts
+
+# Large media (optional: remove if you want to track videos in git)
+public/video/*.mp4
+
 # Common ignores
 node_modules/
 .next/
