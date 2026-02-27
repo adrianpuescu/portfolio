@@ -19,3 +19,7 @@ out/
 .deploy.env
 deploy/
 deploy.zip
+
+# Favicon build artifacts (source + redundant size)
+public/favicon-source.png
+public/icon-32.png
