@@ -12,8 +12,10 @@ const caseStudies = [
       "Complete SaaS product surface: navigation, CRUD flows, settings, account",
       "Information architecture for complex multi-project workflows",
     ],
-    imageSrc: "/images/studio-platform.jpg",
-    imageAlt: "Studio platform dashboard showing projects, assets, and navigation",
+    media: [
+      { type: "image" as const, src: "/images/studio-platform.jpg", alt: "Studio platform dashboard showing projects, assets, and navigation" },
+      // Add more images/videos here when ready
+    ],
   },
   {
     title: "NWS Studio Editor",
@@ -26,8 +28,10 @@ const caseStudies = [
       "Template systems for batch content generation",
       "Non-technical users producing content independently",
     ],
-    imageSrc: "/images/studio-editor.jpg",
-    imageAlt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels",
+    media: [
+      { type: "image" as const, src: "/images/studio-editor.jpg", alt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels" },
+      // Add more images/videos here when ready
+    ],
   },
   {
     title: "Content Output",
@@ -40,8 +44,10 @@ const caseStudies = [
       "AMP-compliant formats with strict technical constraints",
       "Dataset-driven batch generation for campaigns at scale",
     ],
-    imageSrc: "/images/content-output.jpg",
-    imageAlt: "Published content showing interactive stories and ad formats",
+    media: [
+      { type: "image" as const, src: "/images/content-output.jpg", alt: "Published content showing interactive stories and ad formats" },
+      // Add more images/videos here when ready
+    ],
   },
   {
     title: "UI Systems & Shared Libraries",
@@ -54,15 +60,17 @@ const caseStudies = [
       "Reduced UI inconsistencies and accelerated feature delivery",
       "Architecture patterns that scaled with team and product growth",
     ],
-    imageSrc: "/images/ui-systems.jpg",
-    imageAlt: "Design system documentation showing reusable UI components and tokens",
+    media: [
+      { type: "image" as const, src: "/images/ui-systems.jpg", alt: "Design system documentation showing reusable UI components and tokens" },
+      // Add more images/videos here when ready
+    ],
   },
 ]
 
 export function SystemsSection() {
   return (
-    <section id="systems" className="px-6 py-24 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="systems" className="py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16">
           <div className="flex items-center gap-3">
@@ -80,13 +88,13 @@ export function SystemsSection() {
             keeping complex systems production-ready at scale.
           </p>
         </div>
+      </div>
 
-        {/* Case studies */}
-        <div>
-          {caseStudies.map((study, i) => (
-            <CaseStudyCard key={study.title} {...study} index={i} />
-          ))}
-        </div>
+      {/* Case studies - full width for media backgrounds */}
+      <div>
+        {caseStudies.map((study, i) => (
+          <CaseStudyCard key={study.title} {...study} index={i} />
+        ))}
       </div>
     </section>
   )
