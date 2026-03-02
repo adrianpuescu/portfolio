@@ -8,6 +8,7 @@ next-env.d.ts
 
 # Large media (optional: remove if you want to track videos in git)
 public/video/*.mp4
+public/video/**/*__capcut_export_temp_folder*
 
 # Common ignores
 node_modules/
