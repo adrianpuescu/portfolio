@@ -1,100 +1,242 @@
-import { CaseStudyCard } from "./case-study-card"
+"use client"
 
-const caseStudies = [
+import Image from "next/image"
+import { useState } from "react"
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
+
+interface MediaItem {
+  type: "image" | "video"
+  src: string
+  alt?: string
+}
+
+interface SystemTab {
+  id: string
+  label: string
+  description: string
+  highlights: string[]
+  media: MediaItem[]
+}
+
+const systemTabs: SystemTab[] = [
   {
-    title: "NWS Studio Platform",
-    subtitle: "SaaS Application Shell",
+    id: "platform",
+    label: "Platform",
     description:
-      "The full product environment surrounding the editor — Dashboard, Projects, Assets library, Reports, Settings, Account management. I owned the UI/UX planning and front-end implementation for the entire platform surface, creating a coherent SaaS experience that supports complex creative workflows.",
-    impacts: [
-      "Used by Forbes, USA Today, The Guardian, Yahoo, VICE, and more",
-      "Content created for brands including Google, Meta, Disney, Netflix, H&M, Adidas",
-      "Complete SaaS product surface: navigation, CRUD flows, settings, account",
-      "Information architecture for complex multi-project workflows",
+      "The full product environment — Dashboard, Projects, Assets library, Reports, Settings. I owned UI/UX planning and front-end implementation for the entire SaaS surface.",
+    highlights: [
+      "Complete SaaS product surface",
+      "Navigation, CRUD flows, settings",
+      "Multi-project workflow architecture",
     ],
     media: [
-      { type: "image" as const, src: "/images/studio-platform.jpg", alt: "Studio platform dashboard showing projects, assets, and navigation" },
-      // Add more images/videos here when ready
+      { type: "image", src: "/images/studio-platform.jpg", alt: "Studio platform dashboard" },
     ],
   },
   {
-    title: "NWS Studio Editor",
-    subtitle: "WYSIWYG Creative Environment",
+    id: "editor",
+    label: "Editor",
     description:
-      "The core creative tool — a sophisticated WYSIWYG editor for building interactive stories, ads, presentations, and pages. Canvas-based editing, drag-drop blocks, real-time preview, toolbar systems, panel layouts. A unique, self-contained environment I shaped and evolved over 8+ years of continuous development.",
-    impacts: [
-      "Drag-and-drop editing with multi-block layouts",
-      "Real-time preview across devices and formats",
-      "Template systems for batch content generation",
-      "Non-technical users producing content independently",
+      "A sophisticated WYSIWYG editor for building interactive stories, ads, and presentations. Canvas editing, drag-drop blocks, real-time preview, toolbar systems.",
+    highlights: [
+      "Drag-and-drop multi-block layouts",
+      "Real-time preview across formats",
+      "Template-driven batch generation",
     ],
     media: [
-      { type: "image" as const, src: "/images/studio-editor.jpg", alt: "Studio WYSIWYG editor showing canvas, toolbar, and editing panels" },
-      // Add more images/videos here when ready
+      { type: "image", src: "/images/studio-editor.jpg", alt: "Studio WYSIWYG editor" },
     ],
   },
   {
-    title: "Content Output",
-    subtitle: "Stories, Ads & Published Pages",
+    id: "output",
+    label: "Content Output",
     description:
-      "The platform's primary output: interactive stories, rich media ads, visual presentations, and landing pages — all HTML-based, published and distributed across partner networks. I developed the HTML structure and rendering logic for ad formats (including AMP with strict restrictions), built client showcase pages for Sales, and created systems for template-driven batch content generation.",
-    impacts: [
-      "End-to-end pipeline from editor to live online content",
-      "Interactive stories and rich media ads as primary output formats",
-      "AMP-compliant formats with strict technical constraints",
-      "Dataset-driven batch generation for campaigns at scale",
+      "Interactive stories, rich media ads, presentations, and pages — all HTML-based, distributed across partner networks. Including AMP-compliant formats with strict constraints.",
+    highlights: [
+      "Stories and rich media ads",
+      "AMP-compliant formats",
+      "Dataset-driven batch generation",
     ],
     media: [
-      { type: "image" as const, src: "/images/content-output.jpg", alt: "Published content showing interactive stories and ad formats" },
-      // Add more images/videos here when ready
+      { type: "image", src: "/images/content-output.jpg", alt: "Published content and ad formats" },
     ],
   },
   {
-    title: "UI Systems & Shared Libraries",
-    subtitle: "Design Infrastructure",
+    id: "ui-systems",
+    label: "UI Systems",
     description:
-      "Created a shared CSS library (PostCSS-based) reusable across projects, along with component patterns and layout systems that unified the product experience. Owned the visual consistency, spacing hierarchies, and UI architecture that kept the platform coherent as it scaled.",
-    impacts: [
-      "Shared CSS library consumed across multiple products",
-      "Layout systems, spacing scales, and typography hierarchies",
-      "Reduced UI inconsistencies and accelerated feature delivery",
-      "Architecture patterns that scaled with team and product growth",
+      "Shared CSS library (PostCSS-based), component patterns, and layout systems. Owned visual consistency and UI architecture across the platform.",
+    highlights: [
+      "Shared CSS library across products",
+      "Spacing scales and typography",
+      "Scalable architecture patterns",
     ],
     media: [
-      { type: "image" as const, src: "/images/ui-systems.jpg", alt: "Design system documentation showing reusable UI components and tokens" },
-      // Add more images/videos here when ready
+      { type: "image", src: "/images/ui-systems.jpg", alt: "UI components and design system" },
     ],
   },
 ]
 
 export function SystemsSection() {
+  const [activeTab, setActiveTab] = useState("platform")
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const activeSystem = systemTabs.find((tab) => tab.id === activeTab)!
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId)
+    setCurrentSlide(0)
+  }
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % activeSystem.media.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + activeSystem.media.length) % activeSystem.media.length)
+  }
+
+  const hasMultipleSlides = activeSystem.media.length > 1
+
   return (
     <section id="systems" className="py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-16">
+        <div className="mb-12">
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-primary" />
             <span className="font-mono text-xs tracking-widest text-primary uppercase">
-              Selected Systems
+              8+ Years, One Platform
             </span>
           </div>
           <h2 className="mt-4 text-3xl font-medium tracking-tight text-foreground md:text-4xl text-balance">
-            Systems built over years, not weeks
+            NWS Studio
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-            Not a list of short-lived projects. These represent sustained,
-            deep work — evolving architecture, expanding capability, and
-            keeping complex systems production-ready at scale.
+            The flagship creative platform at Newsroom AI — used by Forbes, USA Today, The Guardian, Yahoo, VICE, 
+            and brands including Google, Meta, Disney, Netflix, H&M, Adidas. I owned UI/UX, feature planning, 
+            and front-end implementation across the entire product.
           </p>
+        </div>
+
+        {/* Tab navigation */}
+        <div className="mb-8 flex flex-wrap gap-2">
+          {systemTabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={`px-4 py-2 font-mono text-sm transition-colors ${
+                activeTab === tab.id
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Active tab content */}
+        <div className="grid gap-8 md:grid-cols-2 md:gap-12">
+          {/* Description */}
+          <div className="flex flex-col justify-center">
+            <p className="text-lg leading-relaxed text-foreground">
+              {activeSystem.description}
+            </p>
+            <ul className="mt-6 flex flex-col gap-3">
+              {activeSystem.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-3">
+                  <ArrowUpRight size={14} className="mt-1 shrink-0 text-primary" />
+                  <span className="text-sm text-muted-foreground">{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Slideshow navigation dots for desktop */}
+          {hasMultipleSlides && (
+            <div className="hidden md:flex items-end justify-start pb-4">
+              <div className="flex items-center gap-2">
+                {activeSystem.media.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-1.5 rounded-full transition-all ${
+                      idx === currentSlide
+                        ? "w-6 bg-primary"
+                        : "w-1.5 bg-border hover:bg-muted-foreground"
+                    }`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Case studies - full width for media backgrounds */}
-      <div>
-        {caseStudies.map((study, i) => (
-          <CaseStudyCard key={study.title} {...study} index={i} />
-        ))}
+      {/* Media slideshow - full width */}
+      <div className="mt-8 w-full bg-secondary py-6">
+        <div className="group relative mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="relative aspect-[16/10] overflow-hidden">
+            {activeSystem.media[currentSlide].type === "image" ? (
+              <Image
+                src={activeSystem.media[currentSlide].src}
+                alt={activeSystem.media[currentSlide].alt || activeSystem.label}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1152px"
+              />
+            ) : (
+              <video
+                src={activeSystem.media[currentSlide].src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              />
+            )}
+          </div>
+
+          {/* Navigation arrows */}
+          {hasMultipleSlides && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute left-8 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground opacity-0 shadow-lg transition-all hover:scale-105 group-hover:opacity-100 lg:left-10"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-8 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-foreground opacity-0 shadow-lg transition-all hover:scale-105 group-hover:opacity-100 lg:right-10"
+                aria-label="Next slide"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </>
+          )}
+
+          {/* Mobile dots */}
+          {hasMultipleSlides && (
+            <div className="mt-4 flex justify-center gap-2 md:hidden">
+              {activeSystem.media.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    idx === currentSlide
+                      ? "w-6 bg-primary"
+                      : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )
