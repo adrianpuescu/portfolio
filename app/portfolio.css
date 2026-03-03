@@ -28,6 +28,17 @@
   overflow-x: hidden;
 }
 
+/* In-text links (e.g. NWS / Newsroom) */
+.p-text-link {
+  color: var(--p-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+.p-text-link:hover {
+  border-bottom-color: var(--p-blue);
+}
+
 /* Custom cursor — smooth dot + ring, ring expands on hover over links/buttons */
 .portfolio-page.use-custom-cursor {
   cursor: none;

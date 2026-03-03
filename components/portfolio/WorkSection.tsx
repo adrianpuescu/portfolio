@@ -67,8 +67,27 @@ export function PortfolioWorkSection() {
           Global scale.
         </h2>
         <p className="p-work-intro">
-          Lead UI/UX architect on Newsroom AI Studio — a platform used by global
-          publishers and brands to create visual content at scale.
+          Deep, focused work on{" "}
+          <a
+            href="https://studio.nws.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-text-link"
+          >
+            NWS Studio
+          </a>
+          {" — the flagship creative platform at "}
+          <a
+            href="https://nws.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-text-link"
+          >
+            Newsroom AI
+          </a>
+          . Owned UI/UX, feature planning, and front-end implementation. Evolved
+          the product through countless iterations while keeping it
+          production-ready for global publishers and brands.
         </p>
       </div>
 
@@ -88,7 +107,7 @@ export function PortfolioWorkSection() {
                 Studio
               </div>
               <div className="p-project-product">
-                studio.nws.ai · Newsroom AI
+                studio.nws.ai · Newsroom Studio
               </div>
 
               <ul className="p-project-bullets">
@@ -110,7 +129,16 @@ export function PortfolioWorkSection() {
                 <li>
                   Maintained a{" "}
                   <strong>shared PostCSS component library</strong> used across
-                  multiple Newsroom products
+                  multiple{" "}
+                  <a
+                    href="https://nws.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-text-link"
+                  >
+                    Newsroom
+                  </a>{" "}
+                  products
                 </li>
               </ul>
 

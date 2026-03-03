@@ -74,7 +74,17 @@ export function PortfolioHero({
               <div className="p-stat-num">
                 8<sup>+</sup>
               </div>
-              <div className="p-stat-label">Years at NWS Studio</div>
+              <div className="p-stat-label">
+                Years at{" "}
+                <a
+                  href="https://studio.nws.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-text-link"
+                >
+                  NWS Studio
+                </a>
+              </div>
             </div>
           </div>
         </div>
