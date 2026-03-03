@@ -160,17 +160,22 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  color: var(--p-text3);
+  color: var(--p-blue);
+  background: var(--p-blue-light);
+  border: 1px solid var(--p-blue-mid);
+  padding: 5px 12px;
+  border-radius: 100px;
   margin-bottom: 28px;
-  opacity: 0; transform: translateY(12px);
+  opacity: 0;
+  transform: translateY(12px);
   animation: p-fadeUp .5s .1s forwards;
 }
 .p-hero-badge-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--p-text4);
+  width: 6px;
+  height: 6px;
+  background: var(--p-blue);
   border-radius: 50%;
   animation: p-pulse 2s infinite;
 }

@@ -138,6 +138,9 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               type="button"
               className="p-play-btn"
               onClick={() => {
+                document
+                  .getElementById("video-section")
+                  ?.scrollIntoView({ behavior: "smooth", block: "center" })
                 if (started) {
                   setOverlayHidden(true)
                   setPlaying(true)
