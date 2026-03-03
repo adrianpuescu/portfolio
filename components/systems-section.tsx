@@ -80,7 +80,7 @@ const systemTabs: SystemTab[] = [
 export function SystemsSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>(new Array(systemTabs.length).fill(null))
   const containerRef = useRef<HTMLDivElement>(null)
 
   const activeSystem = systemTabs[activeIndex]
@@ -154,7 +154,7 @@ export function SystemsSection() {
             {systemTabs.map((tab, index) => (
               <div
                 key={tab.id}
-                ref={(el: HTMLDivElement | null) => { if (el) sectionRefs.current[index] = el }}
+                ref={(el) => { sectionRefs.current[index] = el }}
                 className={`transition-opacity duration-500 ${
                   activeIndex === index ? "opacity-100" : "lg:opacity-30"
                 }`}
