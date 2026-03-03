@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface MediaItem {
@@ -80,42 +80,12 @@ const systemTabs: SystemTab[] = [
 export function SystemsSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
-  const sectionRefs = useRef<Map<number, HTMLDivElement>>(new Map())
-  const containerRef = useRef<HTMLDivElement>(null)
 
   const activeSystem = systemTabs[activeIndex]
 
-  // Handle scroll-based section detection
+  // Reset slide when active tab changes
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return
-
-      const containerRect = containerRef.current.getBoundingClientRect()
-      const containerTop = containerRect.top
-      const windowHeight = window.innerHeight
-
-      // Only update when container is in view
-      if (containerTop > windowHeight || containerRect.bottom < 0) return
-
-      systemTabs.forEach((_, index) => {
-        const ref = sectionRefs.current.get(index)
-        if (!ref) return
-        const rect = ref.getBoundingClientRect()
-        const sectionMiddle = rect.top + rect.height / 2
-
-        // When section middle is in the top half of the viewport
-        if (sectionMiddle < windowHeight * 0.6 && sectionMiddle > windowHeight * 0.1) {
-          if (activeIndex !== index) {
-            setActiveIndex(index)
-            setCurrentSlide(0)
-          }
-        }
-      })
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Initial check
-    return () => window.removeEventListener("scroll", handleScroll)
+    setCurrentSlide(0)
   }, [activeIndex])
 
   const nextSlide = () => {
@@ -149,57 +119,67 @@ export function SystemsSection() {
         </div>
 
         {/* Sticky scroll layout */}
-        <div ref={containerRef} className="relative lg:grid lg:grid-cols-2 lg:gap-16">
-          {/* Left: Scrolling text sections */}
-          <div className="flex flex-col gap-32 lg:gap-48">
-            {systemTabs.map((tab, index) => (
-              <div
-                key={tab.id}
-                ref={(el) => { if (el) sectionRefs.current.set(index, el) }}
-                className={`transition-opacity duration-500 ${
-                  activeIndex === index ? "opacity-100" : "lg:opacity-30"
-                }`}
-              >
-                <h3 className="text-2xl font-medium text-foreground mb-4">
+        <div className="relative lg:grid lg:grid-cols-2 lg:gap-16">
+          {/* Left: Tab navigation + Content */}
+          <div>
+            {/* Tab buttons */}
+            <div className="mb-8 flex flex-wrap gap-2">
+              {systemTabs.map((tab, index) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`px-4 py-2 text-sm font-medium transition-colors rounded-md ${
+                    activeIndex === index
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-muted-foreground hover:text-foreground"
+                  }`}
+                >
                   {tab.label}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  {tab.description}
-                </p>
-                <ul className="flex flex-col gap-3">
-                  {tab.highlights.map((highlight) => (
-                    <li key={highlight} className="flex items-start gap-3">
-                      <ArrowUpRight size={14} className="mt-1 shrink-0 text-primary" />
-                      <span className="text-sm text-muted-foreground">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                </button>
+              ))}
+            </div>
 
-                {/* Mobile: Show media inline */}
-                <div className="mt-8 lg:hidden">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                    {tab.media[0].type === "image" ? (
-                      <Image
-                        src={tab.media[0].src}
-                        alt={tab.media[0].alt || tab.label}
-                        fill
-                        className="object-cover"
-                        sizes="100vw"
-                      />
-                    ) : (
-                      <video
-                        src={tab.media[0].src}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="h-full w-full object-cover"
-                      />
-                    )}
-                  </div>
+            {/* Active content */}
+            <div className="transition-opacity duration-300">
+              <h3 className="text-2xl font-medium text-foreground mb-4">
+                {activeSystem.label}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                {activeSystem.description}
+              </p>
+              <ul className="flex flex-col gap-3">
+                {activeSystem.highlights.map((highlight) => (
+                  <li key={highlight} className="flex items-start gap-3">
+                    <ArrowUpRight size={14} className="mt-1 shrink-0 text-primary" />
+                    <span className="text-sm text-muted-foreground">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Mobile: Show media inline */}
+              <div className="mt-8 lg:hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+                  {activeSystem.media[currentSlide].type === "image" ? (
+                    <Image
+                      src={activeSystem.media[currentSlide].src}
+                      alt={activeSystem.media[currentSlide].alt || activeSystem.label}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  ) : (
+                    <video
+                      src={activeSystem.media[currentSlide].src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="h-full w-full object-cover"
+                    />
+                  )}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
 
           {/* Right: Sticky media */}
