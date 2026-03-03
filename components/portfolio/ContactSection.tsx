@@ -2,7 +2,7 @@ export function PortfolioContactSection() {
   return (
     <section id="contact" className="p-contact">
       <div className="p-contact-inner">
-        <div className="p-reveal">
+        <div className="p-contact-left">
           <div
             className="p-eyebrow"
             style={{ color: "rgba(148,163,184,.5)", marginBottom: 24 }}
@@ -16,7 +16,7 @@ export function PortfolioContactSection() {
             <span>in mind?</span>
           </h2>
         </div>
-        <div className="p-reveal p-rd2">
+        <div className="p-contact-right">
           <p className="p-contact-desc">
             Available for UI/UX roles, frontend architecture, and product design
             collaborations — especially in media, publishing, adtech, or any
@@ -24,7 +24,8 @@ export function PortfolioContactSection() {
           </p>
           <div className="p-contact-links">
             <a className="p-clink" href="mailto:web@webz.ro">
-              <span className="p-clink-icon">✉</span> web@webz.ro
+              <span className="p-clink-icon" aria-hidden>✉</span>
+              web@webz.ro
             </a>
             <a
               className="p-clink"
@@ -32,7 +33,8 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon">↗</span> linkedin.com/in/adrianpuescu
+              <span className="p-clink-icon" aria-hidden>↗</span>
+              LinkedIn
             </a>
             <a
               className="p-clink"
@@ -40,7 +42,8 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon">↗</span> github.com/adrianpuescu
+              <span className="p-clink-icon" aria-hidden>↗</span>
+              GitHub
             </a>
           </div>
         </div>
