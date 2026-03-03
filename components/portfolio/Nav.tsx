@@ -33,7 +33,7 @@ export function PortfolioNav() {
     <nav id="nav" className={`p-nav ${scrolled ? "scrolled" : ""}`}>
       <div className="p-nav-inner">
         <Link href="#" className="p-nav-logo">
-          UI / Product / Creative Technologist
+          Adrian Puescu
         </Link>
         <ul className="p-nav-links">
           {LINKS.map(({ href, label }) => (

@@ -12,16 +12,16 @@ export function PortfolioHero({
         </div>
 
         <h1 className="p-hero-h1">
-          UI / Product /<br />
-          <span className="blue">Creative Technologist</span>
+          <span className="muted">Hi, I&apos;m Adrian</span>
           <br />
-          <span className="muted">from idea to live</span>
+          UI / Product /
+          <br />
+          <span className="blue">Creative Technologist</span>
         </h1>
 
         <p className="p-hero-sub">
-          20+ years building digital products, campaigns, and creative tools. 8
-          of them architecting the UI of a platform used by global publishers
-          and brands to create stories and ads at scale.
+          20+ years building digital products and creative tools — lately UI/UX
+          on a platform used by global publishers and brands.
         </p>
 
         <div className="p-hero-actions">
