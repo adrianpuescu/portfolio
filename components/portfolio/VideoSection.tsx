@@ -9,7 +9,7 @@ export type VideoSectionRef = { startWithSound: () => void }
 export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function PortfolioVideoSection(_, ref) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [overlayHidden, setOverlayHidden] = useState(false)
-  const [playing, setPlaying] = useState(true)
+  const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
   const [started, setStarted] = useState(false)
 
@@ -45,9 +45,14 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const togglePlay = () => {
     const v = videoRef.current
     if (!v) return
+    if (playing) {
+      v.pause()
+      setOverlayHidden(false)
+    } else {
+      setOverlayHidden(true)
+      v.play().catch(() => {})
+    }
     setPlaying(!playing)
-    if (playing) v.pause()
-    else v.play().catch(() => {})
   }
 
   const toggleMute = () => {
@@ -78,6 +83,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               videoRef.current?.play().catch(() => {})
               setMuted(true)
               setPlaying(true)
+              setOverlayHidden(true)
               pausedBecauseOutOfViewRef.current = false
             }
           }
@@ -117,7 +123,10 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
             playsInline
             preload="metadata"
             onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
+            onPause={() => {
+              setPlaying(false)
+              setOverlayHidden(false)
+            }}
           >
             <source src={VIDEO_SRC} type="video/mp4" />
           </video>
@@ -128,7 +137,15 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
             <button
               type="button"
               className="p-play-btn"
-              onClick={() => startVideo(true)}
+              onClick={() => {
+                if (started) {
+                  setOverlayHidden(true)
+                  setPlaying(true)
+                  videoRef.current?.play().catch(() => {})
+                } else {
+                  startVideo(true)
+                }
+              }}
               title="Play"
               aria-label="Play video"
             >
@@ -137,6 +154,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               </svg>
             </button>
           </div>
+          {playing && (
           <div className="p-video-controls-bar">
             <button
               type="button"
@@ -173,6 +191,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               )}
             </button>
           </div>
+          )}
         </div>
       </div>
     </section>

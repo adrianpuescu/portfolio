@@ -340,7 +340,7 @@
 .p-video-overlay {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.3);
+  background: transparent;
   transition: opacity .25s;
   opacity: 1; z-index: 2;
 }
