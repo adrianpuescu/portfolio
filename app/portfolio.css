@@ -375,6 +375,37 @@
 }
 .p-play-btn:hover { background: rgba(255,255,255,.95); transform: scale(1.06); }
 .p-play-btn svg { fill: var(--p-blue); }
+
+.p-replay-wrap {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.p-replay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--p-blue);
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: var(--p-radius-sm);
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .15s;
+}
+.p-replay-btn:hover {
+  background: rgba(255,255,255,.9);
+  border-color: rgba(255,255,255,.6);
+  color: var(--p-blue-dark);
+}
+.p-replay-btn svg { fill: currentColor; flex-shrink: 0; width: 14px; height: 14px; }
+
 .p-vc-btn {
   width: 42px; height: 42px;
   background: rgba(255,255,255,.82);

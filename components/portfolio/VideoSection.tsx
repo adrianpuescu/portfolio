@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
 
-const VIDEO_SRC = "/video/hero-video-3-optimised.mp4"
+const VIDEO_SRC = "/video/hero-video-4-optimised.mp4"
 
 export type VideoSectionRef = { startWithSound: () => void }
 
@@ -12,6 +12,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
   const [started, setStarted] = useState(false)
+  const [ended, setEnded] = useState(false)
 
   const startVideo = useCallback((withSound: boolean) => {
     setStarted(true)
@@ -25,6 +26,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     }
     setMuted(!withSound)
     setOverlayHidden(true)
+    setEnded(false)
   }, [])
 
   const startWithSound = useCallback(() => {
@@ -40,6 +42,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       v.muted = true
       setMuted(true)
     })
+    setEnded(false)
   }, [])
 
   const togglePlay = () => {
@@ -119,13 +122,18 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
             ref={videoRef}
             id="heroVideo"
             muted={muted}
-            loop
+            loop={muted}
             playsInline
             preload="metadata"
             onPlay={() => setPlaying(true)}
             onPause={() => {
               setPlaying(false)
               setOverlayHidden(false)
+            }}
+            onEnded={() => {
+              setPlaying(false)
+              setOverlayHidden(false)
+              setEnded(true)
             }}
           >
             <source src={VIDEO_SRC} type="video/mp4" />
@@ -134,28 +142,59 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
             className={`p-video-overlay ${overlayHidden ? "hidden" : ""}`}
             style={overlayHidden ? { pointerEvents: "none" } : undefined}
           >
-            <button
-              type="button"
-              className="p-play-btn"
-              onClick={() => {
-                document
-                  .getElementById("video-section")
-                  ?.scrollIntoView({ behavior: "smooth", block: "center" })
-                if (started) {
-                  setOverlayHidden(true)
-                  setPlaying(true)
-                  videoRef.current?.play().catch(() => {})
-                } else {
-                  startVideo(true)
-                }
-              }}
-              title="Play"
-              aria-label="Play video"
-            >
-              <svg viewBox="0 0 24 24" width={28} height={28}>
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
+            {ended ? (
+              <div className="p-replay-wrap">
+                <button
+                  type="button"
+                  className="p-replay-btn"
+                  onClick={() => {
+                    setEnded(false)
+                    const v = videoRef.current
+                    if (v) {
+                      v.currentTime = 0
+                      v.muted = false
+                      setMuted(false)
+                      setOverlayHidden(true)
+                      setPlaying(true)
+                      v.play().catch(() => {
+                        v.muted = true
+                        setMuted(true)
+                      })
+                    }
+                  }}
+                  title="Replay"
+                  aria-label="Replay video"
+                >
+                  <svg viewBox="0 0 24 24" width={20} height={20}>
+                    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                  </svg>
+                  REPLAY
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                className="p-play-btn"
+                onClick={() => {
+                  document
+                    .getElementById("video-section")
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" })
+                  if (started) {
+                    setOverlayHidden(true)
+                    setPlaying(true)
+                    videoRef.current?.play().catch(() => {})
+                  } else {
+                    startVideo(true)
+                  }
+                }}
+                title="Play"
+                aria-label="Play video"
+              >
+                <svg viewBox="0 0 24 24" width={28} height={28}>
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            )}
           </div>
           {playing && (
           <div className="p-video-controls-bar">
