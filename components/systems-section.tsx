@@ -80,7 +80,7 @@ const systemTabs: SystemTab[] = [
 export function SystemsSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [currentSlide, setCurrentSlide] = useState(0)
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>(new Array(systemTabs.length).fill(null))
+  const sectionRefs = useRef<Map<number, HTMLDivElement>>(new Map())
   const containerRef = useRef<HTMLDivElement>(null)
 
   const activeSystem = systemTabs[activeIndex]
@@ -97,7 +97,8 @@ export function SystemsSection() {
       // Only update when container is in view
       if (containerTop > windowHeight || containerRect.bottom < 0) return
 
-      sectionRefs.current.forEach((ref, index) => {
+      systemTabs.forEach((_, index) => {
+        const ref = sectionRefs.current.get(index)
         if (!ref) return
         const rect = ref.getBoundingClientRect()
         const sectionMiddle = rect.top + rect.height / 2
@@ -154,7 +155,7 @@ export function SystemsSection() {
             {systemTabs.map((tab, index) => (
               <div
                 key={tab.id}
-                ref={(el) => { sectionRefs.current[index] = el }}
+                ref={(el) => { if (el) sectionRefs.current.set(index, el) }}
                 className={`transition-opacity duration-500 ${
                   activeIndex === index ? "opacity-100" : "lg:opacity-30"
                 }`}
