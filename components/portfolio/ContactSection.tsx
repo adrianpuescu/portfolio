@@ -1,0 +1,50 @@
+export function PortfolioContactSection() {
+  return (
+    <section id="contact" className="p-contact">
+      <div className="p-contact-inner">
+        <div className="p-reveal">
+          <div
+            className="p-eyebrow"
+            style={{ color: "rgba(148,163,184,.5)", marginBottom: 24 }}
+            data-n="05 —"
+          >
+            Let&apos;s Talk
+          </div>
+          <h2 className="p-contact-h">
+            Got a project
+            <br />
+            <span>in mind?</span>
+          </h2>
+        </div>
+        <div className="p-reveal p-rd2">
+          <p className="p-contact-desc">
+            Available for UI/UX roles, frontend architecture, and product design
+            collaborations — especially in media, publishing, adtech, or any
+            product that ships creative tools.
+          </p>
+          <div className="p-contact-links">
+            <a className="p-clink" href="mailto:web@webz.ro">
+              <span className="p-clink-icon">✉</span> web@webz.ro
+            </a>
+            <a
+              className="p-clink"
+              href="https://www.linkedin.com/in/adrianpuescu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="p-clink-icon">↗</span> linkedin.com/in/adrianpuescu
+            </a>
+            <a
+              className="p-clink"
+              href="https://github.com/adrianpuescu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="p-clink-icon">↗</span> github.com/adrianpuescu
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
