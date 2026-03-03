@@ -154,7 +154,7 @@ export function SystemsSection() {
             {systemTabs.map((tab, index) => (
               <div
                 key={tab.id}
-                ref={(el) => { sectionRefs.current[index] = el }}
+                ref={(el: HTMLDivElement | null) => { if (el) sectionRefs.current[index] = el }}
                 className={`transition-opacity duration-500 ${
                   activeIndex === index ? "opacity-100" : "lg:opacity-30"
                 }`}
