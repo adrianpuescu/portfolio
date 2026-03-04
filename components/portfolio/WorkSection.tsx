@@ -170,31 +170,12 @@ export function PortfolioWorkSection() {
                   products
                 </li>
               </ul>
-
-              <div className="p-brands-strip">
-                <div className="p-brands-label">
-                  Brands & publishers that used the platform
-                </div>
-                <div className="p-brands-list">
-                  {BRANDS.map((b) => (
-                    <span key={b} className="p-brand-pill">
-                      {b}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </div>
             <div className="p-project-meta">
               <div>
                 <div className="p-pmeta-label">Primary Focus</div>
                 <div className="p-pmeta-val">
                   HTML · CSS/PostCSS · JS · UI Architecture
-                </div>
-              </div>
-              <div>
-                <div className="p-pmeta-label">Output Formats</div>
-                <div className="p-pmeta-val">
-                  AMP Stories · Brand Stories · LPs · HTML
                 </div>
               </div>
             </div>
@@ -279,6 +260,18 @@ export function PortfolioWorkSection() {
               <div className="p-cap-d">{cap.d}</div>
             </div>
           ))}
+        </div>
+        <div className="p-brands-strip">
+          <div className="p-brands-label">
+            Brands & publishers that used the platform
+          </div>
+          <div className="p-brands-list">
+            {BRANDS.map((b) => (
+              <span key={b} className="p-brand-pill">
+                {b}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
