@@ -46,8 +46,8 @@ export default function Page() {
         <PortfolioBeforeSection />
         <PortfolioSkillsSection />
         <PortfolioFocusSection />
-        <PortfolioContactSection />
         <PortfolioAboutSection />
+        <PortfolioContactSection />
       </main>
       <PortfolioFooter />
     </div>
