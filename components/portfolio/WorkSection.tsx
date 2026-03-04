@@ -10,11 +10,11 @@ const BRANDS = [
 
 const CAPS = [
   { n: "01", t: "WYSIWYG Editor", d: "Designed and built the drag-and-drop editor powering story and ad creation across all verticals." },
-  { n: "02", t: "AMP Stories", d: "Compliant Google AMP story output with strict format constraints — used by Forbes, VICE, USA Today." },
+  { n: "02", t: "AMP Stories & more", d: "The same editor exports AMP Stories, Brand Stories (our name), LPs, and HTML presentations — one canvas, multiple formats." },
   { n: "03", t: "Dataset-driven Creatives", d: "Tabular datasets + templates → hundreds of ad variations generated automatically in one pass." },
   { n: "04", t: "Campaign Dashboards", d: "Multi-account dashboards for campaign management, asset libraries, team admin, and reporting." },
-  { n: "05", t: "Design System", d: "Shared PostCSS component library reused across multiple products for visual consistency at scale." },
-  { n: "06", t: "Client Showcase Tools", d: "Automated preview pages and client-facing showcase tools for presenting creatives to brand advertisers." },
+  { n: "05", t: "Client Showcase Tools", d: "Automated preview pages and client-facing showcase tools for presenting creatives to brand advertisers." },
+  { n: "06", t: "Design System", d: "Shared PostCSS component library reused across multiple products for visual consistency at scale." },
 ]
 
 const SLIDESHOW_IMAGES: string[] = [
@@ -194,7 +194,7 @@ export function PortfolioWorkSection() {
               <div>
                 <div className="p-pmeta-label">Output Formats</div>
                 <div className="p-pmeta-val">
-                  AMP Stories · Display Ads · LPs
+                  AMP Stories · Brand Stories · LPs · HTML
                 </div>
               </div>
             </div>
@@ -274,6 +274,7 @@ export function PortfolioWorkSection() {
               key={cap.n}
               className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
             >
+              <span className="p-cap-n" aria-hidden>{cap.n}</span>
               <div className="p-cap-t">{cap.t}</div>
               <div className="p-cap-d">{cap.d}</div>
             </div>

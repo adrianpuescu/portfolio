@@ -691,10 +691,19 @@
 .p-cap {
   padding: 48px;
   border-right: 1px solid var(--p-border); border-top: 1px solid var(--p-border);
-  background: var(--p-white); transition: background .2s;
+  background: var(--p-white); transition: background .2s, border-left-color .2s;
+  border-left: 3px solid transparent;
 }
 .p-cap:nth-child(3n) { border-right: none; }
-.p-cap:hover { background: var(--p-bg); }
+.p-cap:hover { background: var(--p-bg); border-left-color: var(--p-blue); }
+.p-cap-n {
+  display: block;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--p-text4);
+  margin-bottom: 10px;
+}
 .p-cap-t { font-size: 15px; font-weight: 600; color: var(--p-text); margin-bottom: 6px; }
 .p-cap-d { font-size: 14px; color: var(--p-text3); line-height: 1.6; }
 
