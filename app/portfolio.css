@@ -96,11 +96,17 @@
   box-shadow: 0 1px 0 var(--p-border);
 }
 .p-nav-logo {
-  font-size: 13px; font-weight: 600;
-  color: var(--p-text); text-decoration: none;
-  letter-spacing: -0.01em;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .12em;
   text-transform: uppercase;
+  color: var(--p-text3);
+  text-decoration: none;
 }
+.p-nav-logo-name { color: var(--p-blue); }
+.p-nav-logo-sep { color: var(--p-text4); }
+.p-nav-logo-rest { color: var(--p-text3); }
 .p-nav-links { display: flex; gap: 4px; list-style: none; }
 .p-nav-links a {
   font-size: 13px; font-weight: 500;
