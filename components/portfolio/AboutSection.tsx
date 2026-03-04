@@ -21,7 +21,7 @@ export function PortfolioAboutSection() {
         <h2 className="p-about-h">Beyond the screen</h2>
         <div className="p-about-block">
           <div className="p-about-photo">
-            <img src="/images/profile-pic.png" alt="Adrian Puescu" width={200} height={200} />
+            <img src="/images/profile-pic.gif" alt="Adrian Puescu" width={200} height={200} />
           </div>
           <div className="p-about-body">
             <p className="p-about-bio">{BIO_TEXT}</p>
