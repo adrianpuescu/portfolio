@@ -240,9 +240,29 @@ export function SystemsSection() {
                 )}
               </div>
 
-              {/* Tab label indicator */}
-              <div className="mt-4 font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                {activeSystem.label}
+              {/* Timeline navigation */}
+              <div className="mt-6 flex items-center gap-6">
+                {systemTabs.map((tab, index) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveIndex(index)
+                      setCurrentSlide(0)
+                    }}
+                    className={`group flex items-baseline gap-2 transition-all ${
+                      activeIndex === index 
+                        ? "text-foreground" 
+                        : "text-muted-foreground/50 hover:text-muted-foreground"
+                    }`}
+                  >
+                    <span className="font-mono text-xs">0{index + 1}</span>
+                    <span className={`text-sm font-medium ${
+                      activeIndex === index ? "border-b border-foreground" : ""
+                    }`}>
+                      {tab.label}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
