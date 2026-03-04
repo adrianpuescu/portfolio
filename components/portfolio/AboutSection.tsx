@@ -1,10 +1,14 @@
 "use client"
 
-/* Replace BIO_TEXT with your 2–3 sentences. Edit ABOUT_LINKS with your URLs. */
-const BIO_TEXT = `
-  Outside of work I enjoy exploring ideas through books, audiobooks and documentaries, discovering music, and staying active with running and regular workouts.
-  Some of those interests are linked below.
-`.trim()
+/* Replace BIO with your 2–3 sentences. Edit ABOUT_LINKS with your URLs. */
+const BIO = (
+  <>
+    Outside of work I explore ideas through books, audiobooks and documentaries, discover
+    new music, and stay active with running and regular workouts.
+    <br />
+    Originally from Romania, now based in Spain.
+  </>
+)
 
 const ABOUT_LINKS = [
   { label: "Goodreads", href: "https://www.goodreads.com/adrian_puescu", icon: "📚" },
@@ -21,10 +25,10 @@ export function PortfolioAboutSection() {
         <h2 className="p-about-h">Beyond the screen</h2>
         <div className="p-about-block">
           <div className="p-about-photo">
-            <img src="/images/profile-pic.gif" alt="Adrian Puescu" width={200} height={200} />
+            <img src="/images/profile-pics-optimised.gif" alt="Adrian Puescu" width={200} height={200} />
           </div>
           <div className="p-about-body">
-            <p className="p-about-bio">{BIO_TEXT}</p>
+            <p className="p-about-bio">{BIO}</p>
             <div className="p-about-links">
               {ABOUT_LINKS.map(({ label, href, icon }) => (
                 <a

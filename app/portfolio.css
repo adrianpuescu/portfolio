@@ -913,21 +913,18 @@
   letter-spacing: -.025em;
   line-height: 1.1;
   color: var(--p-text);
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 .p-about-block {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 36px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 72px;
   align-items: start;
 }
 .p-about-photo img {
-  width: 150px;
+  width: 450px;
   height: 150px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--p-border);
-  box-shadow: 0 8px 30px rgba(15,17,23,0.06);
 }
 .p-about-body {
   min-width: 0;
