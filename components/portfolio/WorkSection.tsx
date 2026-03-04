@@ -136,7 +136,15 @@ export function PortfolioWorkSection() {
               </div>
               <div className="p-project-name">NWS Studio</div>
               <div className="p-project-product">
-                studio.nws.ai · Newsroom Studio
+                <a
+                  href="https://studio.nws.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-text-link"
+                >
+                  studio.nws.ai
+                </a>
+                {" · Newsroom Studio"}
               </div>
 
               <ul className="p-project-bullets">
