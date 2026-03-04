@@ -93,14 +93,12 @@ export function PortfolioWorkSection() {
 
       <div className="p-work-head p-reveal">
         <h2 className="p-work-title">
-          Eight years.
-          <br />
           One product.
           <br />
           Global scale.
         </h2>
         <p className="p-work-intro">
-          Deep, focused work on{" "}
+          For the last eight years I&apos;ve been focused on{" "}
           <a
             href="https://studio.nws.ai"
             target="_blank"
@@ -118,9 +116,8 @@ export function PortfolioWorkSection() {
           >
             Newsroom AI
           </a>
-          . Owned UI/UX, feature planning, and front-end implementation. Evolved
-          the product through countless iterations while keeping it
-          production-ready for global publishers and brands.
+          , leading UI/UX, feature planning, and front-end implementation while
+          keeping the product production-ready for global publishers and brands.
         </p>
       </div>
 
@@ -130,7 +127,7 @@ export function PortfolioWorkSection() {
             <div>
               <div className="p-project-tags">
                 <span className="p-ptag p-ptag-blue">Lead UI/UX</span>
-                <span className="p-ptag p-ptag-slate">8+ Years</span>
+                <span className="p-ptag p-ptag-slate">Last 8 years</span>
                 <span className="p-ptag p-ptag-gray">SaaS Platform</span>
                 <span className="p-ptag p-ptag-gray">Enterprise</span>
               </div>

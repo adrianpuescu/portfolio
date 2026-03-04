@@ -437,7 +437,7 @@
 .p-work-head {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 72px;
+  gap: 56px;
   align-items: end;
   margin-bottom: 48px;
   max-width: 1200px;
