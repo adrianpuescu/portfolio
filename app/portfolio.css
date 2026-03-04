@@ -421,26 +421,6 @@
 .p-vc-btn:hover { background: rgba(255,255,255,.96); }
 .p-vc-btn svg { width: 18px; height: 18px; fill: var(--p-blue); display: block; }
 
-/* Marquee */
-.p-marquee-section {
-  overflow: hidden;
-  border-top: 1px solid var(--p-border);
-  border-bottom: 1px solid var(--p-border);
-  padding: 12px 0; background: var(--p-bg2);
-}
-.p-marquee-track {
-  display: flex;
-  animation: p-marqueeScroll 38s linear infinite;
-  width: max-content;
-}
-.p-marquee-item {
-  font-family: var(--font-jetbrains), monospace; font-size: 10px;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--p-text4); padding: 0 24px;
-  white-space: nowrap; display: flex; align-items: center; gap: 24px;
-}
-.p-marquee-item::after { content: '·'; color: var(--p-blue); font-size: 16px; }
-
 /* Sections shared */
 .portfolio-page section { padding: 96px 40px; scroll-margin-top: 56px; }
 .portfolio-page section > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
@@ -929,11 +909,6 @@
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .6; transform: scale(.85); }
 }
-@keyframes p-marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 /* Scroll reveal */
 .p-reveal {
   opacity: 0;

@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { PortfolioNav } from "@/components/portfolio/Nav"
 import { PortfolioHero } from "@/components/portfolio/Hero"
 import { PortfolioVideoSection, type VideoSectionRef } from "@/components/portfolio/VideoSection"
-import { PortfolioMarquee } from "@/components/portfolio/Marquee"
 import { PortfolioWorkSection } from "@/components/portfolio/WorkSection"
 import { PortfolioBeforeSection } from "@/components/portfolio/BeforeSection"
 import { PortfolioSkillsSection } from "@/components/portfolio/SkillsSection"
@@ -42,7 +41,6 @@ export default function Page() {
       <main>
         <PortfolioHero onExploreClick={onExploreClick} />
         <PortfolioVideoSection ref={videoSectionRef} />
-        <PortfolioMarquee />
         <PortfolioWorkSection />
         <PortfolioBeforeSection />
         <PortfolioSkillsSection />

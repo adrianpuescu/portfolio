@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Project layout
 
 - **`app/`** — `page.tsx` (portfolio page), `layout.tsx`, `globals.css`, `portfolio.css`
-- **`components/portfolio/`** — Nav, Hero, VideoSection, Marquee, WorkSection, BeforeSection, SkillsSection, FocusSection, ContactSection, Footer, Cursor, ScrollReveal
+- **`components/portfolio/`** — Nav, Hero, VideoSection, WorkSection, BeforeSection, SkillsSection, FocusSection, ContactSection, Footer, Cursor, ScrollReveal
 
 ## Deploy
 
