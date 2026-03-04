@@ -19,13 +19,18 @@ export function PortfolioAboutSection() {
   return (
     <section id="about" className="p-about">
       <div className="p-about-inner">
-        <div className="p-eyebrow" data-n="06 —" style={{ color: "var(--p-text4)", marginBottom: 16 }}>
+        <div className="p-eyebrow" data-n="06 —" style={{ marginBottom: 16 }}>
           About
         </div>
         <h2 className="p-about-h">Beyond the screen</h2>
         <div className="p-about-block">
           <div className="p-about-photo">
-            <img src="/images/profile-pics-optimised.gif" alt="Adrian Puescu" width={200} height={200} />
+            <img
+              src="/images/profile-pics-blueish-optimised.gif"
+              alt="Adrian Puescu"
+              width={200}
+              height={200}
+            />
           </div>
           <div className="p-about-body">
             <p className="p-about-bio">{BIO}</p>
@@ -38,7 +43,9 @@ export function PortfolioAboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="p-about-link-icon" aria-hidden>{icon}</span>
+                  <span className="p-about-link-icon" aria-hidden>
+                    {icon}
+                  </span>
                   {label}
                 </a>
               ))}
@@ -47,5 +54,5 @@ export function PortfolioAboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

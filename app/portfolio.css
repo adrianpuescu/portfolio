@@ -311,7 +311,7 @@
 
 /* Video section */
 .p-video-section {
-  background: #1e40af;
+  background: var(--p-blue-dark);
   padding: 48px 40px 56px;
   position: relative;
   overflow: hidden;
@@ -323,7 +323,7 @@
 .p-video-section::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 120% at 50% -10%, rgba(96,165,250,0.25) 0%, transparent 65%);
+  background: radial-gradient(ellipse 80% 120% at 50% -10%, rgb(37 99 235 / 0.2) 0%, transparent 65%);
   pointer-events: none;
 }
 .p-video-eyebrow {
@@ -785,7 +785,7 @@
   padding: 3px 10px; border-radius: 4px;
   white-space: nowrap; flex-shrink: 0;
 }
-.p-fb-learn { background: #eff6ff; color: #2563eb; }
+.p-fb-learn { background: var(--p-blue-light); color: var(--p-blue); }
 .p-fb-explore { background: #fff7ed; color: #c2410c; }
 .p-fb-active { background: #f0fdf4; color: #16a34a; }
 
@@ -861,7 +861,7 @@
   line-height: 1.08;
   color: #f1f5f9;
 }
-.p-contact-h span { color: #3b82f6; }
+.p-contact-h span { color: var(--p-blue); }
 .p-contact-desc {
   font-size: 16px;
   color: #94a3b8;
@@ -888,9 +888,9 @@
   transition: border-color .2s, color .2s, background .2s;
 }
 .p-clink:hover {
-  border-color: rgba(59,130,246,0.6);
+  border-color: rgb(37 99 235 / 0.65);
   color: #f1f5f9;
-  background: rgba(37,99,235,0.12);
+  background: rgb(37 99 235 / 0.12);
 }
 .p-clink-icon { font-size: 14px; width: 18px; text-align: center; }
 
@@ -921,11 +921,36 @@
   gap: 72px;
   align-items: start;
 }
+.p-about-photo {
+  position: relative;
+  /* border-radius: var(--p-radius); */
+  overflow: hidden;
+}
+.p-about-photo::before {
+  --line: 2px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent calc(33% - var(--line) / 2), white calc(33% - var(--line) / 2), white calc(33% + var(--line) / 2), transparent calc(33% + var(--line) / 2), transparent calc(66% - var(--line) / 2), white calc(66% - var(--line) / 2), white calc(66% + var(--line) / 2), transparent calc(66% + var(--line) / 2));
+  z-index: 2;
+}
 .p-about-photo img {
   width: 450px;
   height: 150px;
   object-fit: cover;
+  filter: brightness(1.15) contrast(.85) hue-rotate(0deg);
+  /* animation: about-photo-hue-spin 6s linear infinite; */
 }
+
+/* @keyframes about-photo-hue-spin {
+  from {
+    filter: brightness(1.15) contrast(.85) hue-rotate(0deg);
+  }
+  to {
+    filter: brightness(1.15) contrast(.85) hue-rotate(360deg);
+  }
+} */
 .p-about-body {
   min-width: 0;
 }
