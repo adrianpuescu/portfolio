@@ -274,7 +274,6 @@ export function PortfolioWorkSection() {
               key={cap.n}
               className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
             >
-              <div className="p-cap-n">{cap.n}</div>
               <div className="p-cap-t">{cap.t}</div>
               <div className="p-cap-d">{cap.d}</div>
             </div>

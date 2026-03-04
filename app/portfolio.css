@@ -712,16 +712,12 @@
   overflow: hidden;
 }
 .p-cap {
-  padding: 28px 32px;
+  padding: 48px;
   border-right: 1px solid var(--p-border); border-top: 1px solid var(--p-border);
   background: var(--p-white); transition: background .2s;
 }
 .p-cap:nth-child(3n) { border-right: none; }
 .p-cap:hover { background: var(--p-bg); }
-.p-cap-n {
-  font-family: var(--font-jetbrains), monospace; font-size: 9px;
-  color: var(--p-text4); letter-spacing: .08em; margin-bottom: 10px;
-}
 .p-cap-t { font-size: 15px; font-weight: 600; color: var(--p-text); margin-bottom: 6px; }
 .p-cap-d { font-size: 14px; color: var(--p-text3); line-height: 1.6; }
 
@@ -982,6 +978,7 @@
 }
 @media (max-width: 768px) {
   .p-project-info { padding: 32px 24px; }
+  .p-cap { padding: 32px 24px; }
   .p-project-visual { padding: 24px 24px 32px; }
 }
 @media (max-width: 480px) {
