@@ -56,10 +56,10 @@ const SLIDESHOW_IMAGES: string[] = [
   "/images/featured-work/ui-systems/6-production-demos-2.png",
 ]
 
-const SLIDESHOW_SECTIONS = [
+const SLIDESHOW_SECTIONS: { label: string; startIndex: number; labelColumn?: number }[] = [
   { label: "Platform", startIndex: 0 },
   { label: "Editor", startIndex: 8 },
-  { label: "Content Output", startIndex: 18 },
+  { label: "Content Output", startIndex: 18, labelColumn: 20 },
   { label: "UI Systems", startIndex: 26 },
 ]
 
@@ -213,7 +213,7 @@ export function PortfolioWorkSection() {
                 ))}
               </div>
             </div>
-            <div className="p-slideshow-timeline">
+            <div className="p-slideshow-timeline" style={{ ["--p-timeline-segments" as string]: n }}>
               <div className="p-timeline-labels">
                 {SLIDESHOW_SECTIONS.map((sec, i) => {
                   const isActiveSection =
@@ -223,8 +223,8 @@ export function PortfolioWorkSection() {
                     <button
                       key={sec.label}
                       type="button"
-                      className={`p-timeline-label ${i === 0 ? "first" : i === SLIDESHOW_SECTIONS.length - 1 ? "last" : ""} ${isActiveSection ? "active" : ""}`}
-                      style={i === 0 ? {} : i === SLIDESHOW_SECTIONS.length - 1 ? {} : { left: `${(sec.startIndex / n) * 100}%` }}
+                      className={`p-timeline-label ${i === SLIDESHOW_SECTIONS.length - 1 ? "last" : ""} ${isActiveSection ? "active" : ""}`}
+                      style={{ gridColumn: (sec.labelColumn ?? sec.startIndex) + 1 }}
                       onClick={() => setActiveSlide(sec.startIndex >= n ? n - 1 : sec.startIndex)}
                       aria-label={`Go to ${sec.label}`}
                     >

@@ -598,7 +598,7 @@
   margin-top: 24px;
   position: relative;
 }
-.p-slideshow-timeline:hover .p-timeline-track {
+.p-project-visual:hover .p-timeline-track {
   height: 12px;
 }
 .p-timeline-track-row {
@@ -631,7 +631,7 @@
 .p-timeline-next {
   right: -46px;
 }
-.p-slideshow-timeline:hover .p-timeline-arrow {
+.p-project-visual:hover .p-timeline-arrow {
   opacity: 1;
 }
 .p-timeline-arrow:hover {
@@ -642,18 +642,19 @@
   width: 100%;
   height: 12px;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* track expands only downward on hover */
 }
 .p-timeline-labels {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--p-timeline-segments, 32), 1fr);
   width: 100%;
   min-height: 20px;
   margin-bottom: 6px;
 }
 .p-timeline-label {
-  position: absolute;
-  transform: translateX(-50%);
-  bottom: 0;
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .04em;
@@ -666,14 +667,9 @@
   white-space: nowrap;
   transition: color .15s;
 }
-.p-timeline-label.first {
-  left: 0;
-  transform: none;
-}
+/* Middle labels: left edge at start of that category’s first segment */
 .p-timeline-label.last {
-  left: auto;
-  right: 0;
-  transform: none;
+  justify-self: end;
 }
 .p-timeline-label:hover,
 .p-timeline-label.active {
