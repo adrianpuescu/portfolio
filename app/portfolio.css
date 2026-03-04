@@ -99,6 +99,7 @@
   font-size: 13px; font-weight: 600;
   color: var(--p-text); text-decoration: none;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 .p-nav-links { display: flex; gap: 4px; list-style: none; }
 .p-nav-links a {
