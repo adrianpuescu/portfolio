@@ -444,7 +444,7 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 56px;
-  align-items: end;
+  align-items: center;
   margin-bottom: 48px;
   max-width: 1200px;
   margin-left: auto;
