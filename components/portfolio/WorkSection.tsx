@@ -1,25 +1,6 @@
 "use client"
 
-import { useState } from "react"
-
-const TABS = [
-  {
-    label: "Platform",
-    desc: "Dashboard, projects, assets, reports, settings — the full SaaS shell that wraps the editor and supports multi-project workflows.",
-  },
-  {
-    label: "Editor",
-    desc: "The WYSIWYG story & ad editor — drag-and-drop canvas, real-time preview, toolbar systems, and template-driven batch creation.",
-  },
-  {
-    label: "Content Output",
-    desc: "What gets published: interactive stories, rich media ads, presentations, and pages — HTML-based, across partner networks. AMP-compliant where required.",
-  },
-  {
-    label: "UI Systems",
-    desc: "Shared CSS library (PostCSS-based), component patterns, and layout systems that keep the product consistent as it scales across teams and white-label deployments.",
-  },
-]
+import { useState, useEffect } from "react"
 
 const BRANDS = [
   "Forbes", "USA Today", "VICE", "The Guardian", "Yahoo", "Glamour",
@@ -29,28 +10,80 @@ const BRANDS = [
 
 const CAPS = [
   { n: "01", t: "WYSIWYG Editor", d: "Designed and built the drag-and-drop editor powering story and ad creation across all verticals." },
-  { n: "02", t: "AMP Web Stories", d: "Compliant Google AMP story output with strict format constraints — used by Forbes, VICE, USA Today." },
+  { n: "02", t: "AMP Stories", d: "Compliant Google AMP story output with strict format constraints — used by Forbes, VICE, USA Today." },
   { n: "03", t: "Dataset-driven Creatives", d: "Tabular datasets + templates → hundreds of ad variations generated automatically in one pass." },
   { n: "04", t: "Campaign Dashboards", d: "Multi-account dashboards for campaign management, asset libraries, team admin, and reporting." },
   { n: "05", t: "Design System", d: "Shared PostCSS component library reused across multiple products for visual consistency at scale." },
   { n: "06", t: "Client Showcase Tools", d: "Automated preview pages and client-facing showcase tools for presenting creatives to brand advertisers." },
 ]
 
-const SLIDE_PLACEHOLDERS: Record<number, { icon: string; text: string }> = {
-  0: { icon: "🖥️", text: "Platform screenshots" },
-  1: { icon: "✏️", text: "Editor screenshots" },
-  2: { icon: "📱", text: "Output screenshots coming soon" },
-  3: { icon: "🧩", text: "UI system screenshots coming soon" },
+const SLIDESHOW_IMAGES: string[] = [
+  /* Platform */
+  "/images/featured-work/platform/1-login.png",
+  "/images/featured-work/platform/2-dashboard.png",
+  "/images/featured-work/platform/3-projects.png",
+  "/images/featured-work/platform/4-assets-media_library.png",
+  "/images/featured-work/platform/5-assets-fonts.png",
+  "/images/featured-work/platform/6-reports.png",
+  "/images/featured-work/platform/7-account-personal_information.png",
+  "/images/featured-work/platform/7-account-team.png",
+  /* Editor */
+  "/images/featured-work/editor/1-typography.png",
+  "/images/featured-work/editor/2-media.png",
+  "/images/featured-work/editor/3-animations.png",
+  "/images/featured-work/editor/4-links.png",
+  "/images/featured-work/editor/5-data_binding.png",
+  "/images/featured-work/editor/6-interactives.png",
+  "/images/featured-work/editor/7-editor-helpers.png",
+  "/images/featured-work/editor/8-editor-menus_and_helpers.png",
+  "/images/featured-work/editor/9-editor-360_view.png",
+  "/images/featured-work/editor/10-editor-settings-delivery.png",
+  /* Content Output */
+  "/images/featured-work/content-output/1-showcase-page.png",
+  "/images/featured-work/content-output/2-formats-page.png",
+  "/images/featured-work/content-output/3-formats-page-preview-format.png",
+  "/images/featured-work/content-output/4-formats-page-info_and_specs.png",
+  "/images/featured-work/content-output/5-multi-formats-page.png",
+  "/images/featured-work/content-output/6-preview_pagec-carousel_mode.png",
+  "/images/featured-work/content-output/7-preview_pagec-full_bleed_mode.png",
+  "/images/featured-work/content-output/8-preview-in-feed.png",
+  /* UI Systems */
+  "/images/featured-work/ui-systems/1-typography-colors.png",
+  "/images/featured-work/ui-systems/2-icons-buttons.png",
+  "/images/featured-work/ui-systems/3-forms.png",
+  "/images/featured-work/ui-systems/4-other-components.png",
+  "/images/featured-work/ui-systems/5-production-demos.png",
+  "/images/featured-work/ui-systems/6-production-demos-2.png",
+]
+
+const SLIDESHOW_SECTIONS = [
+  { label: "Platform", startIndex: 0 },
+  { label: "Editor", startIndex: 8 },
+  { label: "Content Output", startIndex: 18 },
+  { label: "UI Systems", startIndex: 26 },
+]
+
+function formatSlideLabel(path: string): string {
+  const name = path.replace(/\.[^/.]+$/, "").split("/").pop() ?? ""
+  const withoutLeadingNumbers = name.replace(/^\d+-?/, "")
+  return withoutLeadingNumbers
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
 export function PortfolioWorkSection() {
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeSlide, setActiveSlide] = useState(0)
+  const n = SLIDESHOW_IMAGES.length
+  const goPrev = () => setActiveSlide((s) => (s <= 0 ? n - 1 : s - 1))
+  const goNext = () => setActiveSlide((s) => (s >= n - 1 ? 0 : s + 1))
 
-  const switchTab = (idx: number) => {
-    setActiveTab(idx)
-  }
-
-  const ph = SLIDE_PLACEHOLDERS[activeTab] ?? { icon: "📷", text: "Screenshot" }
+  useEffect(() => {
+    if (n <= 1) return
+    const id = setInterval(() => {
+      setActiveSlide((prev) => (prev >= n - 1 ? 0 : prev + 1))
+    }, 5000)
+    return () => clearInterval(id)
+  }, [n])
 
   return (
     <section id="work" style={{ background: "var(--p-white)" }}>
@@ -101,11 +134,7 @@ export function PortfolioWorkSection() {
                 <span className="p-ptag p-ptag-gray">SaaS Platform</span>
                 <span className="p-ptag p-ptag-gray">Enterprise</span>
               </div>
-              <div className="p-project-name">
-                NWS
-                <br />
-                Studio
-              </div>
+              <div className="p-project-name">NWS Studio</div>
               <div className="p-project-product">
                 studio.nws.ai · Newsroom Studio
               </div>
@@ -165,47 +194,77 @@ export function PortfolioWorkSection() {
               <div>
                 <div className="p-pmeta-label">Output Formats</div>
                 <div className="p-pmeta-val">
-                  AMP Web Stories · Display Ads · LPs
+                  AMP Stories · Display Ads · LPs
                 </div>
               </div>
             </div>
           </div>
 
           <div className="p-project-visual">
-            <div className="p-tab-nav">
-              {TABS.map((t, i) => (
-                <button
-                  key={t.label}
-                  type="button"
-                  className={`p-tab-btn ${activeTab === i ? "active" : ""}`}
-                  onClick={() => switchTab(i)}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="p-tab-panels">
-              {TABS.map((tab, tabIdx) => (
-                <div
-                  key={tab.label}
-                  className={`p-tab-panel ${activeTab === tabIdx ? "active" : ""}`}
-                >
-                  <div className="p-slideshow">
-                    <div className="p-slide active">
-                      <div className="p-slide-placeholder">
-                        <div className="p-slide-placeholder-icon">
-                          {tabIdx === activeTab ? ph.icon : "📷"}
-                        </div>
-                        <div className="p-slide-placeholder-text">
-                          {tabIdx === activeTab ? ph.text : "Screenshot"}
-                        </div>
-                      </div>
-                    </div>
+            <div className="p-slideshow-wrap">
+              <div className="p-slideshow">
+                {SLIDESHOW_IMAGES.map((src, i) => (
+                  <div
+                    key={src}
+                    className={`p-slide ${i === activeSlide ? "active" : ""}`}
+                  >
+                    <img src={src} alt="" />
                   </div>
-                  <div className="p-tab-desc">{tab.desc}</div>
+                ))}
+              </div>
+            </div>
+            <div className="p-slideshow-timeline">
+              <div className="p-timeline-labels">
+                {SLIDESHOW_SECTIONS.map((sec, i) => {
+                  const isActiveSection =
+                    activeSlide >= sec.startIndex &&
+                    (i === SLIDESHOW_SECTIONS.length - 1 || activeSlide < SLIDESHOW_SECTIONS[i + 1].startIndex)
+                  return (
+                    <button
+                      key={sec.label}
+                      type="button"
+                      className={`p-timeline-label ${i === 0 ? "first" : i === SLIDESHOW_SECTIONS.length - 1 ? "last" : ""} ${isActiveSection ? "active" : ""}`}
+                      style={i === 0 ? {} : i === SLIDESHOW_SECTIONS.length - 1 ? {} : { left: `${(sec.startIndex / n) * 100}%` }}
+                      onClick={() => setActiveSlide(sec.startIndex >= n ? n - 1 : sec.startIndex)}
+                      aria-label={`Go to ${sec.label}`}
+                    >
+                      {sec.label}
+                    </button>
+                  )
+                })}
+              </div>
+              <div className="p-timeline-track-row">
+                <button
+                  type="button"
+                  className="p-timeline-arrow p-timeline-prev"
+                  onClick={goPrev}
+                  aria-label="Previous slide"
+                >
+                  ‹
+                </button>
+                <div className="p-timeline-track-wrap">
+                  <div className="p-timeline-track">
+                  {SLIDESHOW_IMAGES.map((src, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      className={`p-timeline-segment ${i === activeSlide ? "active" : ""}`}
+                      onClick={() => setActiveSlide(i)}
+                      aria-label={formatSlideLabel(src)}
+                      title={formatSlideLabel(src)}
+                    />
+                  ))}
+                  </div>
                 </div>
-              ))}
+                <button
+                  type="button"
+                  className="p-timeline-arrow p-timeline-next"
+                  onClick={goNext}
+                  aria-label="Next slide"
+                >
+                  ›
+                </button>
+              </div>
             </div>
           </div>
         </div>
