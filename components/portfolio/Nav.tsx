@@ -8,6 +8,7 @@ const LINKS = [
   { href: "#before", label: "Background" },
   { href: "#skills", label: "Skills" },
   { href: "#focus", label: "Now" },
+  { href: "#about", label: "About" },
 ]
 
 export function PortfolioNav() {

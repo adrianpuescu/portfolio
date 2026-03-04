@@ -9,6 +9,7 @@ import { PortfolioBeforeSection } from "@/components/portfolio/BeforeSection"
 import { PortfolioSkillsSection } from "@/components/portfolio/SkillsSection"
 import { PortfolioFocusSection } from "@/components/portfolio/FocusSection"
 import { PortfolioContactSection } from "@/components/portfolio/ContactSection"
+import { PortfolioAboutSection } from "@/components/portfolio/AboutSection"
 import { PortfolioFooter } from "@/components/portfolio/Footer"
 import { PortfolioScrollReveal } from "@/components/portfolio/ScrollReveal"
 import { PortfolioCursor } from "@/components/portfolio/Cursor"
@@ -46,6 +47,7 @@ export default function Page() {
         <PortfolioSkillsSection />
         <PortfolioFocusSection />
         <PortfolioContactSection />
+        <PortfolioAboutSection />
       </main>
       <PortfolioFooter />
     </div>

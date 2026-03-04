@@ -887,6 +887,75 @@
 }
 .p-clink-icon { font-size: 14px; width: 18px; text-align: center; }
 
+/* About — compact so Contact stays the main CTA */
+.p-about {
+  background: var(--p-white);
+  border-top: 1px solid var(--p-border);
+  padding: 56px 40px 64px;
+}
+.p-about-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.p-about .p-eyebrow { margin-bottom: 12px; }
+.p-about-h {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: var(--p-text);
+  margin-bottom: 24px;
+}
+.p-about-block {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: start;
+}
+.p-about-photo img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--p-border);
+}
+.p-about-body {
+  min-width: 0;
+}
+.p-about-bio {
+  font-size: 16px;
+  color: var(--p-text2);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.p-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.p-about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--p-text2);
+  text-decoration: none;
+  padding: 10px 16px;
+  background: var(--p-bg);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-sm);
+  transition: border-color .2s, color .2s, background .2s;
+}
+.p-about-link:hover {
+  border-color: var(--p-blue-mid);
+  color: var(--p-blue);
+  background: var(--p-blue-light);
+}
+.p-about-link-icon { font-size: 14px; width: 18px; text-align: center; }
+
 /* Footer */
 .p-footer {
   background: #0a0d13;
@@ -940,6 +1009,7 @@
   .p-nav-links { display: none; }
   .portfolio-page section,
   .p-contact { padding-left: 20px; padding-right: 20px; }
+  .p-about { padding: 48px 20px 56px; }
   .p-footer { padding: 20px; }
   .p-hero { padding: 80px 20px 60px; }
   .p-hero-h1 { font-size: 38px; }
@@ -958,6 +1028,7 @@
   .p-skills-layout { grid-template-columns: 1fr; }
   .p-skills-sticky { position: static; }
   .p-contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .p-about-block { grid-template-columns: 1fr; gap: 24px; justify-items: start; }
   .p-footer-inner { flex-direction: column; gap: 8px; padding: 0; }
 }
 @media (max-width: 768px) {
