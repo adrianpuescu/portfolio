@@ -18,13 +18,24 @@ const COMMENT_LINES = [
 ];
 const COMMENT_TEXT = COMMENT_LINES.join('\n')
 
+const COMMENT_SIGNATURE = "Hi there"
+
 export function PortfolioHtmlComment() {
   useEffect(() => {
-    const comment = document.createComment('\n' + COMMENT_TEXT + '\n')
-    document.documentElement.prepend(comment)
-    const consoleMsg = COMMENT_LINES.filter(Boolean).join('\n')
-    console.log('%c' + consoleMsg, 'font-size: 14px; line-height: 1.6; color: #2563eb;')
-    return () => comment.remove()
+    const consoleMsg = COMMENT_LINES.filter((l) => l.trim()).join('\n')
+    console.log('%c' + consoleMsg, 'font-size: 11px; line-height: 1.4; color: #2563eb;')
+
+    // In production the comment is already prepended before DOCTYPE by the postbuild script.
+    // Avoid duplicating it inside <html>.
+    const first = document.firstChild
+    const alreadyInjected =
+      first?.nodeType === Node.COMMENT_NODE && (first.textContent?.includes(COMMENT_SIGNATURE) ?? false)
+
+    if (!alreadyInjected) {
+      const comment = document.createComment('\n' + COMMENT_TEXT + '\n')
+      document.documentElement.prepend(comment)
+      return () => comment.remove()
+    }
   }, [])
   return null
 }
