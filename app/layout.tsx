@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { PortfolioHtmlComment } from '@/components/portfolio/HtmlComment'
 import './globals.css'
 import './portfolio.css'
 
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ colorScheme: "light" }}>
       <body className="font-sans antialiased">
+        <PortfolioHtmlComment />
         {children}
       </body>
     </html>
