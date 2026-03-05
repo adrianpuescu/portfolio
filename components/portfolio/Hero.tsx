@@ -13,14 +13,14 @@ export function PortfolioHero({
 
         <h1 className="p-hero-h1">
           <span className="muted">Hi, I&apos;m Adrian</span>
-          <br />
-          UI / Product /
-          <br />
-          <span className="blue">Creative Technologist</span>
+          <span className="blue">Product Engineer</span>
+          <span className="p-hero-h1-light">UI & Interactive Systems</span>
         </h1>
 
         <p className="p-hero-sub">
-          20+ years building digital products and creative tools — lately UI/UX
+          20+ years building digital products and creative tools —
+          <br />
+          lately UI/UX
           on a platform used by global publishers and brands.
         </p>
 

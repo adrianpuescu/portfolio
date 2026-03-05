@@ -196,11 +196,12 @@
   animation: p-fadeUp .6s .2s forwards;
 }
 .p-hero-h1 .blue { color: var(--p-blue); }
-.p-hero-h1 .muted { color: var(--p-text3); font-weight: 400; }
+.p-hero-h1 .muted { color: var(--p-text3); font-weight: 400; font-size: 0.66em; line-height: 1.2; display: block; margin-bottom: 0.2em; }
+.p-hero-h1 .p-hero-h1-light { font-weight: 500; font-size: .8em; line-height: 1.2; display: block; margin-top: 0.1em;}
 .p-hero-sub {
   font-size: 18px; font-weight: 400;
   color: var(--p-text2); line-height: 1.65;
-  max-width: 540px; margin-bottom: 40px;
+  max-width: 610px; margin-bottom: 40px;
   opacity: 0; transform: translateY(16px);
   animation: p-fadeUp .6s .3s forwards;
 }

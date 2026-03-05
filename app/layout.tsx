@@ -14,8 +14,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Adrian Puescu — UI / Product / Creative Technologist',
-  description: 'Adrian Puescu — portfolio of a senior creative technologist with 20+ years across design, development, and creative direction. From interactive campaigns to complex platforms used at scale.',
+  title: 'Adrian Puescu — Product Engineer · UI & Interactive Systems',
+  description: 'Adrian Puescu — portfolio of a senior product engineer with 20+ years across design, development, and creative direction. From interactive campaigns to complex platforms used at scale.',
   icons: {
     icon: [
       {

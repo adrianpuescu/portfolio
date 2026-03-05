@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio site — UI / Product / Creative Technologist. Built with Next.js and deployed as static export to portfolio.webz.ro.
+Personal portfolio site — Product Engineer · UI & Interactive Systems. Built with Next.js and deployed as static export to portfolio.webz.ro.
 
 ## Tech
 
