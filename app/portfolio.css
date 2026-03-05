@@ -139,6 +139,7 @@
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 44px;
   height: 44px;
@@ -146,7 +147,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  margin: 0 -8px 0 0;
+  margin: 0 -13px 0 0;
   border-radius: var(--p-radius-sm);
   transition: background .2s;
 }
