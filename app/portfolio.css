@@ -933,7 +933,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to right, transparent calc(33% - var(--line) / 2), white calc(33% - var(--line) / 2), white calc(33% + var(--line) / 2), transparent calc(33% + var(--line) / 2), transparent calc(66% - var(--line) / 2), white calc(66% - var(--line) / 2), white calc(66% + var(--line) / 2), transparent calc(66% + var(--line) / 2));
+  background: linear-gradient(to right, transparent calc(33.333333% - var(--line) / 2), white calc(33.333333% - var(--line) / 2), white calc(33.333333% + var(--line) / 2), transparent calc(33.333333% + var(--line) / 2), transparent calc(66.666666% - var(--line) / 2), white calc(66.666666% - var(--line) / 2), white calc(66.666666% + var(--line) / 2), transparent calc(66.666666% + var(--line) / 2));
   z-index: 2;
 }
 .p-about-photo img {
