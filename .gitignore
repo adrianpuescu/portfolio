@@ -12,6 +12,7 @@ public/video/**/*__capcut_export_temp_folder*
 
 # Common ignores
 node_modules/
+.pnpm-store/
 .next/
 out/
 .env*.local
