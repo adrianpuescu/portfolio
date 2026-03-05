@@ -1032,7 +1032,8 @@
 }
 .p-about-photo img {
   width: 450px;
-  height: 150px;
+  height: auto;
+  max-height: 150px;
   object-fit: cover;
   filter: brightness(1.15) contrast(.85) hue-rotate(0deg);
   /* animation: about-photo-hue-spin 6s linear infinite; */
