@@ -74,6 +74,12 @@
   border-color: rgba(37, 99, 235, 0.55);
 }
 
+/* Disable custom cursor on touch / mobile — no cursor to replace */
+@media (hover: none), (pointer: coarse) {
+  .portfolio-page.use-custom-cursor { cursor: auto; }
+  .p-cursor, .p-cursor-ring { display: none !important; }
+}
+
 /* Nav */
 .p-nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
