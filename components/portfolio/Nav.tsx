@@ -35,7 +35,7 @@ export function PortfolioNav() {
       <div className="p-nav-inner">
         <Link href="#" className="p-nav-logo">
           <span className="p-nav-logo-name">Adrian Puescu</span>
-          <span className="p-nav-logo-sep"> — </span>
+          <span className="p-nav-logo-sep"> • </span>
           <span className="p-nav-logo-rest">Portfolio</span>
         </Link>
         <ul className="p-nav-links">
@@ -55,5 +55,5 @@ export function PortfolioNav() {
         </Link>
       </div>
     </nav>
-  )
+  );
 }

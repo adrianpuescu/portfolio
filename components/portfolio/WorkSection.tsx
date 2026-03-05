@@ -10,7 +10,7 @@ const BRANDS = [
 
 const CAPS = [
   { n: "01", t: "WYSIWYG Editor", d: "Designed and built the drag-and-drop editor powering story and ad creation across all verticals." },
-  { n: "02", t: "AMP Stories & more", d: "The same editor exports AMP Stories, Brand Stories (our name), LPs, and HTML presentations — one canvas, multiple formats." },
+  { n: "02", t: "AMP Stories & more", d: "The same editor exports AMP Stories, Brand Stories (our name), LPs, and HTML presentations - one canvas, multiple formats." },
   { n: "03", t: "Dataset-driven Creatives", d: "Tabular datasets + templates → hundreds of ad variations generated automatically in one pass." },
   { n: "04", t: "Campaign Dashboards", d: "Multi-account dashboards for campaign management, asset libraries, team admin, and reporting." },
   { n: "05", t: "Client Showcase Tools", d: "Automated preview pages and client-facing showcase tools for presenting creatives to brand advertisers." },
@@ -87,7 +87,7 @@ export function PortfolioWorkSection() {
 
   return (
     <section id="work" style={{ background: "var(--p-white)" }}>
-      <div className="p-eyebrow" data-n="01 —">
+      <div className="p-eyebrow" data-n="01 •">
         Featured Work
       </div>
 
@@ -107,7 +107,7 @@ export function PortfolioWorkSection() {
           >
             NWS Studio
           </a>
-          {" — the flagship creative platform at "}
+          {" - the flagship creative platform at "}
           <a
             href="https://nws.ai"
             target="_blank"
@@ -147,23 +147,22 @@ export function PortfolioWorkSection() {
               <ul className="p-project-bullets">
                 <li>
                   Architected and implemented{" "}
-                  <strong>UI across the entire product</strong> — editor,
+                  <strong>UI across the entire product</strong> - editor,
                   dashboards, asset management, reporting, admin
                 </li>
                 <li>
-                  Built a{" "}
-                  <strong>WYSIWYG story & ad editor</strong> with drag-and-drop
-                  canvas, real-time preview, and full toolbar systems
+                  Built a <strong>WYSIWYG story & ad editor</strong> with
+                  drag-and-drop canvas, real-time preview, and full toolbar
+                  systems
                 </li>
                 <li>
-                  Designed a{" "}
-                  <strong>dataset-driven creative system</strong> — tabular
-                  data + templates → hundreds of ad variations in one pass
+                  Designed a <strong>dataset-driven creative system</strong> -
+                  tabular data + templates → hundreds of ad variations in one
+                  pass
                 </li>
                 <li>
-                  Maintained a{" "}
-                  <strong>shared PostCSS component library</strong> used across
-                  multiple{" "}
+                  Maintained a <strong>shared PostCSS component library</strong>{" "}
+                  used across multiple{" "}
                   <a
                     href="https://nws.ai"
                     target="_blank"
@@ -199,24 +198,34 @@ export function PortfolioWorkSection() {
                 ))}
               </div>
             </div>
-            <div className="p-slideshow-timeline" style={{ ["--p-timeline-segments" as string]: n }}>
+            <div
+              className="p-slideshow-timeline"
+              style={{ ["--p-timeline-segments" as string]: n }}
+            >
               <div className="p-timeline-labels">
                 {SLIDESHOW_SECTIONS.map((sec, i) => {
                   const isActiveSection =
                     activeSlide >= sec.startIndex &&
-                    (i === SLIDESHOW_SECTIONS.length - 1 || activeSlide < SLIDESHOW_SECTIONS[i + 1].startIndex)
+                    (i === SLIDESHOW_SECTIONS.length - 1 ||
+                      activeSlide < SLIDESHOW_SECTIONS[i + 1].startIndex);
                   return (
                     <button
                       key={sec.label}
                       type="button"
                       className={`p-timeline-label ${i === SLIDESHOW_SECTIONS.length - 1 ? "last" : ""} ${isActiveSection ? "active" : ""}`}
-                      style={{ gridColumn: (sec.labelColumn ?? sec.startIndex) + 1 }}
-                      onClick={() => setActiveSlide(sec.startIndex >= n ? n - 1 : sec.startIndex)}
+                      style={{
+                        gridColumn: (sec.labelColumn ?? sec.startIndex) + 1,
+                      }}
+                      onClick={() =>
+                        setActiveSlide(
+                          sec.startIndex >= n ? n - 1 : sec.startIndex,
+                        )
+                      }
                       aria-label={`Go to ${sec.label}`}
                     >
                       {sec.label}
                     </button>
-                  )
+                  );
                 })}
               </div>
               <div className="p-timeline-track-row">
@@ -230,16 +239,16 @@ export function PortfolioWorkSection() {
                 </button>
                 <div className="p-timeline-track-wrap">
                   <div className="p-timeline-track">
-                  {SLIDESHOW_IMAGES.map((src, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      className={`p-timeline-segment ${i === activeSlide ? "active" : ""}`}
-                      onClick={() => setActiveSlide(i)}
-                      aria-label={formatSlideLabel(src)}
-                      title={formatSlideLabel(src)}
-                    />
-                  ))}
+                    {SLIDESHOW_IMAGES.map((src, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        className={`p-timeline-segment ${i === activeSlide ? "active" : ""}`}
+                        onClick={() => setActiveSlide(i)}
+                        aria-label={formatSlideLabel(src)}
+                        title={formatSlideLabel(src)}
+                      />
+                    ))}
                   </div>
                 </div>
                 <button
@@ -260,7 +269,9 @@ export function PortfolioWorkSection() {
               key={cap.n}
               className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
             >
-              <span className="p-cap-n" aria-hidden>{cap.n}</span>
+              <span className="p-cap-n" aria-hidden>
+                {cap.n}
+              </span>
               <div className="p-cap-t">{cap.t}</div>
               <div className="p-cap-d">{cap.d}</div>
             </div>
@@ -280,5 +291,5 @@ export function PortfolioWorkSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

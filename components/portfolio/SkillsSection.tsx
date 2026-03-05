@@ -62,9 +62,12 @@ export function PortfolioSkillsSection() {
   return (
     <section
       id="skills"
-      style={{ background: "var(--p-white)", borderTop: "1px solid var(--p-border)" }}
+      style={{
+        background: "var(--p-white)",
+        borderTop: "1px solid var(--p-border)",
+      }}
     >
-      <div className="p-eyebrow" data-n="03 —">
+      <div className="p-eyebrow" data-n="03 •">
         Toolkit
       </div>
       <div className="p-skills-layout">
@@ -74,7 +77,7 @@ export function PortfolioSkillsSection() {
             Capabilities
           </h2>
           <p className="p-skills-note">
-            Core strengths built over 20+ years of real production work — from
+            Core strengths built over 20+ years of real production work - from
             pixel-perfect HTML to complex UI architecture and modern AI-assisted
             workflows.
           </p>
@@ -110,5 +113,5 @@ export function PortfolioSkillsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
