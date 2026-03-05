@@ -3,17 +3,27 @@
 /* Replace BIO with your 2–3 sentences. Edit ABOUT_LINKS with your URLs. */
 const BIO = (
   <>
-    Outside of work I explore ideas through books, audiobooks and documentaries, discover
-    new music, and stay active with running and regular workouts.
-    <br />
-    Originally from Romania, now based in Spain.
+    Outside of work I explore ideas through books, audiobooks and documentaries, discover new music, and stay active with running and regular workouts. I have a soft spot for sci-fi, history, and live music. Originally from Romania, now based in Spain.
   </>
-)
+);
 
 const ABOUT_LINKS = [
-  { label: "Goodreads", href: "https://www.goodreads.com/adrian_puescu", icon: "📚" },
-  { label: "Music", href: "https://youtube.com/playlist?list=PLBA8BE256831930E2&si=tbGiRAymfuddqfui", icon: "▶" },
-]
+  {
+    label: "Goodreads",
+    href: "https://www.goodreads.com/adrian_puescu",
+    icon: "📚",
+  },
+  {
+    label: "Music",
+    href: "https://music.youtube.com/playlist?list=PLBA8BE256831930E2&si=ERes2YGdBtfmYBSr",
+    icon: "🎵",
+  },
+  {
+    label: "Running",
+    href: "https://youtu.be/P4N18REA6Wg",
+    icon: "🏃",
+  },
+];
 
 export function PortfolioAboutSection() {
   return (
