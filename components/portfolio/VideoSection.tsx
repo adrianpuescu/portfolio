@@ -21,10 +21,12 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const hideControlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    const check = () => setIsMobile(typeof window !== "undefined" && window.innerWidth <= 820)
-    check()
-    window.addEventListener("resize", check)
-    return () => window.removeEventListener("resize", check)
+    if (typeof window === "undefined") return
+    const mq = window.matchMedia("(max-width: 820px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
   }, [])
 
   const startVideo = useCallback((withSound: boolean) => {
@@ -158,6 +160,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       return
     }
     if (!isMobile) return
+    setControlsVisible(false)
     hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
     return () => {
       if (hideControlsTimeoutRef.current) {
@@ -174,6 +177,27 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
     }
   }, [playing, isMobile])
+
+  const controlsVisibleRef = useRef(controlsVisible)
+  controlsVisibleRef.current = controlsVisible
+  useEffect(() => {
+    if (!isMobile) return
+    const wrap = wrapRef.current
+    if (!wrap) return
+    const hideIfOutside = (e: Event) => {
+      if (!controlsVisibleRef.current) return
+      const target = e.target instanceof Node ? e.target : null
+      if (target && !wrap.contains(target)) {
+        setControlsVisible(false)
+      }
+    }
+    document.addEventListener("click", hideIfOutside, true)
+    document.addEventListener("touchend", hideIfOutside, true)
+    return () => {
+      document.removeEventListener("click", hideIfOutside, true)
+      document.removeEventListener("touchend", hideIfOutside, true)
+    }
+  }, [isMobile])
 
   // Pause when >50% outside viewport; resume muted only if we had paused (don't override Explore unmute)
   const pausedBecauseOutOfViewRef = useRef(false)
@@ -216,6 +240,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       setStarted(true)
       setPlaying(true)
       setMuted(false)
+      setControlsVisible(false)
     }
     window.addEventListener("portfolio-video-started", onStarted)
     return () => window.removeEventListener("portfolio-video-started", onStarted)
@@ -295,7 +320,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
                   document
                     .getElementById("video-section")
                     ?.scrollIntoView({ behavior: "smooth", block: "center" })
-                  if (typeof window !== "undefined" && window.innerWidth <= 820) {
+                  if (isMobile && !started) {
                     await requestFullscreen()
                   }
                   if (started) {

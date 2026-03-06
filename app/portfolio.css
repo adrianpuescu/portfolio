@@ -1172,7 +1172,7 @@
   .p-contact { padding-left: 20px; padding-right: 20px; }
   .p-video-section { padding: 32px 16px 48px; }
   .p-video-eyebrow { margin-bottom: 20px; }
-  .p-video-controls-bar { opacity: 1; pointer-events: auto; }
+  .p-video-controls-bar:not(.p-video-controls-bar-hidden) { opacity: 1; pointer-events: auto; }
   .p-video-controls-bar .p-vc-btn { padding: 10px; }
   .p-about { padding: 48px 20px 56px; }
   .p-footer { padding: 20px; }
