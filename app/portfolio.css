@@ -1054,6 +1054,9 @@
   flex-shrink: 0;
 }
 
+.p-clink-icon-email {
+  transform: translateY(0.03em);
+}
 .p-clink-icon-linkedin {
   transform: translateY(-0.025em);
 }
