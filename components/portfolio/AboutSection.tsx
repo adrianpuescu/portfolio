@@ -29,7 +29,7 @@ export function PortfolioAboutSection() {
   return (
     <section id="about" className="p-about">
       <div className="p-about-inner">
-        <div className="p-eyebrow" data-n="06 •" style={{ marginBottom: 16 }}>
+        <div className="p-eyebrow" data-n="05 •" style={{ marginBottom: 16 }}>
           About
         </div>
         <h2 className="p-about-h">Beyond the screen</h2>

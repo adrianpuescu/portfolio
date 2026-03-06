@@ -8,7 +8,7 @@ export function PortfolioContactSection() {
           <div
             className="p-eyebrow"
             style={{ color: "rgba(148,163,184,.5)", marginBottom: 24 }}
-            data-n="05 •"
+            data-n="06 •"
           >
             Let&apos;s Talk
           </div>
@@ -44,7 +44,7 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon p-clink-icon-github" aria-hidden><GitHubIcon /></span>
+              <span className="p-clink-icon" aria-hidden><GitHubIcon /></span>
               GitHub
             </a>
           </div>
