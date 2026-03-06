@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowDown, Play, Pause, Volume2, VolumeX } from "lucide-react"
+import { ArrowDown, Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 
 export function Hero() {
@@ -29,6 +29,17 @@ export function Hero() {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted
       setIsMuted(videoRef.current.muted)
+    }
+  }
+
+  const toggleFullscreen = () => {
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen()
+      } else if ((videoRef.current as any).webkitEnterFullscreen) {
+        // iOS Safari
+        (videoRef.current as any).webkitEnterFullscreen()
+      }
     }
   }
 
@@ -153,7 +164,7 @@ export function Hero() {
         </div>
         <div
           ref={videoContainerRef}
-          className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden"
+          className="group relative mx-auto max-w-6xl px-0 md:px-6 lg:px-8 overflow-hidden"
         >
           <video
             ref={videoRef}
@@ -182,7 +193,7 @@ export function Hero() {
 
           {/* Hover controls - after video has started */}
           {hasStarted && (
-            <div className="absolute bottom-4 left-10 right-10 flex items-center justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
+            <div className="absolute bottom-4 left-4 right-4 md:left-10 md:right-10 flex items-center justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto">
               {/* Play/Pause button */}
               <button
                 onClick={(e) => {
@@ -195,17 +206,32 @@ export function Hero() {
                 {isPlaying ? <Pause size={18} /> : <Play size={18} className="ml-0.5" />}
               </button>
 
-              {/* Mute/Unmute button */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  toggleMute()
-                }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105 pointer-events-auto"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-              >
-                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-              </button>
+              {/* Right side controls */}
+              <div className="flex items-center gap-2">
+                {/* Fullscreen button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleFullscreen()
+                  }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105 pointer-events-auto"
+                  aria-label="Fullscreen"
+                >
+                  <Maximize size={18} />
+                </button>
+
+                {/* Mute/Unmute button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleMute()
+                  }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-background/90 text-primary shadow-lg transition-transform hover:scale-105 pointer-events-auto"
+                  aria-label={isMuted ? "Unmute video" : "Mute video"}
+                >
+                  {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                </button>
+              </div>
             </div>
           )}
         </div>
