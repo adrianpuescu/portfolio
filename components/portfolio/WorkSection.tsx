@@ -95,10 +95,15 @@ const SLIDESHOW_IMAGES: string[] = [
   "/images/featured-work/ui-systems/6-production-demos-2.png",
 ]
 
-const SLIDESHOW_SECTIONS: { label: string; startIndex: number; labelColumn?: number }[] = [
+const SLIDESHOW_SECTIONS: {
+  label: string
+  startIndex: number
+  /** Offset în px de la începutul celulei (margin-left) pentru aliniere cu segmentele din timeline */
+  labelMarginStartPx?: number
+}[] = [
   { label: "Platform", startIndex: 0 },
   { label: "Editor", startIndex: 8 },
-  { label: "Content Output", startIndex: 18, labelColumn: 20 },
+  { label: "Content Output", startIndex: 18 },
   { label: "UI Systems", startIndex: 26 },
 ]
 
@@ -238,8 +243,9 @@ export function PortfolioWorkSection() {
               className="p-slideshow-timeline"
               style={{ ["--p-timeline-segments" as string]: n }}
             >
-              <div className="p-timeline-labels">
+              <div className="p-timeline-grid">
                 {SLIDESHOW_SECTIONS.map((sec, i) => {
+                  const labelPos = sec.startIndex + 1;
                   const isActiveSection =
                     activeSlide >= sec.startIndex &&
                     (i === SLIDESHOW_SECTIONS.length - 1 ||
@@ -250,7 +256,12 @@ export function PortfolioWorkSection() {
                       type="button"
                       className={`p-timeline-label ${i === SLIDESHOW_SECTIONS.length - 1 ? "last" : ""} ${isActiveSection ? "active" : ""}`}
                       style={{
-                        gridColumn: (sec.labelColumn ?? sec.startIndex) + 1,
+                        gridColumn: String(labelPos),
+                        gridRow: 1,
+                        ...(sec.labelMarginStartPx != null && {
+                          position: "relative",
+                          left: sec.labelMarginStartPx,
+                        }),
                       }}
                       onClick={() =>
                         setActiveSlide(
@@ -263,39 +274,35 @@ export function PortfolioWorkSection() {
                     </button>
                   );
                 })}
+                <div className="p-timeline-track-line" aria-hidden />
+                {SLIDESHOW_IMAGES.map((src, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className={`p-timeline-segment ${i === activeSlide ? "active" : ""}`}
+                    style={{ gridColumn: i + 1, gridRow: 2 }}
+                    onClick={() => setActiveSlide(i)}
+                    aria-label={formatSlideLabel(src)}
+                    title={formatSlideLabel(src)}
+                  />
+                ))}
               </div>
-              <div className="p-timeline-track-row">
-                <button
-                  type="button"
-                  className="p-timeline-arrow p-timeline-prev"
-                  onClick={goPrev}
-                  aria-label="Previous slide"
-                >
-                  ‹
-                </button>
-                <div className="p-timeline-track-wrap">
-                  <div className="p-timeline-track">
-                    {SLIDESHOW_IMAGES.map((src, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        className={`p-timeline-segment ${i === activeSlide ? "active" : ""}`}
-                        onClick={() => setActiveSlide(i)}
-                        aria-label={formatSlideLabel(src)}
-                        title={formatSlideLabel(src)}
-                      />
-                    ))}
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  className="p-timeline-arrow p-timeline-next"
-                  onClick={goNext}
-                  aria-label="Next slide"
-                >
-                  ›
-                </button>
-              </div>
+              <button
+                type="button"
+                className="p-timeline-arrow p-timeline-prev"
+                onClick={goPrev}
+                aria-label="Previous slide"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="p-timeline-arrow p-timeline-next"
+                onClick={goNext}
+                aria-label="Next slide"
+              >
+                ›
+              </button>
             </div>
           </div>
         </div>
