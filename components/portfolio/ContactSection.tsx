@@ -1,3 +1,5 @@
+import { LinkedInIcon, EmailIcon, GitHubIcon } from "./SocialIcons"
+
 export function PortfolioContactSection() {
   return (
     <section id="contact" className="p-contact">
@@ -24,7 +26,7 @@ export function PortfolioContactSection() {
           </p>
           <div className="p-contact-links">
             <a className="p-clink" href="mailto:web@webz.ro">
-              <span className="p-clink-icon p-clink-icon-email" aria-hidden>✉</span>
+              <span className="p-clink-icon p-clink-icon-email" aria-hidden><EmailIcon /></span>
               web@webz.ro
             </a>
             <a
@@ -33,9 +35,7 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon" aria-hidden>
-                ↗
-              </span>
+              <span className="p-clink-icon p-clink-icon-linkedin" aria-hidden><LinkedInIcon /></span>
               LinkedIn
             </a>
             <a
@@ -44,9 +44,7 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon" aria-hidden>
-                ↗
-              </span>
+              <span className="p-clink-icon p-clink-icon-github" aria-hidden><GitHubIcon /></span>
               GitHub
             </a>
           </div>

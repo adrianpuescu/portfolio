@@ -1,3 +1,5 @@
+import { LinkedInIcon, EmailIcon, GitHubIcon } from "./SocialIcons"
+
 export function PortfolioHero({
   onExploreClick,
 }: {
@@ -23,18 +25,28 @@ export function PortfolioHero({
         </p>
 
         <div className="p-hero-actions">
+          <a className="p-btn-ghost" href="mailto:web@webz.ro">
+            <span
+              className="p-btn-ghost-icon p-btn-ghost-icon-email"
+              aria-hidden
+            >
+              <EmailIcon />
+            </span>
+            Email
+          </a>
           <a
             className="p-btn-ghost"
             href="https://www.linkedin.com/in/adrianpuescu/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="p-btn-ghost-icon" aria-hidden>↗</span>
+            <span
+              className="p-btn-ghost-icon p-btn-ghost-icon-linkedin"
+              aria-hidden
+            >
+              <LinkedInIcon />
+            </span>
             LinkedIn
-          </a>
-          <a className="p-btn-ghost" href="mailto:web@webz.ro">
-            <span className="p-btn-ghost-icon p-btn-ghost-icon-email" aria-hidden>✉</span>
-            Email
           </a>
           <a
             className="p-btn-ghost"
@@ -42,7 +54,9 @@ export function PortfolioHero({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="p-btn-ghost-icon" aria-hidden>↗</span>
+            <span className="p-btn-ghost-icon p-btn-ghost-icon-github" aria-hidden>
+              <GitHubIcon />
+            </span>
             GitHub
           </a>
         </div>
@@ -88,5 +102,5 @@ export function PortfolioHero({
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -347,13 +347,21 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  font-size: 1em;
   opacity: 0.9;
   transform: translateY(0.06em);
 }
+.p-btn-ghost-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
 .p-btn-ghost-icon-email {
-  transform: translateY(-0.13em);
-  font-size: 1.5em;
+  transform: translateY(-0.025em);
+}
+.p-btn-ghost-icon-linkedin {
+  transform: translateY(-0.025em);
+}
+.p-btn-ghost-icon-github {
+  transform: translateY(-0.025em);
 }
 .p-btn-ghost:hover { border-color: var(--p-blue); color: var(--p-blue); background: var(--p-blue-light); }
 .p-btn-ghost:hover .p-btn-ghost-icon { opacity: 1; }
@@ -1038,13 +1046,19 @@
   align-items: center;
   justify-content: center;
   line-height: 1;
-  font-size: 1em;
   opacity: 0.9;
   transform: translateY(0.06em);
 }
-.p-clink-icon-email {
-  transform: translateY(-0.07em);
-  font-size: 1.5em;
+.p-clink-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.p-clink-icon-linkedin {
+  transform: translateY(-0.025em);
+}
+.p-clink-icon-github {
+  transform: translateY(-0.025em);
 }
 
 /* About — compact so Contact stays the main CTA */
