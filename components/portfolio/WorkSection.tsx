@@ -71,11 +71,20 @@ function formatSlideLabel(path: string): string {
     .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
+function getSectionLabelForSlide(slideIndex: number): string {
+  let label = SLIDESHOW_SECTIONS[0]?.label ?? ""
+  for (const sec of SLIDESHOW_SECTIONS) {
+    if (slideIndex >= sec.startIndex) label = sec.label
+  }
+  return label
+}
+
 export function PortfolioWorkSection() {
   const [activeSlide, setActiveSlide] = useState(0)
   const n = SLIDESHOW_IMAGES.length
   const goPrev = () => setActiveSlide((s) => (s <= 0 ? n - 1 : s - 1))
   const goNext = () => setActiveSlide((s) => (s >= n - 1 ? 0 : s + 1))
+  const currentSectionLabel = getSectionLabelForSlide(activeSlide)
 
   useEffect(() => {
     if (n <= 1) return
@@ -187,6 +196,9 @@ export function PortfolioWorkSection() {
 
           <div className="p-project-visual">
             <div className="p-slideshow-wrap">
+              <div className="p-slideshow-section-label" aria-live="polite">
+                {currentSectionLabel}
+              </div>
               <div className="p-slideshow">
                 {SLIDESHOW_IMAGES.map((src, i) => (
                   <div
