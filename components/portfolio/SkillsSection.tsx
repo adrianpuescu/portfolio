@@ -38,6 +38,16 @@ const GROUPS = [
     ],
   },
   {
+    name: "Production & Tooling",
+    tags: [
+      "Git Workflows",
+      "Node-based Tooling",
+      "Package Ecosystems (npm / pnpm)",
+      "Build Pipelines",
+      "AWS Deployment (S3 / CloudFront)",
+    ],
+  },
+  {
     name: "Creative & Advertising",
     tags: [
       "Rich Media Formats",
