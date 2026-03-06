@@ -8,11 +8,13 @@ export type VideoSectionRef = { startWithSound: () => void }
 
 export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function PortfolioVideoSection(_, ref) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
   const [overlayHidden, setOverlayHidden] = useState(false)
   const [playing, setPlaying] = useState(false)
   const [muted, setMuted] = useState(true)
   const [started, setStarted] = useState(false)
   const [ended, setEnded] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   const startVideo = useCallback((withSound: boolean) => {
     setStarted(true)
@@ -64,6 +66,45 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     v.muted = !v.muted
     setMuted(v.muted)
   }
+
+  const requestFullscreen = useCallback(async () => {
+    const wrap = wrapRef.current
+    if (!wrap) return
+    try {
+      const el = wrap as HTMLElement & { webkitRequestFullscreen?: () => Promise<void> }
+      if (el.requestFullscreen) await el.requestFullscreen()
+      else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen()
+    } catch {
+      // Fullscreen not supported or user denied
+    }
+  }, [])
+
+  const exitFullscreen = useCallback(async () => {
+    try {
+      const doc = document as Document & { webkitExitFullscreen?: () => Promise<void> }
+      if (doc.exitFullscreen) await doc.exitFullscreen()
+      else if (doc.webkitExitFullscreen) await doc.webkitExitFullscreen()
+    } catch {}
+  }, [])
+
+  const toggleFullscreen = async () => {
+    if (isFullscreen) await exitFullscreen()
+    else await requestFullscreen()
+  }
+
+  useEffect(() => {
+    const onFullscreenChange = () => {
+      const doc = document as Document & { webkitFullscreenElement?: Element }
+      const fullscreenEl = doc.fullscreenElement ?? doc.webkitFullscreenElement
+      setIsFullscreen(!!fullscreenEl && fullscreenEl === wrapRef.current)
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange)
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange)
+    return () => {
+      document.removeEventListener("fullscreenchange", onFullscreenChange)
+      document.removeEventListener("webkitfullscreenchange", onFullscreenChange)
+    }
+  }, [])
 
   // Pause when >50% outside viewport; resume muted only if we had paused (don't override Explore unmute)
   const pausedBecauseOutOfViewRef = useRef(false)
@@ -117,7 +158,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
         The last 8 years of product work in 60 seconds
       </div>
       <div className="p-video-frame">
-        <div className="p-video-wrap">
+        <div className="p-video-wrap" ref={wrapRef}>
           <video
             ref={videoRef}
             id="heroVideo"
@@ -175,10 +216,13 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               <button
                 type="button"
                 className="p-play-btn"
-                onClick={() => {
+                onClick={async () => {
                   document
                     .getElementById("video-section")
                     ?.scrollIntoView({ behavior: "smooth", block: "center" })
+                  if (typeof window !== "undefined" && window.innerWidth <= 820) {
+                    await requestFullscreen()
+                  }
                   if (started) {
                     setOverlayHidden(true)
                     setPlaying(true)
@@ -229,6 +273,23 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               ) : (
                 <svg viewBox="0 0 24 24" width={18} height={18}>
                   <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                </svg>
+              )}
+            </button>
+            <button
+              type="button"
+              className="p-vc-btn p-vc-btn-fullscreen"
+              onClick={toggleFullscreen}
+              title={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+              aria-label={isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+            >
+              {isFullscreen ? (
+                <svg viewBox="0 0 24 24" width={18} height={18}>
+                  <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width={18} height={18}>
+                  <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
                 </svg>
               )}
             </button>
