@@ -869,6 +869,12 @@
   padding: 18px 0;
   border-bottom: 1px solid var(--p-border);
 }
+.p-focus-row:hover {
+  .p-focus-row-icon {
+    color: var(--p-blue);
+    opacity: 1;
+  }
+}
 .p-focus-row:first-child { border-top: 1px solid var(--p-border); }
 .p-focus-row-left {
   display: flex;
@@ -877,8 +883,20 @@
   gap: 12px;
   flex-wrap: wrap;
 }
+.p-focus-row-icon {
+  flex-shrink: 0;
+  width: 24px;
+  color: var(--p-text);
+  opacity: .75;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .p-focus-row-name {
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 15px; font-weight: 600; color: var(--p-text);
+  text-align: left;
 }
 .p-focus-row-desc { font-size: 14px; color: var(--p-text3); line-height: 1.6; }
 .p-fbadge {
