@@ -101,6 +101,15 @@
   backdrop-filter: blur(16px);
   box-shadow: 0 1px 0 var(--p-border);
 }
+.p-nav.mobile-open {
+  z-index: 203;
+  background: var(--p-white);
+  box-shadow: 0 1px 0 var(--p-border);
+}
+.p-nav.mobile-open .p-nav-logo-name { color: var(--p-blue); }
+.p-nav.mobile-open .p-nav-logo-sep,
+.p-nav.mobile-open .p-nav-logo-rest { color: var(--p-text); }
+.p-nav.mobile-open .p-nav-hamburger span { background: var(--p-text); }
 .p-nav-logo {
   font-family: var(--font-jetbrains), monospace;
   font-size: 13px;
@@ -151,7 +160,6 @@
   border-radius: var(--p-radius-sm);
   transition: background .2s;
 }
-.p-nav-hamburger:hover { background: var(--p-bg2); }
 .p-nav-hamburger span {
   display: block;
   width: 20px;

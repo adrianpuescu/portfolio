@@ -41,7 +41,7 @@ export function PortfolioNav() {
 
   return (
     <>
-      <nav id="nav" className={`p-nav ${scrolled ? "scrolled" : ""}`}>
+      <nav id="nav" className={`p-nav ${scrolled ? "scrolled" : ""} ${mobileOpen ? "mobile-open" : ""}`}>
         <div className="p-nav-inner">
           <Link href="#" className="p-nav-logo" onClick={closeMobile}>
             <span className="p-nav-logo-name">Adrian Puescu</span>
