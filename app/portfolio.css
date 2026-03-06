@@ -1174,7 +1174,18 @@
   color: var(--p-blue);
   background: var(--p-blue-light);
 }
-.p-about-link-icon { font-size: 14px; width: 18px; text-align: center; }
+.p-about-link-icon {
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.p-about-link-icon svg {
+  display: block;
+}
 
 /* Footer */
 .p-footer {
