@@ -9,12 +9,12 @@ const BRANDS = [
 ]
 
 const CAPS = [
-  { n: "01", t: "WYSIWYG Editor", d: "Designed and built the drag-and-drop editor powering story and ad creation across all verticals." },
-  { n: "02", t: "AMP Stories & more", d: "The same editor exports AMP Stories, Brand Stories (our name), LPs, and HTML presentations - one canvas, multiple formats." },
-  { n: "03", t: "Dataset-driven Creatives", d: "Tabular datasets + templates → hundreds of ad variations generated automatically in one pass." },
-  { n: "04", t: "Campaign Dashboards", d: "Multi-account dashboards for campaign management, asset libraries, team admin, and reporting." },
-  { n: "05", t: "Client Showcase Tools", d: "Automated preview pages and client-facing showcase tools for presenting creatives to brand advertisers." },
-  { n: "06", t: "Design System", d: "Shared PostCSS component library reused across multiple products for visual consistency at scale." },
+  { n: "01", t: "WYSIWYG Editor", d: "Worked on the UI and frontend implementation of a drag-and-drop editor used for creating stories and ads across multiple verticals." },
+  { n: "02", t: "Multi-format Creatives", d: "Designed the UI logic and HTML structure enabling creatives to export as web ads, AMP Stories, landing pages and HTML presentations." },
+  { n: "03", t: "Dataset-driven Creatives", d: "Designed UI workflows allowing tabular datasets and templates to generate hundreds of ad variations in a single pass." },
+  { n: "04", t: "Campaign Dashboards", d: "Designed and implemented dashboard interfaces for campaign management, asset libraries, team administration and reporting." },
+  { n: "05", t: "Client Showcase Tools", d: "Built UI for automated preview pages and client-facing tools used to present and review creatives with advertisers." },
+  { n: "06", t: "Design System", d: "Created and maintained a shared PostCSS component library reused across multiple products to ensure visual consistency at scale." },
 ]
 
 const SLIDESHOW_IMAGES: string[] = [
