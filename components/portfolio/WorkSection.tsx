@@ -32,23 +32,23 @@ const BRANDS_SMALL = ["Meta", "Forbes", "Uber", "Adidas", "Amex", "Glamour"]
 const CAPS = [
   {
     t: "WYSIWYG Editor",
-    d: "Frontend implementation of a drag-and-drop editor used to create stories and web ads — including canvas layout, element controls, and toolbar interactions.",
+    d: "Implemented the frontend of a drag-and-drop editor for online ads and story-based creatives — including canvas layout, element controls, and toolbar interactions.",
   },
   {
     t: "Multi-format Creatives",
-    d: "UI logic and HTML structure enabling creatives to export as web ads, AMP Stories, landing pages and HTML presentations from the same canvas.",
+    d: "Designed the UI logic and HTML structure enabling creatives to export as web ads, AMP Stories, landing pages, and HTML presentations from the same canvas.",
   },
   {
     t: "Dataset-driven Creatives",
-    d: "UI workflows for dataset-driven creatives — templates and tabular data generating hundreds of ad variations in a single pass.",
+    d: "Designed UI workflows for dataset-driven creatives — templates and tabular data generating hundreds of ad variations in a single pass.",
   },
   {
     t: "Campaign Management UI",
-    d: "Dashboard interfaces for campaign management, asset libraries, team administration and reporting.",
+    d: "Implemented dashboard interfaces for campaign management, asset libraries, team administration, and reporting.",
   },
   {
     t: "Creative Preview & Client Review",
-    d: "UI for automated preview pages and client-facing tools used to present and review creatives with brand advertisers.",
+    d: "Built UI for automated preview pages and client-facing tools used to present and review creatives with brand advertisers.",
   },
   {
     t: "Design System",
@@ -146,7 +146,7 @@ export function PortfolioWorkSection() {
           Global scale.
         </h2>
         <p className="p-work-intro">
-          For the last eight years I've worked on{" "}
+          For the past eight years I've worked on{" "}
           <a
             href="https://studio.nws.ai"
             target="_blank"
@@ -155,7 +155,7 @@ export function PortfolioWorkSection() {
           >
             NWS Studio
           </a>
-          {" - the flagship creative platform at "}
+          {", the flagship creative platform at "}
           <a
             href="https://nws.ai"
             target="_blank"
@@ -164,7 +164,7 @@ export function PortfolioWorkSection() {
           >
             Newsroom AI
           </a>
-          , contributing to UI/UX, feature design and front-end implementation
+          , shaping the UI/UX, feature design and frontend implementation
           while keeping the product production-ready for global publishers and
           brands.
         </p>
@@ -195,7 +195,7 @@ export function PortfolioWorkSection() {
 
               <ul className="p-project-bullets">
                 <li>
-                  Implemented <strong>UI across the product</strong> - editor,
+                  Implemented <strong>UI across the platform</strong> - editor,
                   dashboards, asset management, reporting.
                 </li>
                 <li>

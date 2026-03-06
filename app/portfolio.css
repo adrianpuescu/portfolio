@@ -845,7 +845,7 @@
   overflow: hidden;
 }
 .p-cap {
-  padding: 48px;
+  padding: 30px 44px;
   border-right: 1px solid var(--p-border); border-top: 1px solid var(--p-border);
   background: var(--p-white); transition: background .2s, border-left-color .2s;
   border-left: 3px solid transparent;
