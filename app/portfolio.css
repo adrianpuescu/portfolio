@@ -554,6 +554,79 @@
 .p-vc-btn:hover { background: rgba(255,255,255,.96); }
 .p-vc-btn svg { width: 18px; height: 18px; fill: var(--p-blue); display: block; }
 
+/* Featured Work slideshow overlay (mobile) */
+.p-slideshow-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 60px 24px;
+}
+.p-slideshow-overlay-inner {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  max-height: calc(100vh - 80px);
+}
+.p-slideshow-overlay-slideshow {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+  border-radius: var(--p-radius);
+}
+.p-slideshow-overlay-slideshow .p-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: #1a1a1a;
+}
+.p-slideshow-overlay-slideshow .p-slide.active {
+  opacity: 1;
+}
+.p-slideshow-overlay-slideshow .p-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+.p-slideshow-overlay-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 2;
+}
+.p-slideshow-overlay-prev,
+.p-slideshow-overlay-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.p-slideshow-overlay-prev {
+  left: -52px;
+}
+.p-slideshow-overlay-next {
+  right: -52px;
+}
+.p-slideshow-wrap-tappable {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .p-slideshow-overlay { padding: 48px 16px 20px; }
+  .p-slideshow-overlay-prev { left: 8px; }
+  .p-slideshow-overlay-next { right: 8px; }
+  .p-slideshow-overlay-close { top: 8px; right: 8px; }
+}
+
 /* Sections shared */
 .portfolio-page section { padding: 96px 40px; scroll-margin-top: 56px; }
 .portfolio-page section > * { max-width: 1200px; margin-left: auto; margin-right: auto; }

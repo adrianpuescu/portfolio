@@ -125,10 +125,30 @@ function getSectionLabelForSlide(slideIndex: number): string {
 
 export function PortfolioWorkSection() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [slideshowExpanded, setSlideshowExpanded] = useState(false)
   const n = SLIDESHOW_IMAGES.length
   const goPrev = () => setActiveSlide((s) => (s <= 0 ? n - 1 : s - 1))
   const goNext = () => setActiveSlide((s) => (s >= n - 1 ? 0 : s + 1))
   const currentSectionLabel = getSectionLabelForSlide(activeSlide)
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const mq = window.matchMedia("(max-width: 768px)")
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener("change", update)
+    return () => mq.removeEventListener("change", update)
+  }, [])
+
+  useEffect(() => {
+    if (!slideshowExpanded) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [slideshowExpanded])
 
   useEffect(() => {
     if (n <= 1) return
@@ -224,7 +244,24 @@ export function PortfolioWorkSection() {
           </div>
 
           <div className="p-project-visual">
-            <div className="p-slideshow-wrap">
+            <div
+              className={`p-slideshow-wrap ${isMobile ? "p-slideshow-wrap-tappable" : ""}`}
+              {...(isMobile && {
+                role: "button",
+                tabIndex: 0,
+                "aria-label": "Open slideshow full screen",
+                onClick: (e) => {
+                  e.stopPropagation()
+                  setSlideshowExpanded(true)
+                },
+                onKeyDown: (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setSlideshowExpanded(true)
+                  }
+                },
+              })}
+            >
               <div className="p-slideshow-section-label" aria-live="polite">
                 {currentSectionLabel}
               </div>
@@ -333,6 +370,71 @@ export function PortfolioWorkSection() {
           </div>
         </div>
       </div>
+
+      {slideshowExpanded && isMobile && (
+        <div
+          className="p-slideshow-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Slideshow full screen"
+          onClick={() => setSlideshowExpanded(false)}
+        >
+          <div
+            className="p-slideshow-overlay-inner"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="p-slideshow-overlay-close p-vc-btn"
+              onClick={() => setSlideshowExpanded(false)}
+              aria-label="Close"
+              title="Close"
+            >
+              <svg viewBox="0 0 24 24" width={18} height={18}>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+              </svg>
+            </button>
+            <div className="p-slideshow-overlay-slideshow">
+              {SLIDESHOW_IMAGES.map((src, i) => (
+                <div
+                  key={src}
+                  className={`p-slide ${i === activeSlide ? "active" : ""}`}
+                >
+                  <img src={src} alt="" />
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="p-slideshow-overlay-prev p-vc-btn"
+              onClick={(e) => {
+                e.stopPropagation()
+                goPrev()
+              }}
+              aria-label="Previous"
+              title="Previous"
+            >
+              <svg viewBox="0 0 24 24" width={18} height={18}>
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="p-slideshow-overlay-next p-vc-btn"
+              onClick={(e) => {
+                e.stopPropagation()
+                goNext()
+              }}
+              aria-label="Next"
+              title="Next"
+            >
+              <svg viewBox="0 0 24 24" width={18} height={18}>
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
