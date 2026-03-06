@@ -36,7 +36,7 @@ export function PortfolioAboutSection() {
         <div className="p-about-block">
           <div className="p-about-photo">
             <img
-              src="/images/profile-pics-blueish-optimised.gif"
+              src="/images/profile-pics-blueish-2-optimised.gif"
               alt="Adrian Puescu"
               width={200}
               height={200}
