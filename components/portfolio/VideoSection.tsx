@@ -15,6 +15,16 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const [started, setStarted] = useState(false)
   const [ended, setEnded] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [controlsVisible, setControlsVisible] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
+  const hideControlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    const check = () => setIsMobile(typeof window !== "undefined" && window.innerWidth <= 820)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
   const startVideo = useCallback((withSound: boolean) => {
     setStarted(true)
@@ -53,6 +63,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     if (playing) {
       v.pause()
       setOverlayHidden(false)
+      setControlsVisible(true)
     } else {
       setOverlayHidden(true)
       v.play().catch(() => {})
@@ -68,7 +79,18 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   }
 
   const requestFullscreen = useCallback(async () => {
+    const v = videoRef.current
     const wrap = wrapRef.current
+    const videoEl = v as HTMLVideoElement & { webkitEnterFullscreen?: () => void }
+    if (videoEl?.webkitEnterFullscreen) {
+      try {
+        videoEl.webkitEnterFullscreen()
+        setIsFullscreen(true)
+      } catch {
+        // fallback to wrap fullscreen if needed
+      }
+      return
+    }
     if (!wrap) return
     try {
       const el = wrap as HTMLElement & { webkitRequestFullscreen?: () => Promise<void> }
@@ -80,6 +102,14 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   }, [])
 
   const exitFullscreen = useCallback(async () => {
+    const v = videoRef.current as HTMLVideoElement & { webkitExitFullscreen?: () => void }
+    if (v?.webkitExitFullscreen) {
+      try {
+        v.webkitExitFullscreen()
+      } catch {}
+      setIsFullscreen(false)
+      return
+    }
     try {
       const doc = document as Document & { webkitExitFullscreen?: () => Promise<void> }
       if (doc.exitFullscreen) await doc.exitFullscreen()
@@ -105,6 +135,44 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       document.removeEventListener("webkitfullscreenchange", onFullscreenChange)
     }
   }, [])
+
+  useEffect(() => {
+    const v = videoRef.current
+    const onWebKitEndFullscreen = () => {
+      setIsFullscreen(false)
+      setPlaying(false)
+      setOverlayHidden(false)
+    }
+    v?.addEventListener?.("webkitendfullscreen", onWebKitEndFullscreen)
+    return () => v?.removeEventListener?.("webkitendfullscreen", onWebKitEndFullscreen)
+  }, [started])
+
+  useEffect(() => {
+    if (!playing) {
+      setControlsVisible(true)
+      if (hideControlsTimeoutRef.current) {
+        clearTimeout(hideControlsTimeoutRef.current)
+        hideControlsTimeoutRef.current = null
+      }
+      return
+    }
+    if (!isMobile) return
+    hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
+    return () => {
+      if (hideControlsTimeoutRef.current) {
+        clearTimeout(hideControlsTimeoutRef.current)
+        hideControlsTimeoutRef.current = null
+      }
+    }
+  }, [playing, isMobile])
+
+  const onWrapTap = useCallback(() => {
+    if (playing && isMobile) {
+      setControlsVisible(true)
+      if (hideControlsTimeoutRef.current) clearTimeout(hideControlsTimeoutRef.current)
+      hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
+    }
+  }, [playing, isMobile])
 
   // Pause when >50% outside viewport; resume muted only if we had paused (don't override Explore unmute)
   const pausedBecauseOutOfViewRef = useRef(false)
@@ -158,7 +226,12 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
         The last 8 years of product work in 60 seconds
       </div>
       <div className="p-video-frame">
-        <div className="p-video-wrap" ref={wrapRef}>
+        <div
+          className="p-video-wrap"
+          ref={wrapRef}
+          onClick={onWrapTap}
+          role="presentation"
+        >
           <video
             ref={videoRef}
             id="heroVideo"
@@ -241,7 +314,10 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
             )}
           </div>
           {playing && (
-          <div className="p-video-controls-bar">
+          <div
+            className={`p-video-controls-bar ${isMobile && !controlsVisible ? "p-video-controls-bar-hidden" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
               className="p-vc-btn"
