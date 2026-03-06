@@ -1,4 +1,4 @@
-const ICON_SIZE = 20
+const ICON_SIZE = 24
 
 const FocusIcons = {
   react_typescript: (
