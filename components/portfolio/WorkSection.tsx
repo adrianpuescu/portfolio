@@ -9,13 +9,31 @@ const BRANDS = [
 ]
 
 const CAPS = [
-  { n: "01", t: "WYSIWYG Editor", d: "Worked on the UI and frontend implementation of a drag-and-drop editor used for creating stories and ads across multiple verticals." },
-  { n: "02", t: "Multi-format Creatives", d: "Designed the UI logic and HTML structure enabling creatives to export as web ads, AMP Stories, landing pages and HTML presentations." },
-  { n: "03", t: "Dataset-driven Creatives", d: "Designed UI workflows allowing tabular datasets and templates to generate hundreds of ad variations in a single pass." },
-  { n: "04", t: "Campaign Dashboards", d: "Designed and implemented dashboard interfaces for campaign management, asset libraries, team administration and reporting." },
-  { n: "05", t: "Client Showcase Tools", d: "Built UI for automated preview pages and client-facing tools used to present and review creatives with advertisers." },
-  { n: "06", t: "Design System", d: "Created and maintained a shared PostCSS component library reused across multiple products to ensure visual consistency at scale." },
-]
+  {
+    t: "WYSIWYG Editor",
+    d: "Frontend implementation of a drag-and-drop editor used to create stories and web ads — including canvas layout, element controls, and toolbar interactions.",
+  },
+  {
+    t: "Multi-format Creatives",
+    d: "UI logic and HTML structure enabling creatives to export as web ads, AMP Stories, landing pages and HTML presentations from the same canvas.",
+  },
+  {
+    t: "Dataset-driven Creatives",
+    d: "UI workflows for dataset-driven creatives — templates and tabular data generating hundreds of ad variations in a single pass.",
+  },
+  {
+    t: "Campaign Management UI",
+    d: "Dashboard interfaces for campaign management, asset libraries, team administration and reporting.",
+  },
+  {
+    t: "Creative Preview & Client Review",
+    d: "UI for automated preview pages and client-facing tools used to present and review creatives with brand advertisers.",
+  },
+  {
+    t: "Design System",
+    d: "Created and maintained a shared PostCSS component library reused across multiple Newsroom products to ensure visual consistency at scale.",
+  },
+];
 
 const SLIDESHOW_IMAGES: string[] = [
   /* Platform */
@@ -107,7 +125,7 @@ export function PortfolioWorkSection() {
           Global scale.
         </h2>
         <p className="p-work-intro">
-          For the last eight years I&apos;ve been focused on{" "}
+          For the last eight years I've worked on{" "}
           <a
             href="https://studio.nws.ai"
             target="_blank"
@@ -125,8 +143,9 @@ export function PortfolioWorkSection() {
           >
             Newsroom AI
           </a>
-          , leading UI/UX, feature planning, and front-end implementation while
-          keeping the product production-ready for global publishers and brands.
+          , contributing to UI/UX, feature design and front-end implementation
+          while keeping the product production-ready for global publishers and
+          brands.
         </p>
       </div>
 
@@ -155,32 +174,16 @@ export function PortfolioWorkSection() {
 
               <ul className="p-project-bullets">
                 <li>
-                  Architected and implemented{" "}
-                  <strong>UI across the entire product</strong> - editor,
-                  dashboards, asset management, reporting, admin
+                  Implemented <strong>UI across the product</strong> - editor,
+                  dashboards, asset management, reporting.
                 </li>
                 <li>
-                  Built a <strong>WYSIWYG story & ad editor</strong> with
-                  drag-and-drop canvas, real-time preview, and full toolbar
-                  systems
+                  Built the <strong>WYSIWYG editor UI</strong> powering story
+                  and ad creation.
                 </li>
                 <li>
-                  Designed a <strong>dataset-driven creative system</strong> -
-                  tabular data + templates → hundreds of ad variations in one
-                  pass
-                </li>
-                <li>
-                  Maintained a <strong>shared PostCSS component library</strong>{" "}
-                  used across multiple{" "}
-                  <a
-                    href="https://nws.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-text-link"
-                  >
-                    Newsroom
-                  </a>{" "}
-                  products
+                  Designed a <strong>dataset-driven creative system</strong>{" "}
+                  generating hundreds of ad variations in one pass.
                 </li>
               </ul>
             </div>
@@ -281,9 +284,6 @@ export function PortfolioWorkSection() {
               key={cap.n}
               className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
             >
-              <span className="p-cap-n" aria-hidden>
-                {cap.n}
-              </span>
               <div className="p-cap-t">{cap.t}</div>
               <div className="p-cap-d">{cap.d}</div>
             </div>
