@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
 
 const VIDEO_SRC = "/video/hero-video-4-optimised.mp4"
+const VIDEO_POSTER = "/images/hero-video-poster.jpg"
 
 export type VideoSectionRef = { startWithSound: () => void }
 
@@ -235,6 +236,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
           <video
             ref={videoRef}
             id="heroVideo"
+            poster={VIDEO_POSTER}
             muted={muted}
             loop={muted}
             playsInline
