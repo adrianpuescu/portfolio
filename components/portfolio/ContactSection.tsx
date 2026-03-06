@@ -24,9 +24,7 @@ export function PortfolioContactSection() {
           </p>
           <div className="p-contact-links">
             <a className="p-clink" href="mailto:web@webz.ro">
-              <span className="p-clink-icon" aria-hidden>
-                ✉
-              </span>
+              <span className="p-clink-icon p-clink-icon-email" aria-hidden>✉</span>
               web@webz.ro
             </a>
             <a

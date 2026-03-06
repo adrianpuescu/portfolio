@@ -344,7 +344,8 @@
   transform: translateY(0.06em);
 }
 .p-btn-ghost-icon-email {
-  transform: translateY(-0.08em);
+  transform: translateY(-0.13em);
+  font-size: 1.5em;
 }
 .p-btn-ghost:hover { border-color: var(--p-blue); color: var(--p-blue); background: var(--p-blue-light); }
 .p-btn-ghost:hover .p-btn-ghost-icon { opacity: 1; }
@@ -1020,7 +1021,20 @@
   color: #f1f5f9;
   background: rgb(37 99 235 / 0.12);
 }
-.p-clink-icon { font-size: 14px; width: 18px; text-align: center; }
+.p-clink:hover .p-clink-icon { opacity: 1; }
+.p-clink-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 1em;
+  opacity: 0.9;
+  transform: translateY(0.06em);
+}
+.p-clink-icon-email {
+  transform: translateY(-0.07em);
+  font-size: 1.5em;
+}
 
 /* About — compact so Contact stays the main CTA */
 .p-about {
