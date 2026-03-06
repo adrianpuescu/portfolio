@@ -3,10 +3,31 @@
 import { useState, useEffect } from "react"
 
 const BRANDS = [
-  "Forbes", "USA Today", "VICE", "The Guardian", "Yahoo", "Glamour",
-  "Meta", "Microsoft", "Google", "Netflix", "Disney", "H&M", "Adidas",
-  "Uber", "Vodafone", "Amazon Prime", "EA", "Amex", "+ more",
+  "Google", "Microsoft", "Netflix", "Meta", "Forbes", "The Guardian",
+  "Adidas", "Uber", "Vodafone", "Yahoo", "VICE", "USA Today",
+  "Glamour", "Amazon", "EA", "Amex",
 ]
+
+const BRAND_FILES: Record<string, string> = {
+  Google: "Google.svg",
+  Microsoft: "Microsoft.svg",
+  Netflix: "Netflix.svg",
+  Meta: "Meta.svg",
+  Forbes: "Forbes.svg",
+  "The Guardian": "The_Guardian.svg",
+  Adidas: "Adidas.svg",
+  Uber: "Uber.svg",
+  Vodafone: "Vodafone.svg",
+  Yahoo: "Yahoo.svg",
+  VICE: "VICE.svg",
+  "USA Today": "USA_Today.svg",
+  Glamour: "Glamour.svg",
+  Amazon: "Amazon Prime.svg",
+  EA: "EA.svg",
+  Amex: "Amex.svg",
+}
+
+const BRANDS_SMALL = ["Meta", "Forbes", "Uber", "Adidas", "Amex", "Glamour"]
 
 const CAPS = [
   {
@@ -281,7 +302,7 @@ export function PortfolioWorkSection() {
         <div className="p-caps-grid">
           {CAPS.map((cap, i) => (
             <div
-              key={cap.n}
+              key={cap.t}
               className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
             >
               <div className="p-cap-t">{cap.t}</div>
@@ -291,13 +312,16 @@ export function PortfolioWorkSection() {
         </div>
         <div className="p-brands-strip">
           <div className="p-brands-label">
-            Brands & publishers that used the platform
+            Brands & Publishers that used the platform
           </div>
-          <div className="p-brands-list">
-            {BRANDS.map((b) => (
-              <span key={b} className="p-brand-pill">
-                {b}
-              </span>
+          <div className="p-brands-grid">
+            {BRANDS.map((brand) => (
+              <img
+                key={brand}
+                src={`/images/brands/${BRAND_FILES[brand]}`}
+                alt={brand}
+                className={`p-brand-logo ${BRANDS_SMALL.includes(brand) ? "p-brand-logo-sm" : ""}`}
+              />
             ))}
           </div>
         </div>
