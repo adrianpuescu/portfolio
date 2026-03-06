@@ -34,7 +34,7 @@ export function Hero() {
 
   // Auto-play when clicking Explore link
   const hasAutoPlayed = useRef(false)
-  
+
   const handleExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const videoSection = document.getElementById("hero-video")
@@ -53,7 +53,7 @@ export function Hero() {
 
   // Pause video when 75% out of viewport, resume when back in view
   const wasPlayingBeforeHidden = useRef(false)
-  
+
   useEffect(() => {
     const video = videoRef.current
     const container = videoContainerRef.current
@@ -151,7 +151,7 @@ export function Hero() {
             8+ years of product work in 60 seconds
           </span>
         </div>
-        <div 
+        <div
           ref={videoContainerRef}
           className="group relative mx-auto max-w-6xl px-6 lg:px-8 overflow-hidden"
         >
@@ -164,9 +164,9 @@ export function Hero() {
             onPause={() => setIsPlaying(false)}
             className="w-full"
           >
-            <source src="https://portfolio.webz.ro/videos/hero-test.mp4" type="video/mp4" />
+            <source src="https://portfolio.webz.ro/video/hero-video-4-optimised.mp4" type="video/mp4" />
           </video>
-          
+
           {/* Initial play button overlay - before video has started */}
           {!hasStarted && (
             <button
