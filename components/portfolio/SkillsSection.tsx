@@ -21,10 +21,10 @@ const GROUPS = [
       "HTML5",
       "CSS / PostCSS",
       "JavaScript",
-      "Animation & Motion",
-      "AMP / Web Stories",
-      "Ad Formats",
       "SVG",
+      "Animation & Motion",
+      "Ad Format Development",
+      "AMP / Web Stories",
     ],
   },
   {
@@ -33,8 +33,8 @@ const GROUPS = [
       "Design Systems",
       "Template Engines",
       "Shared CSS Libraries",
-      "White-label SaaS",
       "Multi-tenant Platforms",
+      "White-label SaaS",
     ],
   },
   {
@@ -44,13 +44,15 @@ const GROUPS = [
       "Display Advertising",
       "Interactive Campaigns",
       "Landing Pages",
+      "Creative Asset Production",
+      "Image & Video Editing",
     ],
   },
   {
     name: "AI-assisted Workflows",
     tags: ["Claude", "Cursor", "Rapid Prototyping", "POC Development"],
   },
-]
+];
 
 export function PortfolioSkillsSection() {
   const [openIndex, setOpenIndex] = useState(0)
