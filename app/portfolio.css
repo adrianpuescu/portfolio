@@ -1340,7 +1340,7 @@
 }
 @media (max-width: 768px) {
   .p-project-info { padding: 32px 24px; }
-  .p-project-visual { padding: 20px 20px 0; border: none}
+  .p-project-visual { padding: 20px 24px 0; border: none}
   .p-project-meta { grid-template-columns: 1fr; gap: 0; }
   .p-slideshow-wrap { gap: 16px; padding: 0; }
   .p-slideshow-section-label {
@@ -1386,6 +1386,6 @@
   .p-project-visual:hover .p-timeline-arrow { opacity: 1; }
 }
 @media (max-width: 480px) {
-  .p-cap { padding: 20px 16px; }
-  .p-brands-strip { padding: 20px 16px 28px; }
+  .p-cap { padding: 20px 24px 20px 20px; }
+  .p-brands-strip { padding: 20px 24px 28px; }
 }
