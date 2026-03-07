@@ -20,7 +20,7 @@ export default function Page() {
   const onExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     // Exact ca în HTML: scroll smooth, după 700ms currentTime=0 + startVideo(true) echivalent
-    document.getElementById("video-section")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("video-section")?.scrollIntoView({ behavior: "smooth", block: "center" })
     setTimeout(() => {
       const heroVideo = document.getElementById("heroVideo") as HTMLVideoElement | null
       if (heroVideo) {
