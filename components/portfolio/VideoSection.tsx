@@ -247,7 +247,7 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   }, [])
 
   return (
-    <section id="video-section" className="p-video-section">
+    <section id="video-section" className="p-video-section p-reveal">
       <div className="p-video-eyebrow">
         The last 8 years of my work in 60 seconds
       </div>
