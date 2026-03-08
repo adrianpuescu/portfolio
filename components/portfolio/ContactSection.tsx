@@ -19,18 +19,27 @@ export function PortfolioContactSection() {
           </h2>
         </div>
         <div className="p-contact-right">
+          <a
+            className="p-contact-email"
+            href="mailto:web@webz.ro"
+            style={{
+              display: "inline-block",
+              fontSize: "2.1rem",
+              color: "#1e90ff",
+              fontWeight: 700,
+              textDecoration: "none",
+              marginBottom: 22,
+              letterSpacing: "0.03em"
+            }}
+          >
+            web@webz.ro
+          </a>
           <p className="p-contact-desc">
             Available for UI Engineer and frontend roles, in any product or team
             that values solid UI work. Open to full-time opportunities in Spain
             or remote, within the EU.
           </p>
           <div className="p-contact-links">
-            <a className="p-clink" href="mailto:web@webz.ro">
-              <span className="p-clink-icon p-clink-icon-email" aria-hidden>
-                <EmailIcon />
-              </span>
-              web@webz.ro
-            </a>
             <a
               className="p-clink"
               href="https://www.linkedin.com/in/adrianpuescu/"
