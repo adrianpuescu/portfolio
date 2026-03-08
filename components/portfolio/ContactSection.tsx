@@ -20,13 +20,15 @@ export function PortfolioContactSection() {
         </div>
         <div className="p-contact-right">
           <p className="p-contact-desc">
-            Available for UI/UX roles, frontend architecture, and product design
-            collaborations - especially in media, publishing, adtech, or any
-            product that ships creative tools.
+            Available for UI Engineer and frontend roles, in any product or team
+            that values solid UI work. Open to full-time opportunities in Spain
+            or remote, within the EU.
           </p>
           <div className="p-contact-links">
             <a className="p-clink" href="mailto:web@webz.ro">
-              <span className="p-clink-icon p-clink-icon-email" aria-hidden><EmailIcon /></span>
+              <span className="p-clink-icon p-clink-icon-email" aria-hidden>
+                <EmailIcon />
+              </span>
               web@webz.ro
             </a>
             <a
@@ -35,7 +37,9 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon p-clink-icon-linkedin" aria-hidden><LinkedInIcon /></span>
+              <span className="p-clink-icon p-clink-icon-linkedin" aria-hidden>
+                <LinkedInIcon />
+              </span>
               LinkedIn
             </a>
             <a
@@ -44,7 +48,9 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon p-clink-icon-github" aria-hidden><GitHubIcon /></span>
+              <span className="p-clink-icon" aria-hidden>
+                <GitHubIcon />
+              </span>
               GitHub
             </a>
           </div>
