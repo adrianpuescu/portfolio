@@ -25,15 +25,6 @@ export function PortfolioHero({
         </p>
 
         <div className="p-hero-actions">
-          <a className="p-btn-ghost" href="mailto:web@webz.ro">
-            <span
-              className="p-btn-ghost-icon p-btn-ghost-icon-email"
-              aria-hidden
-            >
-              <EmailIcon />
-            </span>
-            Email
-          </a>
           <a
             className="p-btn-ghost"
             href="https://www.linkedin.com/in/adrianpuescu/"
