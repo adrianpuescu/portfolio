@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
 
+/* FLAG: Direct .mp4 source — consider replacing with Vimeo/YouTube unlisted embed for better download protection */
 const VIDEO_SRC = "/video/hero-video-5-optimised.mp4"
 const VIDEO_POSTER = "/images/hero-video-5-poster.jpg"
 

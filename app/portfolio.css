@@ -28,6 +28,13 @@
   overflow-x: hidden;
 }
 
+/* Prevent image/video drag & drop (download protection) */
+.portfolio-page img,
+.portfolio-page video {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
 /* In-text links (e.g. NWS / Newsroom) */
 .p-text-link {
   color: var(--p-blue);

@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import { PortfolioNav } from "@/components/portfolio/Nav"
 import { PortfolioHero } from "@/components/portfolio/Hero"
 import { PortfolioVideoSection, type VideoSectionRef } from "@/components/portfolio/VideoSection"
@@ -16,6 +16,20 @@ import { PortfolioCursor } from "@/components/portfolio/Cursor"
 
 export default function Page() {
   const videoSectionRef = useRef<VideoSectionRef>(null)
+
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (
+        target.closest?.(".portfolio-page") &&
+        (target.tagName === "IMG" || target.closest("video"))
+      ) {
+        e.preventDefault()
+      }
+    }
+    document.addEventListener("contextmenu", handleContextMenu)
+    return () => document.removeEventListener("contextmenu", handleContextMenu)
+  }, [])
 
   const onExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
