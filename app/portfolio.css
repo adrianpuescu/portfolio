@@ -81,6 +81,17 @@
   border-color: rgba(37, 99, 235, 0.55);
 }
 
+/* Cursor on dark (e.g. brand stories modal) — light dot and ring for visibility */
+body.brand-modal-open .p-cursor {
+  background: #fff;
+}
+body.brand-modal-open .p-cursor-ring {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+body.brand-modal-open .p-cursor-ring.is-hover {
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
 /* Disable custom cursor on touch / mobile — no cursor to replace */
 @media (hover: none), (pointer: coarse) {
   .portfolio-page.use-custom-cursor { cursor: auto; }

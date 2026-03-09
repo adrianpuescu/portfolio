@@ -367,6 +367,13 @@ export function PortfolioWorkSection() {
     }
   }, [slideshowExpanded, brandModalOpen])
 
+  useEffect(() => {
+    if (brandModalOpen) {
+      document.body.classList.add("brand-modal-open")
+      return () => document.body.classList.remove("brand-modal-open")
+    }
+  }, [brandModalOpen])
+
   const openBrandModal = useCallback((index: number) => {
     setBrandModalIndex(index)
     setBrandModalOpen(true)
