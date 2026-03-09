@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import Script from 'next/script'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { PortfolioHtmlComment } from '@/components/portfolio/HtmlComment'
 import './globals.css'
@@ -46,27 +45,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W8KQKD4');`
-
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} style={{ colorScheme: "light" }}>
       <body className="font-sans antialiased">
-        <Script id="gtm" strategy="beforeInteractive">
-          {gtmScript}
-        </Script>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-W8KQKD4"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-            title="Google Tag Manager"
-          />
-        </noscript>
         <PortfolioHtmlComment />
         {children}
       </body>
