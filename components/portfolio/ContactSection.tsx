@@ -25,7 +25,7 @@ export function PortfolioContactSection() {
             style={{
               display: "inline-block",
               fontSize: "2.1rem",
-              color: "#1e90ff",
+              color: "var(--p-blue)",
               fontWeight: 700,
               textDecoration: "none",
               marginBottom: 22,
