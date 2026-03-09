@@ -5,8 +5,36 @@ export function PortfolioHero({
 }: {
   onExploreClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }) {
+  /* Grid cell indices (col, row); right side only so we don’t overlap the hero text */
+  const glowCells: [number, number][] = [
+    [2, 2],
+    [8, 5],
+    [14, 3],
+    [22, 8],
+    [5, 7],
+    [18, 10],
+    [12, 12],
+    [28, 4],
+    [10, 13],
+    [35, 9],
+    [6, 10],
+    [42, 6],
+  ]
+
   return (
     <section id="hero" className="p-hero">
+      <div
+        className="p-hero-grid-glow"
+        aria-hidden
+      >
+        {glowCells.map(([col, row], i) => (
+          <div
+            key={i}
+            className="p-hero-grid-glow-cell"
+            style={{ gridColumn: col + 1, gridRow: row + 1 }}
+          />
+        ))}
+      </div>
       <div className="p-hero-inner">
         <div className="p-hero-badge">
           <span className="p-hero-badge-dot" />

@@ -251,23 +251,81 @@
 .p-hero::before {
   content: '';
   position: absolute; inset: 0;
+  z-index: 0;
   background-image:
     linear-gradient(var(--p-border) 1px, transparent 1px),
     linear-gradient(90deg, var(--p-border) 1px, transparent 1px);
   background-size: 40px 40px;
+  background-position: 0 0;
   mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, black 30%, transparent 100%);
 }
 .p-hero::after {
   content: '';
   position: absolute;
+  z-index: 0;
   top: -20%; right: -10%;
   width: 600px; height: 600px;
   background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
+
+/* Ambient grid cell glow — same 40px grid as ::before so cells align; above grid/blob, below content */
+/* Selector must beat .portfolio-page section > * (0,2,2) so overrides apply */
+.portfolio-page .p-hero .p-hero-grid-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(60, 40px);
+  grid-template-rows: repeat(40, 40px);
+  align-content: start;
+  justify-content: start;
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, black 30%, transparent 100%);
+}
+.p-hero-grid-glow-cell {
+  /* 1px padding so glow sits inside the 40×40 cell, not on the grid lines */
+  padding: 1px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  background-clip: content-box;
+  /* Stronger but still subtle glow so it’s visible without inspector override */
+  background: rgba(219, 234, 254, 0.5);
+  opacity: 0;
+  animation: p-hero-cell-glow 12s ease-in-out infinite;
+}
+.p-hero-grid-glow-cell:nth-child(1) { animation-delay: 0s; }
+.p-hero-grid-glow-cell:nth-child(2) { animation-delay: 2.5s; }
+.p-hero-grid-glow-cell:nth-child(3) { animation-delay: 5s; }
+.p-hero-grid-glow-cell:nth-child(4) { animation-delay: 1s; }
+.p-hero-grid-glow-cell:nth-child(5) { animation-delay: 7s; }
+.p-hero-grid-glow-cell:nth-child(6) { animation-delay: 3.5s; }
+.p-hero-grid-glow-cell:nth-child(7) { animation-delay: 8.5s; }
+.p-hero-grid-glow-cell:nth-child(8) { animation-delay: 4s; }
+.p-hero-grid-glow-cell:nth-child(9) { animation-delay: 10s; }
+.p-hero-grid-glow-cell:nth-child(10) { animation-delay: 1.5s; }
+.p-hero-grid-glow-cell:nth-child(11) { animation-delay: 6s; }
+.p-hero-grid-glow-cell:nth-child(12) { animation-delay: 9s; }
+
+@keyframes p-hero-cell-glow {
+  0%, 100% { opacity: 0; }
+  45% { opacity: 0.7; }
+  55% { opacity: 0.7; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-hero-grid-glow-cell { animation: none; opacity: 0; }
+}
+
 .p-hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
