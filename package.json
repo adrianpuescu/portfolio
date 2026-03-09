@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy:file": "bash bin/deploy-file",
     "postbuild": "node scripts/inject-html-comment.mjs",
     "start": "next start",
     "export": "next build",

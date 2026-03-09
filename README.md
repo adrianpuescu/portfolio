@@ -25,3 +25,5 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy
 
 Static export: `pnpm build` → upload contents of `out/` to the host. See [DEPLOY.md](./DEPLOY.md) for cPanel steps.
+
+To upload only a single file (e.g. one image) via FTP from the terminal: `pnpm run deploy:file -- <path-from-out>` (e.g. `pnpm run deploy:file -- photo.jpg`). Requires `.deploy.env` and `lftp`.

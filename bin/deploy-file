@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# Upload a single file from out/ to the server. Usage: ./bin/deploy-file <path-from-out>
+# Example: ./bin/deploy-file photo.jpg   or   ./bin/deploy-file works/proiect.jpg
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+FILE="${1:?Usage: $0 <path-from-out>}"
+SRC="out/$FILE"
+
+if [[ ! -e "$SRC" ]]; then
+  echo "Error: $SRC not found. Run 'pnpm build' first if needed."
+  exit 1
+fi
+
+if [[ ! -f ".deploy.env" ]]; then
+  echo "Error: .deploy.env not found. Create it from the same vars used by bin/deploy."
+  exit 1
+fi
+
+# shellcheck disable=SC1091
+source ".deploy.env"
+: "${DEPLOY_FTP_HOST:?}"
+: "${DEPLOY_FTP_USER:?}"
+: "${DEPLOY_FTP_PASS:?}"
+: "${DEPLOY_REMOTE_DIR:?}"
+DEPLOY_FTP_TLS="${DEPLOY_FTP_TLS:-1}"
+
+if ! command -v lftp >/dev/null 2>&1; then
+  echo "Error: lftp not installed. Install with: brew install lftp"
+  exit 1
+fi
+
+TLS_CMDS=""
+if [[ "${DEPLOY_FTP_TLS}" == "1" ]]; then
+  TLS_CMDS=$'set ftp:ssl-force true;\nset ssl:verify-certificate no;\n'
+else
+  TLS_CMDS=$'set ftp:ssl-force false;\n'
+fi
+
+# If FILE has a directory part (e.g. works/photo.jpg), ensure remote subdir exists
+REMOTE_PARENT="${FILE%/*}"
+if [[ "$REMOTE_PARENT" != "$FILE" ]]; then
+  MKDIR_CMD="mkdir -p ${REMOTE_PARENT};"
+else
+  MKDIR_CMD=""
+fi
+
+echo "Uploading $SRC to ${DEPLOY_FTP_HOST}:${DEPLOY_REMOTE_DIR}/$FILE"
+lftp -e "
+${TLS_CMDS}
+open -u ${DEPLOY_FTP_USER},${DEPLOY_FTP_PASS} ${DEPLOY_FTP_HOST};
+mkdir -p ${DEPLOY_REMOTE_DIR};
+cd ${DEPLOY_REMOTE_DIR};
+${MKDIR_CMD}
+put $SRC -o $FILE;
+bye
+"
+echo "Done."
