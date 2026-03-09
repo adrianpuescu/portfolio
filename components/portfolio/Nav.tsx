@@ -43,7 +43,17 @@ export function PortfolioNav() {
     <>
       <nav id="nav" className={`p-nav ${scrolled ? "scrolled" : ""} ${mobileOpen ? "mobile-open" : ""}`}>
         <div className="p-nav-inner">
-          <Link href="#" className="p-nav-logo" onClick={closeMobile}>
+          <Link
+            href="#"
+            className="p-nav-logo"
+            onClick={(e) => {
+              closeMobile()
+              if (window.scrollY > 0) {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            }}
+          >
             <span className="p-nav-logo-name">Adrian Puescu</span>
             <span className="p-nav-logo-sep"> • </span>
             <span className="p-nav-logo-rest">Portfolio</span>
