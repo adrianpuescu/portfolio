@@ -133,7 +133,11 @@ const BRAND_ITEMS: { name: string; file: string; href?: string }[] = [
     file: "Toyota.svg",
     href: "https://preview.nws.ai/audienzz/toyota-bz4x-de-v3-fullscreen/?opts=fb:1",
   },
-  { name: "KFC", file: "Adidas.svg" },
+  {
+    name: "KFC",
+    file: "KFC.svg",
+    href: "https://preview.nws.ai/1288508522/crispy-shaorma/?opts=fb:1",
+  },
   {
     name: "Audi",
     file: "Audi.svg",
@@ -184,7 +188,7 @@ const BRAND_ITEMS: { name: string; file: string; href?: string }[] = [
     file: "SWISS.svg",
     href: "https://preview.nws.ai/audienzz/swiss-i-brand-story-apr-24-i-v1/?opts=fb:1",
   },
-]
+];
 
 const BRAND_ITEMS_WITH_LINKS = BRAND_ITEMS.filter((b) => b.href)
 
