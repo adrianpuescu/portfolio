@@ -589,7 +589,7 @@ export function PortfolioWorkSection() {
             <div className="p-brands-label">
               Brands & Publishers that used the platform
             </div>
-            <p className="p-brands-hint">Each logo links to a live example</p>
+            <p className="p-brands-hint"><em>(each logo links to a live example)</em></p>
           </div>
           <div className="p-brands-marquee">
             <div className="p-brands-marquee-row p-brands-marquee-row-1" aria-hidden>
