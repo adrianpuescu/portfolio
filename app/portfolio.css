@@ -829,6 +829,7 @@
   margin-top: 0; padding: 48px;
   border-top: 1px solid var(--p-border);
   background: var(--p-white);
+  scroll-margin-top: 56px;
 }
 .p-brands-head {
   display: flex;

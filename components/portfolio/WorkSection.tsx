@@ -584,7 +584,7 @@ export function PortfolioWorkSection() {
             </div>
           ))}
         </div>
-        <div className="p-brands-strip">
+        <div id="brands-publishers" className="p-brands-strip">
           <div className="p-brands-head">
             <div className="p-brands-label">
               Brands & Publishers that used the platform
