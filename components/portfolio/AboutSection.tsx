@@ -72,7 +72,11 @@ export function PortfolioAboutSection() {
         <div className="p-eyebrow" data-n="05 •" style={{ marginBottom: 16 }}>
           About
         </div>
-        <h2 className="p-about-h">Beyond the screen</h2>
+        <h2 className="p-about-h">
+          Beyond
+          <br />
+          the screen
+        </h2>
         <div className="p-about-block">
           <div className="p-about-photo">
             <img
