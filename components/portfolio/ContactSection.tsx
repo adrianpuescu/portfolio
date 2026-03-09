@@ -15,7 +15,7 @@ export function PortfolioContactSection() {
           <h2 className="p-contact-h">
             Got a project
             <br />
-            <span>in mind?</span>
+            <span style={{ color: "var(--p-text3)" }}>in mind?</span>
           </h2>
         </div>
         <div className="p-contact-right">
