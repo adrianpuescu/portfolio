@@ -405,7 +405,7 @@ export function PortfolioWorkSection() {
           Global scale.
         </h2>
         <p className="p-work-intro">
-          For the past eight years I've worked on{" "}
+          For the past eight years, my main focus has been {" "}
           <a
             href="https://studio.nws.ai"
             target="_blank"
@@ -434,7 +434,7 @@ export function PortfolioWorkSection() {
           <div className="p-project-info">
             <div>
               <div className="p-project-tags">
-                <span className="p-ptag p-ptag-blue">Lead UI/UX</span>
+                <span className="p-ptag p-ptag-blue">Lead UI Engineer</span>
                 <span className="p-ptag p-ptag-slate">Last 8 years</span>
                 <span className="p-ptag p-ptag-gray">SaaS Platform</span>
                 <span className="p-ptag p-ptag-gray">Enterprise</span>
@@ -449,7 +449,6 @@ export function PortfolioWorkSection() {
                 >
                   studio.nws.ai
                 </a>
-                {" · Newsroom Studio"}
               </div>
 
               <ul className="p-project-bullets">
@@ -591,7 +590,7 @@ export function PortfolioWorkSection() {
         <div id="brands-publishers" className="p-brands-strip">
           <div className="p-brands-head">
             <div className="p-brands-label">
-              Brands & Publishers that used the platform
+              Brands that used the platform
             </div>
             <p className="p-brands-hint"><em>(each logo links to a live example)</em></p>
           </div>
