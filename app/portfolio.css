@@ -1553,7 +1553,6 @@
   .p-before-grid { grid-template-columns: 1fr; gap: 40px; }
   .p-focus-head { grid-template-columns: 1fr; gap: 20px; }
   .p-focus-row { grid-template-columns: 1fr; gap: 12px; }
-  .p-focus-row-left { flex-direction: column; align-items: flex-start; }
   .p-skills-layout { grid-template-columns: 1fr; }
   .p-skills-sticky { position: static; }
   .p-contact-inner { grid-template-columns: 1fr; gap: 40px; }
