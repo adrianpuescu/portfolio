@@ -2,8 +2,8 @@
 
 import { useRef, useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
 
-const VIDEO_SRC = "/video/hero-video-4-optimised.mp4"
-const VIDEO_POSTER = "/images/hero-video-poster.jpg"
+const VIDEO_SRC = "/video/hero-video-5-optimised.mp4"
+const VIDEO_POSTER = "/images/hero-video-5-poster.jpg"
 
 export type VideoSectionRef = { startWithSound: () => void }
 
