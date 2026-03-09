@@ -57,7 +57,7 @@ export function PortfolioContactSection() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="p-clink-icon" aria-hidden>
+              <span className="p-clink-icon p-clink-icon-github" aria-hidden>
                 <GitHubIcon />
               </span>
               GitHub
