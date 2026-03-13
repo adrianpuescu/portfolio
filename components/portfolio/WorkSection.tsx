@@ -99,11 +99,6 @@ const BRAND_ITEMS: { name: string; file: string; href?: string }[] = [
     href: "https://preview.nws.ai/newsroomai2/ikea-sales/?opts=fb:1",
   },
   {
-    name: "McDonald's",
-    file: "Adidas.svg",
-    href: "https://preview.nws.ai/mcdonalds_ro/mcdonalds-big-tasty-variety-brand-story-janmar26/?opts=fb:1",
-  },
-  {
     name: "BMW",
     file: "BMW.svg",
     href: "https://preview.nws.ai/display-ads/bmw-reveal-carousel/?opts=fb:1",
@@ -187,6 +182,11 @@ const BRAND_ITEMS: { name: string; file: string; href?: string }[] = [
     name: "SWISS",
     file: "SWISS.svg",
     href: "https://preview.nws.ai/audienzz/swiss-i-brand-story-apr-24-i-v1/?opts=fb:1",
+  },
+  {
+    name: "McDonald's",
+    file: "McDonalds.svg",
+    href: "https://preview.nws.ai/mcdonalds_ro/mcdonalds-big-tasty-variety-brand-story-janmar26/?opts=fb:1",
   },
 ];
 
