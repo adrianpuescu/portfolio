@@ -155,8 +155,8 @@ const ROWS = [
     name: "Tailwind CSS",
     icon: "tailwind_css" as const,
     desc: "Utility-first CSS at scale. Familiar territory conceptually - years of PostCSS component systems translate naturally.",
-    badge: "Learning",
-    badgeClass: "p-fb-learn",
+    badge: "Active",
+    badgeClass: "p-fb-active",
   },
   {
     name: "Rive Animation",
