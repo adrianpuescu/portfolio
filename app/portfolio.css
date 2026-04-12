@@ -1820,7 +1820,13 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   .p-nav-desk-cta { display: none; }
   .p-nav-hamburger { display: flex; }
   .portfolio-page section,
-  .p-contact { padding-left: 20px; padding-right: 20px; }
+  .p-contact {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+  .p-eyebrow { margin-bottom: 24px; }
   .p-video-section { padding: 32px 16px 48px; }
   .p-video-eyebrow { margin-bottom: 20px; }
   .p-video-controls-bar:not(.p-video-controls-bar-hidden) { opacity: 1; pointer-events: auto; }
@@ -1847,7 +1853,7 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   .p-before-grid { grid-template-columns: 1fr; gap: 40px; }
   .p-focus-head { grid-template-columns: 1fr; gap: 20px; }
   .p-focus-row { grid-template-columns: 1fr; gap: 12px; }
-  .p-skills-layout { grid-template-columns: 1fr; }
+  .p-skills-layout { grid-template-columns: 1fr; gap: 32px; }
   .p-skills-sticky { position: static; }
   .p-cert-dual {
     grid-template-columns: 1fr;
