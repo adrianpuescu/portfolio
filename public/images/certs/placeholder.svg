@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#eef1f6"/>
+  <rect x="48" y="48" width="704" height="504" rx="8" fill="none" stroke="#c5cad6" stroke-width="2" stroke-dasharray="12 8"/>
+  <text x="400" y="290" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="#717585">Certificate preview</text>
+  <text x="400" y="322" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#a0a4b0">Add your file under public/images/certs/</text>
+</svg>

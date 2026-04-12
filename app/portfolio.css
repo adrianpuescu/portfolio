@@ -3,6 +3,8 @@
   --p-bg: #f8f9fb;
   --p-bg2: #f0f2f5;
   --p-bg3: #e8eaed;
+  /* Slightly darker than --p-bg2 so white certificate art separates from section background */
+  --p-cert-well: #dde1ea;
   --p-white: #ffffff;
   --p-border: rgba(0,0,0,0.08);
   --p-border2: rgba(0,0,0,0.13);
@@ -11,6 +13,7 @@
   --p-text3: #717585;
   --p-text4: #a0a4b0;
   --p-blue: #2563eb;
+  --accent: var(--p-blue);
   --p-blue-light: #eff4ff;
   --p-blue-mid: #dbeafe;
   --p-blue-dark: #1d4ed8;
@@ -1314,6 +1317,263 @@ body.brand-modal-open .p-cursor-ring.is-hover {
 }
 .p-stag:hover { border-color: var(--p-blue); color: var(--p-blue); background: var(--p-blue-light); }
 
+/* Skills — certificate slideshow + name panel (left column) */
+.p-cert-slideshow {
+  margin-top: 22px;
+  width: 100%;
+  scroll-margin-top: 72px;
+}
+/* Row 1: slide + blue column in one framed block; row 2: arrows centered below */
+.p-cert-slideshow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  width: 100%;
+}
+.p-cert-dual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(112px, 32%, 220px);
+  align-items: stretch;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(15, 17, 23, 0.1);
+  box-shadow: 0 4px 24px rgba(15, 17, 23, 0.1);
+}
+.p-cert-slide-frame {
+  min-width: 0;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  background: var(--p-cert-well);
+}
+/* Two-layer swap: outgoing slides fully off-stage while incoming replaces (no cross-fade) */
+.p-cert-slide-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.p-cert-arrows {
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 12px;
+  width: 100%;
+}
+.p-cert-names {
+  min-width: 0;
+  min-height: 0;
+  background: var(--accent);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  /* Never taller than slideshow (desktop); --cert-slide-h set in JS */
+  max-height: var(--cert-slide-h, none);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.p-cert-names::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+/* Typography matches .p-video-eyebrow (“The last 8 years…”) */
+.p-cert-names-caption {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  align-self: flex-start;
+  text-align: left;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+.p-cert-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.p-cert-layer--single {
+  inset: 0;
+}
+.p-cert-layer--out {
+  z-index: 1;
+  pointer-events: none;
+}
+.p-cert-layer--in {
+  z-index: 2;
+}
+.p-cert-out--next {
+  animation: p-cert-out-next 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.p-cert-in--next {
+  animation: p-cert-in-next 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.p-cert-out--prev {
+  animation: p-cert-out-prev 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.p-cert-in--prev {
+  animation: p-cert-in-prev 0.48s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-cert-out--next,
+  .p-cert-in--next,
+  .p-cert-out--prev,
+  .p-cert-in--prev {
+    animation: none;
+  }
+}
+@keyframes p-cert-out-next {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes p-cert-in-next {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes p-cert-out-prev {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes p-cert-in-prev {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.p-cert-arrow {
+  place-self: center;
+  width: 40px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--p-text2);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.88;
+  transition: color .2s ease, transform .2s ease, opacity .2s ease;
+}
+.p-cert-arrow:focus-visible {
+  outline: 2px solid var(--p-blue);
+  outline-offset: 2px;
+  opacity: 1;
+}
+.p-cert-arrow:hover {
+  color: var(--p-blue);
+  opacity: 1;
+  transform: scale(1.12);
+}
+.p-cert-slide-hit {
+  display: block;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+  color: inherit;
+  transition: outline-color .15s;
+}
+.p-cert-slide-hit:hover {
+  opacity: 0.94;
+}
+.p-cert-slide-hit:focus-visible {
+  z-index: 1;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.p-cert-slide-hit--static {
+  cursor: default;
+  outline: none;
+}
+.p-cert-slide-hit--static:focus-visible {
+  outline: 2px solid var(--p-text3);
+  outline-offset: 2px;
+}
+.p-cert-slide-hit--static:hover {
+  outline: none;
+}
+.p-cert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: var(--p-cert-well);
+}
+.p-cert-img-fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.p-cert-img-fallback .p-cert-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  opacity: .45;
+}
+.p-cert-img-fallback-label {
+  position: relative;
+  z-index: 1;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--p-text2);
+  line-height: 1.4;
+  max-width: 90%;
+}
+.p-cert-slide-verify {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  background: rgba(15, 17, 23, 0.82);
+  color: #e2e8f0;
+  pointer-events: none;
+}
 /* Contact */
 .p-contact {
   background: #0f1117;
@@ -1590,6 +1850,15 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   .p-focus-row { grid-template-columns: 1fr; gap: 12px; }
   .p-skills-layout { grid-template-columns: 1fr; }
   .p-skills-sticky { position: static; }
+  .p-cert-dual {
+    grid-template-columns: 1fr;
+  }
+  .p-cert-slide-frame {
+    max-width: none;
+  }
+  .p-cert-arrows {
+    max-width: none;
+  }
   .p-contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .p-about-block { grid-template-columns: 1fr; gap: 24px; justify-items: start; }
   .p-footer-inner { flex-direction: column; gap: 8px; padding: 0; }
