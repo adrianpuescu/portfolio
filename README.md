@@ -24,6 +24,8 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Deploy
 
-Static export: `pnpm build` → upload contents of `out/` to the host. See [DEPLOY.md](./DEPLOY.md) for cPanel steps.
+**Recommended:** run `./bin/deploy` from the repo root. It installs dependencies, builds the static export, writes `deploy/` and `deploy.zip`, and—if [`.deploy.env`](./DEPLOY.md) is configured—uploads via `lftp`. Without `.deploy.env`, it stops after creating `deploy.zip` with manual upload instructions.
 
-To upload only a single file (e.g. one image) via FTP from the terminal: `pnpm run deploy:file -- <path-from-out>` (e.g. `pnpm run deploy:file -- photo.jpg`). Requires `.deploy.env` and `lftp`.
+For manual cPanel steps, single-file FTP uploads, and env variable reference, see [DEPLOY.md](./DEPLOY.md).
+
+To upload only one built file (e.g. an image) via FTP: `pnpm run deploy:file -- <path-from-out>` (e.g. `pnpm run deploy:file -- photo.jpg`). Requires `.deploy.env` and `lftp`.
