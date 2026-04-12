@@ -58,7 +58,7 @@ const CERT_SLIDES: {
     href: SCRIMBA_CERTIFICATES_PAGE,
   },
   {
-    label: "RO · Web fundamentals (HTML & animation)",
+    label: "RO · Web fundamentals (HTML)",
     src: "/images/certs/ro-ministry-web-fundamentals.jpg",
   },
 ];
