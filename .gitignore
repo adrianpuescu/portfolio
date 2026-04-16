@@ -18,6 +18,8 @@ out/
 .DS_Store
 
 .deploy.env
+# Local-only deploy playbook (FTP, cPanel paths) — not on GitHub
+README.DEPLOY.md
 deploy/
 deploy.zip
 
