@@ -8,7 +8,7 @@ export function PortfolioContactSection() {
           <div
             className="p-eyebrow"
             style={{ color: "rgba(148,163,184,.5)", marginBottom: 24 }}
-            data-n="06 •"
+            data-n="07 •"
           >
             Let&apos;s Talk
           </div>

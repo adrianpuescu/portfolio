@@ -183,7 +183,7 @@ export function PortfolioFocusSection() {
         borderTop: "1px solid var(--p-border)",
       }}
     >
-      <div className="p-eyebrow" data-n="04 •">
+      <div className="p-eyebrow" data-n="05 •">
         Current Focus
       </div>
       <div className="p-focus-head p-reveal">

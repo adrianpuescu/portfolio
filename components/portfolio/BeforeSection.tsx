@@ -22,7 +22,7 @@ export function PortfolioBeforeSection() {
         borderTop: "1px solid var(--p-border)",
       }}
     >
-      <div className="p-eyebrow" data-n="02 •">
+      <div className="p-eyebrow" data-n="03 •">
         Background
       </div>
       <div className="p-before-grid">

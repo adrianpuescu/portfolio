@@ -376,7 +376,7 @@ export function PortfolioSkillsSection() {
         borderTop: "1px solid var(--p-border)",
       }}
     >
-      <div className="p-eyebrow" data-n="03 •">
+      <div className="p-eyebrow" data-n="04 •">
         Toolkit
       </div>
       <div className="p-skills-layout">

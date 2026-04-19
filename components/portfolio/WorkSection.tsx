@@ -476,8 +476,17 @@ export function PortfolioWorkSection() {
             <div className="p-project-meta">
               <div>
                 <div className="p-pmeta-label">Primary Focus</div>
-                <div className="p-pmeta-val">
-                  HTML · CSS/PostCSS · JS · UI Architecture
+                <div className="p-pmeta-tags" aria-label="Primary focus">
+                  {[
+                    "HTML",
+                    "CSS/PostCSS",
+                    "JS",
+                    "UI Architecture",
+                  ].map((t) => (
+                    <span key={t} className="p-pmeta-chip">
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

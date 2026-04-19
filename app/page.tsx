@@ -5,6 +5,7 @@ import { PortfolioNav } from "@/components/portfolio/Nav"
 import { PortfolioHero } from "@/components/portfolio/Hero"
 import { PortfolioVideoSection, type VideoSectionRef } from "@/components/portfolio/VideoSection"
 import { PortfolioWorkSection } from "@/components/portfolio/WorkSection"
+import { PortfolioExperimentsSection } from "@/components/portfolio/ExperimentsSection"
 import { PortfolioBeforeSection } from "@/components/portfolio/BeforeSection"
 import { PortfolioSkillsSection } from "@/components/portfolio/SkillsSection"
 import { PortfolioFocusSection } from "@/components/portfolio/FocusSection"
@@ -57,6 +58,7 @@ export default function Page() {
         <PortfolioHero onExploreClick={onExploreClick} />
         <PortfolioVideoSection ref={videoSectionRef} />
         <PortfolioWorkSection />
+        <PortfolioExperimentsSection />
         <PortfolioBeforeSection />
         <PortfolioSkillsSection />
         <PortfolioFocusSection />
