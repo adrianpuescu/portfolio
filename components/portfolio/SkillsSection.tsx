@@ -28,6 +28,16 @@ const CERT_SLIDES: {
   href?: string;
 }[] = [
   {
+    label: "Scrimba · Learn React",
+    src: "/images/certs/scrimba-react.jpg",
+    href: SCRIMBA_CERTIFICATES_PAGE,
+  },
+  {
+    label: "Scrimba · Learn Modern JavaScript",
+    src: "/images/certs/scrimba-modern-javascript.jpg",
+    href: SCRIMBA_CERTIFICATES_PAGE,
+  },
+  {
     label: "EF SET · English · C1 · 64/100",
     src: "/images/certs/ef-set-english-c1.jpg",
     href: "https://cert.efset.org/en/DdUuab",
@@ -43,7 +53,7 @@ const CERT_SLIDES: {
     href: "https://verify.skilljar.com/c/hip36ki3q89h",
   },
   {
-    label: "Scrimba · Figma, HTML & CSS",
+    label: "Scrimba · Build websites with Figma, HTML & CSS",
     src: "/images/certs/scrimba-figma-html-css.jpg",
     href: SCRIMBA_CERTIFICATES_PAGE,
   },
@@ -318,6 +328,7 @@ const GROUPS = [
       "HTML5",
       "CSS / PostCSS",
       "JavaScript",
+      "React.js",
       "SVG",
       "Animation & Motion",
       "Ad Format Development",
