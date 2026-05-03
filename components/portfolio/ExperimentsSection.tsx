@@ -117,21 +117,19 @@ function ProjectSlideshow({
 }
 
 const EXPERIMENTS: {
-  title: string
-  period: string
-  lede: string
-  more?: string
-  stack: string[]
-  href: string
-  slides: { src: string; title: string }[]
+  title: string;
+  period: string;
+  lede: string;
+  more?: string;
+  stack: string[];
+  href: string;
+  slides: { src: string; title: string }[];
 }[] = [
   {
     title: "Boardly",
     period: "Apr 2026 – Present",
-    lede:
-      "Turn-based board game platform built full-stack with Next.js 14, TypeScript and Supabase. Chess is the first game, with an architecture meant to grow into more games over time.",
-    more:
-      "Real-time multiplayer via Supabase Realtime, guest play without an account, a multi-board dashboard for simultaneous games, PWA-ready and mobile-first. Row-level security on the database. Available in English, Romanian and Spanish.",
+    lede: "Turn-based board game platform built full-stack with Next.js 14, TypeScript and Supabase. Chess is the first game, with an architecture meant to grow into more games over time.",
+    more: "Real-time multiplayer via Supabase Realtime, guest play without an account, a multi-board dashboard for simultaneous games, PWA-ready and mobile-first. Row-level security on the database. Available in English, Romanian and Spanish.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -142,18 +140,20 @@ const EXPERIMENTS: {
     ],
     href: "https://boardly.webz.ro/",
     slides: [
-      { src: "/images/experiments/boardly/lobby.png", title: "Lobby" },
       { src: "/images/experiments/boardly/login.png", title: "Login" },
+      { src: "/images/experiments/boardly/lobby.png", title: "Lobby" },
       { src: "/images/experiments/boardly/dashboard.png", title: "Dashboard" },
-      { src: "/images/experiments/boardly/chess-game.png", title: "Chess game" },
+      {
+        src: "/images/experiments/boardly/chess-game.png",
+        title: "Chess game",
+      },
       { src: "/images/experiments/boardly/profile.png", title: "Profile" },
     ],
   },
   {
     title: "RiveAds Studio",
     period: "Mar 2026 – Present",
-    lede:
-      "AI-assisted web app for generating animated display ads from natural language, rendered with the Rive runtime. A typed AdSpec schema drives layout, copy, and animation; outputs target embeddable HTML/JS, video, and static fallbacks (some formats on the roadmap).",
+    lede: "AI-assisted web app for generating animated display ads from natural language, rendered with the Rive runtime. A typed AdSpec schema drives layout, copy, and animation; outputs target embeddable HTML/JS, video, and static fallbacks (some formats on the roadmap).",
     more: "Experimental MVP — active development.",
     stack: [
       "UI design",
@@ -167,12 +167,12 @@ const EXPERIMENTS: {
     href: "https://riveads.webz.ro/",
     slides: [
       {
-        src: "/images/experiments/riveads/editor.png",
-        title: "Editor canvas",
-      },
-      {
         src: "/images/experiments/riveads/homepage.png",
         title: "Homepage",
+      },
+      {
+        src: "/images/experiments/riveads/editor.png",
+        title: "Editor canvas",
       },
       {
         src: "/images/experiments/riveads/dashboard.png",
@@ -180,7 +180,7 @@ const EXPERIMENTS: {
       },
     ],
   },
-]
+];
 
 export function PortfolioExperimentsSection() {
   return (
