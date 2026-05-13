@@ -1216,7 +1216,7 @@ body.brand-modal-open .p-cursor-ring.is-hover {
 .p-cap-t { font-size: 15px; font-weight: 600; color: var(--p-text); margin-bottom: 6px; }
 .p-cap-d { font-size: 14px; color: var(--p-text3); line-height: 1.6; }
 
-/* Side projects / experiments */
+/* Side projects (recent work section) */
 .p-exp-head {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -1248,7 +1248,7 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   gap: 28px;
 }
 
-/* Experiments: title row above slideshow; Open live site bottom-right of block (desktop) / same row as title (mobile) */
+/* Recent work: title row above slideshow; Open live site bottom-right of block (desktop) / same row as title (mobile) */
 .p-exp-slideshow-block {
   display: flex;
   flex-direction: column;
@@ -1279,38 +1279,38 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   min-height: 1.2em;
 }
 /* Side projects: 1440×900 (16:10) assets — fill frame, no letterboxing */
-#experiments .p-slideshow {
+#recent-work .p-slideshow {
   aspect-ratio: 1440 / 900;
   background: #0f1117;
 }
-#experiments .p-slide {
+#recent-work .p-slide {
   background: #0f1117;
 }
-#experiments .p-slide img {
+#recent-work .p-slide img {
   object-fit: cover;
   object-position: center center;
 }
 
-#experiments .p-exp-launch--corner {
+#recent-work .p-exp-launch--corner {
   position: absolute;
   right: 0;
   bottom: 0;
   z-index: 2;
 }
-#experiments .p-exp-slideshow-timeline {
+#recent-work .p-exp-slideshow-timeline {
   position: relative;
 }
-#experiments .p-exp-slideshow-timeline .p-timeline-prev {
+#recent-work .p-exp-slideshow-timeline .p-timeline-prev {
   left: 0;
   right: auto;
 }
-#experiments .p-exp-slideshow-timeline .p-timeline-next {
+#recent-work .p-exp-slideshow-timeline .p-timeline-next {
   left: auto;
   right: 0;
 }
-/* Experiments desktop: prev/next hidden — navigate via timeline segments only */
+/* Recent work desktop: prev/next hidden — navigate via timeline segments only */
 @media (min-width: 769px) {
-  #experiments .p-exp-slideshow-timeline .p-timeline-arrow {
+  #recent-work .p-exp-slideshow-timeline .p-timeline-arrow {
     display: none !important;
   }
 }
@@ -1334,8 +1334,8 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   padding-top: 0.06em;
 }
 
-/* Experiments: same card shell as NWS; side preview + smaller titles than Featured Work */
-#experiments .p-project-name {
+/* Recent work: same card shell as NWS; side preview + smaller titles than Featured Work */
+#recent-work .p-project-name {
   font-size: clamp(26px, 3.2vw, 34px);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -1343,19 +1343,19 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   margin-bottom: 4px;
 }
 /* Single meta block: NWS uses a 2-col grid — one block only gets half the row; use full width */
-#experiments .p-project-meta {
+#recent-work .p-project-meta {
   grid-template-columns: 1fr;
 }
-#experiments .p-exp-card-inner {
+#recent-work .p-exp-card-inner {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   align-items: stretch;
 }
 @media (min-width: 821px) {
-  #experiments .p-project-info {
+  #recent-work .p-project-info {
     padding-right: 32px;
   }
-  #experiments .p-project-visual {
+  #recent-work .p-project-visual {
     border-top: none;
     border-left: 1px solid var(--p-border);
     display: flex;
@@ -1365,10 +1365,10 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   }
 }
 @media (max-width: 820px) {
-  #experiments .p-exp-card-inner {
+  #recent-work .p-exp-card-inner {
     grid-template-columns: 1fr;
   }
-  #experiments .p-project-visual {
+  #recent-work .p-project-visual {
     border-left: none;
   }
 }
@@ -2120,17 +2120,17 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   }
   .p-project-visual:hover .p-timeline-arrow { opacity: 1; }
 
-  /* Experiments: same slideshow stack as NWS — title + Open live site row; timeline = arrows only */
-  #experiments .p-exp-slideshow-block {
+  /* Recent work: same slideshow stack as NWS — title + Open live site row; timeline = arrows only */
+  #recent-work .p-exp-slideshow-block {
     padding-bottom: 0;
   }
-  #experiments .p-exp-slideshow-label-row {
+  #recent-work .p-exp-slideshow-label-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
   }
-  #experiments .p-exp-slide-title {
+  #recent-work .p-exp-slide-title {
     flex: 1;
     min-width: 0;
     margin: 0;
@@ -2140,13 +2140,13 @@ body.brand-modal-open .p-cursor-ring.is-hover {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  #experiments .p-exp-launch--corner {
+  #recent-work .p-exp-launch--corner {
     position: static;
     flex-shrink: 0;
     margin: 0;
   }
-  /* Experiments: arrows always visible on mobile (same as NWS), not hover-gated */
-  #experiments .p-exp-slideshow-timeline .p-timeline-arrow {
+  /* Recent work: arrows always visible on mobile (same as NWS), not hover-gated */
+  #recent-work .p-exp-slideshow-timeline .p-timeline-arrow {
     display: flex !important;
     opacity: 1 !important;
   }

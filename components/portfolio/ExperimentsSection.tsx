@@ -116,7 +116,7 @@ function ProjectSlideshow({
   )
 }
 
-const EXPERIMENTS: {
+const RECENT_PROJECTS: {
   title: string;
   period: string;
   lede: string;
@@ -125,6 +125,30 @@ const EXPERIMENTS: {
   href: string;
   slides: { src: string; title: string }[];
 }[] = [
+  {
+    title: "Cadu",
+    period: "2026 – Present",
+    lede: "WhatsApp-native website builder - businesses describe themselves in chat and Cadu generates and manages their site. No login, no dashboard, no technical knowledge needed.",
+    more: "My contribution: naming, logo, landing page, copywriting, animations, visual guidelines, communication strategy, marketing planning and product logic.",
+    stack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "UI design",
+      "Copywriting",
+      "Motion",
+      "Marketing",
+      "Cursor",
+      "Frontend",
+    ],
+    href: "https://cadu.app/",
+    slides: [
+      { src: "/images/experiments/cadu/hero.png", title: "Hero" },
+      { src: "/images/experiments/cadu/how-it-works.png", title: "How it works" },
+      { src: "/images/experiments/cadu/features.png", title: "Features" },
+      { src: "/images/experiments/cadu/pricing.png", title: "Pricing" }
+    ],
+  },
   {
     title: "Boardly",
     period: "Apr 2026 – Present",
@@ -154,7 +178,7 @@ const EXPERIMENTS: {
     title: "RiveAds Studio",
     period: "Mar 2026 – Present",
     lede: "AI-assisted web app for generating animated display ads from natural language, rendered with the Rive runtime. A typed AdSpec schema drives layout, copy, and animation; outputs target embeddable HTML/JS, video, and static fallbacks (some formats on the roadmap).",
-    more: "Experimental MVP — active development.",
+    more: "Experimental MVP - active development.",
     stack: [
       "UI design",
       "TypeScript",
@@ -185,7 +209,7 @@ const EXPERIMENTS: {
 export function PortfolioExperimentsSection() {
   return (
     <section
-      id="experiments"
+      id="recent-work"
       style={{
         background: "var(--p-white)",
         borderTop: "1px solid var(--p-border)",
@@ -198,49 +222,49 @@ export function PortfolioExperimentsSection() {
         <h2 className="p-exp-heading">
           Recent
           <br />
-          experiments
+          work
         </h2>
         <p className="p-exp-intro">
-          Smaller builds and proofs of concept — things I ship on the side to
-          stay sharp on full-stack patterns, animation, and AI-assisted product
+          Things I build and ship on the side - from proofs of concept to full
+          products, spanning AI tooling, full-stack development and product
           work.
         </p>
       </div>
       <div className="p-exp-list">
-        {EXPERIMENTS.map((exp) => (
-          <article
-            key={exp.href}
-            className="p-project-card p-reveal p-rd1"
-          >
+        {RECENT_PROJECTS.map((project) => (
+          <article key={project.href} className="p-project-card p-reveal p-rd1">
             <div className="p-project-card-inner p-exp-card-inner">
               <div className="p-project-info">
                 <div>
                   <div className="p-project-tags">
                     <span className="p-ptag p-ptag-blue">Side project</span>
-                    <span className="p-ptag p-ptag-slate">{exp.period}</span>
+                    <span className="p-ptag p-ptag-slate">{project.period}</span>
                   </div>
-                  <div className="p-project-name">{exp.title}</div>
+                  <div className="p-project-name">{project.title}</div>
                   <div className="p-project-product">
                     <a
-                      href={exp.href}
+                      href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-text-link"
                     >
-                      {hostFromHref(exp.href)}
+                      {hostFromHref(project.href)}
                     </a>
                   </div>
                   <ul className="p-project-bullets">
-                    <li>{exp.lede}</li>
-                    {exp.more ? <li>{exp.more}</li> : null}
+                    <li>{project.lede}</li>
+                    {project.more ? <li>{project.more}</li> : null}
                   </ul>
                 </div>
                 <div className="p-project-meta">
                   <div>
                     <div className="p-pmeta-label">Stack</div>
                     <div className="p-pmeta-tags" aria-label="Stack">
-                      {exp.stack.map((t, i) => (
-                        <span key={`${exp.href}-stack-${i}`} className="p-pmeta-chip">
+                      {project.stack.map((t, i) => (
+                        <span
+                          key={`${project.href}-stack-${i}`}
+                          className="p-pmeta-chip"
+                        >
                           {t}
                         </span>
                       ))}
@@ -249,12 +273,12 @@ export function PortfolioExperimentsSection() {
                 </div>
               </div>
               <div className="p-project-visual">
-                <ProjectSlideshow href={exp.href} slides={exp.slides} />
+                <ProjectSlideshow href={project.href} slides={project.slides} />
               </div>
             </div>
           </article>
         ))}
       </div>
     </section>
-  )
+  );
 }
