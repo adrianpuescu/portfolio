@@ -162,7 +162,7 @@ const RECENT_PROJECTS: {
       "Supabase",
       "AI-assisted dev",
     ],
-    href: "https://boardly.webz.ro/",
+    href: "https://boardly.games/",
     slides: [
       { src: "/images/experiments/boardly/login.png", title: "Login" },
       { src: "/images/experiments/boardly/lobby.png", title: "Lobby" },
