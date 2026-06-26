@@ -48,7 +48,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Project layout
 
 - **`app/`** — `page.tsx` (main portfolio page), `layout.tsx`, `globals.css`, `portfolio.css`
-- **`components/portfolio/`** — Nav, Hero, VideoSection, WorkSection, BeforeSection, SkillsSection, FocusSection, AboutSection, ContactSection, Footer, Cursor, ScrollReveal, SocialIcons, HtmlComment
+- **`components/portfolio/`** — Nav, Hero, WorkSection, FeaturedWorkVideo, BeforeSection, SkillsSection, FocusSection, AboutSection, ContactSection, Footer, Cursor, ScrollReveal, SocialIcons, HtmlComment
 - **`hooks/`** — Shared hooks (e.g. `use-mobile`)
 - **`scripts/`** — Build helpers (e.g. HTML comment injection after export)
 - **`bin/`** — Optional automation for packaging the static output (not required to run or build locally)

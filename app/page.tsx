@@ -1,9 +1,8 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { useEffect } from "react"
 import { PortfolioNav } from "@/components/portfolio/Nav"
 import { PortfolioHero } from "@/components/portfolio/Hero"
-import { PortfolioVideoSection, type VideoSectionRef } from "@/components/portfolio/VideoSection"
 import { PortfolioWorkSection } from "@/components/portfolio/WorkSection"
 import { PortfolioExperimentsSection } from "@/components/portfolio/ExperimentsSection"
 import { PortfolioBeforeSection } from "@/components/portfolio/BeforeSection"
@@ -16,8 +15,6 @@ import { PortfolioScrollReveal } from "@/components/portfolio/ScrollReveal"
 import { PortfolioCursor } from "@/components/portfolio/Cursor"
 
 export default function Page() {
-  const videoSectionRef = useRef<VideoSectionRef>(null)
-
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       const target = e.target as HTMLElement
@@ -34,8 +31,7 @@ export default function Page() {
 
   const onExploreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    // Exact ca în HTML: scroll smooth, după 700ms currentTime=0 + startVideo(true) echivalent
-    document.getElementById("video-section")?.scrollIntoView({ behavior: "smooth", block: "center" })
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth", block: "start" })
     setTimeout(() => {
       const heroVideo = document.getElementById("heroVideo") as HTMLVideoElement | null
       if (heroVideo) {
@@ -56,7 +52,6 @@ export default function Page() {
       <PortfolioNav />
       <main>
         <PortfolioHero onExploreClick={onExploreClick} />
-        <PortfolioVideoSection ref={videoSectionRef} />
         <PortfolioWorkSection />
         <PortfolioExperimentsSection />
         <PortfolioBeforeSection />

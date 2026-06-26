@@ -1,4 +1,5 @@
 import { LinkedInIcon, EmailIcon, GitHubIcon } from "./SocialIcons"
+import { HeroExplore } from "./HeroExplore"
 
 export function PortfolioHero({
   onExploreClick,
@@ -83,17 +84,7 @@ export function PortfolioHero({
 
       <div className="p-hero-bottom">
         <div className="p-hero-bottom-inner">
-          <div className="p-hero-explore">
-            <a
-              href="#video-section"
-              className="p-explore-btn"
-              id="exploreBtn"
-              onClick={onExploreClick}
-            >
-              <span className="p-explore-arrow">↓</span>
-              Explore
-            </a>
-          </div>
+          <HeroExplore onExploreClick={onExploreClick} />
           <div className="p-hero-stats">
             <div className="p-stat-item">
               <div className="p-stat-num">

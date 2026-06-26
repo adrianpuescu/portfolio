@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
+import { FeaturedWorkVideo } from "@/components/portfolio/FeaturedWorkVideo"
 
 const BRAND_ITEMS: { name: string; file: string; href?: string }[] = [
   {
@@ -337,12 +338,55 @@ function getSectionLabelForSlide(slideIndex: number): string {
   return label
 }
 
+function WorkMediaTabs({
+  workMediaTab,
+  onSelectTab,
+}: {
+  workMediaTab: "overview" | "screens"
+  onSelectTab: (tab: "overview" | "screens") => void
+}) {
+  return (
+    <div
+      className="p-work-media-tabs"
+      role="tablist"
+      aria-label="NWS Studio media"
+    >
+      <button
+        type="button"
+        role="tab"
+        id="work-media-tab-overview"
+        className="p-work-media-tab"
+        aria-selected={workMediaTab === "overview"}
+        aria-controls="work-media-panel-overview"
+        onClick={() => onSelectTab("overview")}
+      >
+        Overview
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="work-media-tab-screens"
+        className="p-work-media-tab"
+        aria-selected={workMediaTab === "screens"}
+        aria-controls="work-media-panel-screens"
+        onClick={() => onSelectTab("screens")}
+      >
+        Screens
+      </button>
+    </div>
+  )
+}
+
 export function PortfolioWorkSection() {
   const [activeSlide, setActiveSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const [slideshowExpanded, setSlideshowExpanded] = useState(false)
   const [brandModalOpen, setBrandModalOpen] = useState(false)
   const [brandModalIndex, setBrandModalIndex] = useState(0)
+  const [moreDetailsOpen, setMoreDetailsOpen] = useState(false)
+  const [workMediaTab, setWorkMediaTab] = useState<"overview" | "screens">(
+    "overview",
+  )
   const brandModalSwipeStart = useRef<number | null>(null)
   const n = SLIDESHOW_IMAGES.length
   const goPrev = () => setActiveSlide((s) => (s <= 0 ? n - 1 : s - 1))
@@ -392,107 +436,88 @@ export function PortfolioWorkSection() {
   }, [])
 
   useEffect(() => {
-    if (n <= 1) return
+    const onVideoStart = () => setWorkMediaTab("overview")
+    window.addEventListener("portfolio-video-started", onVideoStart)
+    return () =>
+      window.removeEventListener("portfolio-video-started", onVideoStart)
+  }, [])
+
+  useEffect(() => {
+    if (workMediaTab !== "screens" || n <= 1) return
     const id = setInterval(() => {
       setActiveSlide((prev) => (prev >= n - 1 ? 0 : prev + 1))
     }, 5000)
     return () => clearInterval(id)
-  }, [n])
+  }, [n, workMediaTab])
 
   return (
-    <section id="work" style={{ background: "var(--p-white)" }}>
-      <div className="p-eyebrow" data-n="01 •">
-        Featured Work
-      </div>
+    <section id="work">
+      <div className="p-work-feature-band p-reveal">
+        <div className="p-work-feature-band__copy">
+          <div className="p-eyebrow p-work-feature-eyebrow" data-n="01 •">
+            Featured Work
+          </div>
 
-      <div className="p-work-head p-reveal">
-        <h2 className="p-work-title">
-          One product.
-          <br />
-          Global scale.
-        </h2>
-        <p className="p-work-intro">
-          For the past eight years, my main focus has been {" "}
-          <a
-            href="https://studio.nws.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-text-link"
-          >
-            NWS Studio
-          </a>
-          {", the flagship creative platform at "}
-          <a
-            href="https://nws.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-text-link"
-          >
-            Newsroom AI
-          </a>
-          , shaping the UI/UX, feature design and frontend implementation
-          while keeping the product production-ready for global publishers and
-          brands.
-        </p>
-      </div>
-
-      <div className="p-project-card p-reveal">
-        <div className="p-project-card-inner">
-          <div className="p-project-info">
-            <div>
-              <div className="p-project-tags">
-                <span className="p-ptag p-ptag-blue">Lead UI Engineer</span>
-                <span className="p-ptag p-ptag-slate">Last 8 years</span>
-                <span className="p-ptag p-ptag-gray">SaaS Platform</span>
-                <span className="p-ptag p-ptag-gray">Enterprise</span>
-              </div>
-              <div className="p-project-name">NWS Studio</div>
-              <div className="p-project-product">
+          <div className="p-work-feature-band__head-block">
+            <div className="p-work-head p-work-head--feature">
+              <h2 className="p-work-title">
+                One product.
+                <br />
+                Global scale.
+              </h2>
+              <p className="p-work-intro">
+                For the past eight years, my main focus has been{" "}
                 <a
                   href="https://studio.nws.ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-text-link"
                 >
-                  studio.nws.ai
+                  NWS Studio
                 </a>
-              </div>
-
-              <ul className="p-project-bullets">
-                <li>
-                  Implemented <strong>UI across the platform</strong> - editor,
-                  dashboards, asset management, reporting.
-                </li>
-                <li>
-                  Built the <strong>WYSIWYG editor UI</strong> powering story
-                  and ad creation.
-                </li>
-                <li>
-                  Designed a <strong>dataset-driven creative system</strong>{" "}
-                  generating hundreds of ad variations in one pass.
-                </li>
-              </ul>
+                {", the flagship creative platform at "}
+                <a
+                  href="https://nws.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-text-link"
+                >
+                  Newsroom AI
+                </a>
+                , shaping the UI/UX, feature design and frontend implementation
+                while keeping the product production-ready for global publishers
+                and brands.
+              </p>
             </div>
-            <div className="p-project-meta">
-              <div>
-                <div className="p-pmeta-label">Primary Focus</div>
-                <div className="p-pmeta-tags" aria-label="Primary focus">
-                  {[
-                    "HTML",
-                    "CSS/PostCSS",
-                    "JS",
-                    "UI Architecture",
-                  ].map((t) => (
-                    <span key={t} className="p-pmeta-chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div className="p-work-media-toolbar p-work-media-toolbar--head">
+              <WorkMediaTabs
+                workMediaTab={workMediaTab}
+                onSelectTab={setWorkMediaTab}
+              />
             </div>
           </div>
+        </div>
 
-          <div className="p-project-visual">
+        <div className="p-work-media-stage">
+          <div className="p-work-media-stage__inset">
+          <div className="p-work-media-stage__panels">
+            <div
+              id="work-media-panel-overview"
+              role="tabpanel"
+              aria-labelledby="work-media-tab-overview"
+              hidden={workMediaTab !== "overview"}
+              className="p-work-media-panel p-work-media-panel--video"
+            >
+              <FeaturedWorkVideo active={workMediaTab === "overview"} />
+            </div>
+
+            <div
+              id="work-media-panel-screens"
+              role="tabpanel"
+              aria-labelledby="work-media-tab-screens"
+              hidden={workMediaTab !== "screens"}
+              className="p-work-media-panel p-work-media-panel--screens"
+            >
             <div
               className={`p-slideshow-wrap ${isMobile ? "p-slideshow-wrap-tappable" : ""}`}
               {...(isMobile && {
@@ -511,9 +536,6 @@ export function PortfolioWorkSection() {
                 },
               })}
             >
-              <div className="p-slideshow-section-label" aria-live="polite">
-                {currentSectionLabel}
-              </div>
               <div className="p-slideshow">
                 {SLIDESHOW_IMAGES.map((src, i) => (
                   <div
@@ -524,9 +546,37 @@ export function PortfolioWorkSection() {
                   </div>
                 ))}
               </div>
+              <div
+                className="p-work-slideshow-mobile-nav"
+                aria-label="Slide navigation"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="p-work-slideshow-mobile-nav__arrow"
+                  onClick={goPrev}
+                  aria-label="Previous slide"
+                >
+                  ‹
+                </button>
+                <div
+                  className="p-work-slideshow-mobile-nav__label"
+                  aria-live="polite"
+                >
+                  {currentSectionLabel}
+                </div>
+                <button
+                  type="button"
+                  className="p-work-slideshow-mobile-nav__arrow"
+                  onClick={goNext}
+                  aria-label="Next slide"
+                >
+                  ›
+                </button>
+              </div>
             </div>
             <div
-              className="p-slideshow-timeline"
+              className="p-slideshow-timeline p-work-feature-slideshow-timeline"
               style={{ ["--p-timeline-segments" as string]: n }}
             >
               <div className="p-timeline-grid">
@@ -590,18 +640,93 @@ export function PortfolioWorkSection() {
                 ›
               </button>
             </div>
+            </div>
+          </div>
           </div>
         </div>
-        <div className="p-caps-grid">
-          {CAPS.map((cap, i) => (
-            <div
-              key={cap.t}
-              className={`p-cap p-reveal ${i === 0 ? "p-rd1" : i === 1 ? "p-rd2" : "p-rd3"}`}
-            >
-              <div className="p-cap-t">{cap.t}</div>
-              <div className="p-cap-d">{cap.d}</div>
+      </div>
+
+      <div className="p-work-detail-wrap p-reveal">
+        <div className="p-project-card">
+          <div className="p-project-card-inner p-work-card-inner">
+          <div className="p-project-info">
+            <div>
+              <div className="p-project-tags">
+                <span className="p-ptag p-ptag-blue">Lead UI Engineer</span>
+                <span className="p-ptag p-ptag-slate">8 years</span>
+                <span className="p-ptag p-ptag-gray">SaaS Platform</span>
+                <span className="p-ptag p-ptag-gray">Enterprise</span>
+              </div>
+              <div className="p-project-name">NWS Studio</div>
+              <div className="p-project-product">
+                <a
+                  href="https://studio.nws.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-text-link"
+                >
+                  studio.nws.ai
+                </a>
+              </div>
+
+              <ul className="p-project-bullets">
+                <li>
+                  Implemented <strong>UI across the platform</strong> -
+                  editor, dashboards, asset management, reporting.
+                </li>
+                <li>
+                  Built the <strong>WYSIWYG editor UI</strong> powering story
+                  and ad creation.
+                </li>
+                <li>
+                  Designed a <strong>dataset-driven creative system</strong>{" "}
+                  generating hundreds of ad variations in one pass.
+                </li>
+              </ul>
+
+              <button
+                type="button"
+                className="p-work-more-details-btn"
+                aria-expanded={moreDetailsOpen}
+                aria-controls="work-more-details-panel"
+                onClick={() => setMoreDetailsOpen((open) => !open)}
+              >
+                {moreDetailsOpen ? "Hide details" : "More details"}
+              </button>
             </div>
-          ))}
+
+            {moreDetailsOpen ? (
+              <div
+                id="work-more-details-panel"
+                className="p-caps-grid p-work-more-details-panel"
+              >
+                {CAPS.map((cap) => (
+                  <div key={cap.t} className="p-cap">
+                    <div className="p-cap-t">{cap.t}</div>
+                    <div className="p-cap-d">{cap.d}</div>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            <div className="p-project-meta">
+              <div>
+                <div className="p-pmeta-label">Primary Focus</div>
+                <div className="p-pmeta-tags" aria-label="Primary focus">
+                  {[
+                    "HTML",
+                    "CSS/PostCSS",
+                    "JS",
+                    "UI Architecture",
+                  ].map((t) => (
+                    <span key={t} className="p-pmeta-chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="brands-publishers" className="p-brands-strip">
           <div className="p-brands-head">
@@ -636,6 +761,7 @@ export function PortfolioWorkSection() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
 

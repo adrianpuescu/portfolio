@@ -1,14 +1,23 @@
 "use client"
 
-import { useRef, useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
+import {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  forwardRef,
+  useImperativeHandle,
+} from "react"
 
-/* FLAG: Direct .mp4 source — consider replacing with Vimeo/YouTube unlisted embed for better download protection */
 const VIDEO_SRC = "/video/hero-video-5-optimised.mp4"
 const VIDEO_POSTER = "/images/hero-video-5-poster.jpg"
 
-export type VideoSectionRef = { startWithSound: () => void }
+export type FeaturedWorkVideoRef = { startWithSound: () => void }
 
-export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function PortfolioVideoSection(_, ref) {
+export const FeaturedWorkVideo = forwardRef<
+  FeaturedWorkVideoRef,
+  { active: boolean }
+>(function FeaturedWorkVideo({ active }, ref) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const [overlayHidden, setOverlayHidden] = useState(false)
@@ -19,7 +28,9 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [controlsVisible, setControlsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const hideControlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const hideControlsTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  )
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -61,6 +72,16 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     setEnded(false)
   }, [])
 
+  useImperativeHandle(ref, () => ({ startWithSound }), [startWithSound])
+
+  useEffect(() => {
+    if (active) return
+    const v = videoRef.current
+    v?.pause()
+    setPlaying(false)
+    setOverlayHidden(false)
+  }, [active])
+
   const togglePlay = () => {
     const v = videoRef.current
     if (!v) return
@@ -91,22 +112,26 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
         videoEl.webkitEnterFullscreen()
         setIsFullscreen(true)
       } catch {
-        // fallback to wrap fullscreen if needed
+        // ignore
       }
       return
     }
     if (!wrap) return
     try {
-      const el = wrap as HTMLElement & { webkitRequestFullscreen?: () => Promise<void> }
+      const el = wrap as HTMLElement & {
+        webkitRequestFullscreen?: () => Promise<void>
+      }
       if (el.requestFullscreen) await el.requestFullscreen()
       else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen()
     } catch {
-      // Fullscreen not supported or user denied
+      // ignore
     }
   }, [])
 
   const exitFullscreen = useCallback(async () => {
-    const v = videoRef.current as HTMLVideoElement & { webkitExitFullscreen?: () => void }
+    const v = videoRef.current as HTMLVideoElement & {
+      webkitExitFullscreen?: () => void
+    }
     if (v?.webkitExitFullscreen) {
       try {
         v.webkitExitFullscreen()
@@ -115,7 +140,9 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
       return
     }
     try {
-      const doc = document as Document & { webkitExitFullscreen?: () => Promise<void> }
+      const doc = document as Document & {
+        webkitExitFullscreen?: () => Promise<void>
+      }
       if (doc.exitFullscreen) await doc.exitFullscreen()
       else if (doc.webkitExitFullscreen) await doc.webkitExitFullscreen()
     } catch {}
@@ -162,7 +189,10 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     }
     if (!isMobile) return
     setControlsVisible(false)
-    hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
+    hideControlsTimeoutRef.current = setTimeout(
+      () => setControlsVisible(false),
+      2500,
+    )
     return () => {
       if (hideControlsTimeoutRef.current) {
         clearTimeout(hideControlsTimeoutRef.current)
@@ -174,8 +204,12 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   const onWrapTap = useCallback(() => {
     if (playing && isMobile) {
       setControlsVisible(true)
-      if (hideControlsTimeoutRef.current) clearTimeout(hideControlsTimeoutRef.current)
-      hideControlsTimeoutRef.current = setTimeout(() => setControlsVisible(false), 2500)
+      if (hideControlsTimeoutRef.current)
+        clearTimeout(hideControlsTimeoutRef.current)
+      hideControlsTimeoutRef.current = setTimeout(
+        () => setControlsVisible(false),
+        2500,
+      )
     }
   }, [playing, isMobile])
 
@@ -200,40 +234,34 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
     }
   }, [isMobile])
 
-  // Pause when >50% outside viewport; resume muted only if we had paused (don't override Explore unmute)
   const pausedBecauseOutOfViewRef = useRef(false)
   useEffect(() => {
-    const el = document.getElementById("video-section")
+    const el = wrapRef.current
     if (!el) return
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (!started) return
+          if (!started || !active) return
           if (e.intersectionRatio < 0.5) {
             if (playing) {
               videoRef.current?.pause()
               pausedBecauseOutOfViewRef.current = true
             }
-          } else {
-            // Revenit în view: repornim de unde a rămas, dar muted
-            if (pausedBecauseOutOfViewRef.current) {
-              videoRef.current!.muted = true
-              videoRef.current?.play().catch(() => {})
-              setMuted(true)
-              setPlaying(true)
-              setOverlayHidden(true)
-              pausedBecauseOutOfViewRef.current = false
-            }
+          } else if (pausedBecauseOutOfViewRef.current) {
+            videoRef.current!.muted = true
+            videoRef.current?.play().catch(() => {})
+            setMuted(true)
+            setPlaying(true)
+            setOverlayHidden(true)
+            pausedBecauseOutOfViewRef.current = false
           }
         })
       },
-      { threshold: [0, 0.5] }
+      { threshold: [0, 0.5] },
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [started, playing])
-
-  useImperativeHandle(ref, () => ({ startWithSound }), [startWithSound])
+  }, [started, playing, active])
 
   useEffect(() => {
     const onStarted = () => {
@@ -248,100 +276,99 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
   }, [])
 
   return (
-    <section id="video-section" className="p-video-section p-reveal">
-      <div className="p-video-eyebrow">
-        The last 8 years of my work in 60 seconds
-      </div>
-      <div className="p-video-frame">
-        <div
-          className="p-video-wrap"
-          ref={wrapRef}
-          onClick={onWrapTap}
-          role="presentation"
+    <div className="p-video-frame p-work-embedded-video">
+      <div
+        className="p-video-wrap"
+        ref={wrapRef}
+        onClick={onWrapTap}
+        role="presentation"
+      >
+        <video
+          ref={videoRef}
+          id="heroVideo"
+          poster={VIDEO_POSTER}
+          muted={muted}
+          loop={muted}
+          playsInline
+          preload="metadata"
+          onPlay={() => setPlaying(true)}
+          onPause={() => {
+            setPlaying(false)
+            if (!pausedBecauseOutOfViewRef.current) {
+              setOverlayHidden(false)
+            }
+          }}
+          onEnded={() => {
+            setPlaying(false)
+            setOverlayHidden(false)
+            setEnded(true)
+          }}
         >
-          <video
-            ref={videoRef}
-            id="heroVideo"
-            poster={VIDEO_POSTER}
-            muted={muted}
-            loop={muted}
-            playsInline
-            preload="metadata"
-            onPlay={() => setPlaying(true)}
-            onPause={() => {
-              setPlaying(false)
-              setOverlayHidden(false)
-            }}
-            onEnded={() => {
-              setPlaying(false)
-              setOverlayHidden(false)
-              setEnded(true)
-            }}
-          >
-            <source src={VIDEO_SRC} type="video/mp4" />
-          </video>
-          <div
-            className={`p-video-overlay ${overlayHidden ? "hidden" : ""}`}
-            style={overlayHidden ? { pointerEvents: "none" } : undefined}
-          >
-            {ended ? (
-              <div className="p-replay-wrap">
-                <button
-                  type="button"
-                  className="p-replay-btn"
-                  onClick={() => {
-                    setEnded(false)
-                    const v = videoRef.current
-                    if (v) {
-                      v.currentTime = 0
-                      v.muted = false
-                      setMuted(false)
-                      setOverlayHidden(true)
-                      setPlaying(true)
-                      v.play().catch(() => {
-                        v.muted = true
-                        setMuted(true)
-                      })
-                    }
-                  }}
-                  title="Replay"
-                  aria-label="Replay video"
-                >
-                  <svg viewBox="0 0 24 24" width={20} height={20}>
-                    <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
-                  </svg>
-                  REPLAY
-                </button>
-              </div>
-            ) : (
+          <source src={VIDEO_SRC} type="video/mp4" />
+        </video>
+        <div
+          className={`p-video-overlay ${overlayHidden ? "hidden" : ""}`}
+          style={overlayHidden ? { pointerEvents: "none" } : undefined}
+        >
+          {ended ? (
+            <div className="p-replay-wrap">
               <button
                 type="button"
-                className="p-play-btn"
-                onClick={async () => {
-                  document
-                    .getElementById("video-section")
-                    ?.scrollIntoView({ behavior: "smooth", block: "center" })
-                  if (isMobile && !started) {
-                    await requestFullscreen()
-                  }
-                  if (started) {
+                className="p-replay-btn"
+                onClick={() => {
+                  setEnded(false)
+                  const v = videoRef.current
+                  if (v) {
+                    v.currentTime = 0
+                    v.muted = false
+                    setMuted(false)
                     setOverlayHidden(true)
                     setPlaying(true)
-                    videoRef.current?.play().catch(() => {})
-                  } else {
-                    startVideo(true)
+                    v.play().catch(() => {
+                      v.muted = true
+                      setMuted(true)
+                    })
                   }
                 }}
-                title="Play"
-                aria-label="Play video"
+                title="Replay"
+                aria-label="Replay video"
               >
-                <svg viewBox="0 0 24 24" width={28} height={28}>
-                  <path d="M8 5v14l11-7z" />
+                <svg viewBox="0 0 24 24" width={20} height={20}>
+                  <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
                 </svg>
+                REPLAY
               </button>
-            )}
-          </div>
-          {playing && (
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="p-play-btn"
+              onClick={async () => {
+                wrapRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                })
+                if (started) {
+                  setOverlayHidden(true)
+                  setPlaying(true)
+                  videoRef.current?.play().catch(() => {})
+                } else {
+                  if (isMobile) {
+                    await requestFullscreen()
+                  }
+                  startVideo(true)
+                }
+              }}
+              title="Play"
+              aria-label="Play video"
+            >
+              <svg viewBox="0 0 24 24" width={28} height={28}>
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+          )}
+        </div>
+        {playing && (
           <div
             className={`p-video-controls-bar ${isMobile && !controlsVisible ? "p-video-controls-bar-hidden" : ""}`}
             onClick={(e) => e.stopPropagation()}
@@ -398,9 +425,8 @@ export const PortfolioVideoSection = forwardRef<VideoSectionRef>(function Portfo
               )}
             </button>
           </div>
-          )}
-        </div>
+        )}
       </div>
-    </section>
+    </div>
   )
 })
