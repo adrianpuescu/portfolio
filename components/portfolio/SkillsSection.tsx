@@ -122,7 +122,7 @@ function CertSlidePane({ slide }: { slide: CertSlide }) {
         href={slide.href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${slide.label} — open verification page`}
+        aria-label={`${slide.label}, open verification page`}
       >
         {inner}
       </a>
@@ -397,7 +397,7 @@ export function PortfolioSkillsSection() {
             Capabilities
           </h2>
           <p className="p-skills-note">
-            Two decades of production work — UI systems, front-end, and AI-assisted
+            Two decades of production work: UI systems, front-end, and AI-assisted
             delivery.
           </p>
           <CertSlideshow />

@@ -49,7 +49,7 @@ export function PortfolioHero({
         </h1>
 
         <p className="p-hero-sub">
-          20+ years building digital products and creative tools - lately UI/UX
+          20+ years building digital products and creative tools, lately UI/UX
           on a platform used by global publishers and brands.
         </p>
 

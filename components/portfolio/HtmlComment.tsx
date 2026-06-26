@@ -8,7 +8,7 @@ const COMMENT_LINES = [
   "│                                                 │",
   "│ If you're reading the source, welcome.          │",
   "│                                                 │",
-  "│ Cursor + Claude helped me build this -          │",
+  "│ Cursor + Claude helped me build this,          │",
   "│ mostly with code and refining some of the text. │",
   "│                                                 │",
   "│ Ideas, UX decisions and visuals are mine.       │",

@@ -133,9 +133,9 @@ const RECENT_PROJECTS: {
 }[] = [
   {
     title: "Purrr",
-    period: "Jun 2026 – Present",
-    lede: "A cat adoption marketplace for Romania - users list cats for adoption or post adoption requests, with automatic matching and an internal messaging system.",
-    more: "Solo full-stack build - database, auth, SEO-optimized pages with structured data, admin panel and deploy infrastructure.",
+    period: "Jun 2026 to Present",
+    lede: "A cat adoption marketplace for Romania. Users list cats for adoption or post adoption requests, with automatic matching and an internal messaging system.",
+    more: "Solo full-stack build: database, auth, SEO-optimized pages with structured data, admin panel and deploy infrastructure.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -172,9 +172,9 @@ const RECENT_PROJECTS: {
   },
   {
     title: "mySpoils",
-    period: "Jun 2026 – Present",
-    lede: "A personal scrapbook for life experiences - movies, books, concerts, places - logged manually and organized by category or timeline. Public profiles at custom URLs.",
-    more: "Built end-to-end as product owner and technical architect - specs, stack decisions, data model and AI-assisted implementation via Cursor. Currently in private beta.",
+    period: "Jun 2026 to Present",
+    lede: "A personal scrapbook for life experiences (movies, books, concerts, places), logged manually and organized by category or timeline. Public profiles at custom URLs.",
+    more: "Built end-to-end as product owner and technical architect: specs, stack decisions, data model and AI-assisted implementation via Cursor. Currently in private beta.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -204,8 +204,8 @@ const RECENT_PROJECTS: {
   },
   {
     title: "Cadu",
-    period: "Mar 2026 – Present",
-    lede: "WhatsApp-native website builder - businesses describe themselves in chat and Cadu generates and manages their site. No login, no dashboard, no technical knowledge needed.",
+    period: "Mar 2026 to Present",
+    lede: "WhatsApp-native website builder. Businesses describe themselves in chat and Cadu generates and manages their site. No login, no dashboard, no technical knowledge needed.",
     more: "My contribution: naming, logo, landing page, copywriting, animations, visual guidelines, communication strategy, marketing planning and product logic.",
     stack: [
       "HTML",
@@ -233,7 +233,7 @@ const RECENT_PROJECTS: {
   },
   {
     title: "Boardly",
-    period: "Apr 2026 – Present",
+    period: "Apr 2026 to Present",
     lede: "Turn-based board game platform built full-stack with Next.js 14, TypeScript and Supabase. Chess is the first game, with an architecture meant to grow into more games over time.",
     more: "Real-time multiplayer via Supabase Realtime, guest play without an account, a multi-board dashboard for simultaneous games, PWA-ready and mobile-first. Row-level security on the database. Available in English, Romanian and Spanish.",
     stack: [
@@ -260,9 +260,9 @@ const RECENT_PROJECTS: {
   },
   {
     title: "RiveAds Studio",
-    period: "Mar 2026 – Present",
+    period: "Mar 2026 to Present",
     lede: "AI-assisted web app for generating animated display ads from natural language, rendered with the Rive runtime. A typed AdSpec schema drives layout, copy, and animation; outputs target embeddable HTML/JS, video, and static fallbacks (some formats on the roadmap).",
-    more: "Experimental MVP - active development.",
+    more: "Experimental MVP, active development.",
     stack: [
       "UI design",
       "TypeScript",
@@ -310,7 +310,7 @@ export function PortfolioExperimentsSection() {
           work
         </h2>
         <p className="p-exp-intro">
-          Things I build and ship on the side - from proofs of concept to full
+          Things I build and ship on the side, from proofs of concept to full
           products, spanning AI tooling, full-stack development and product
           work.
         </p>

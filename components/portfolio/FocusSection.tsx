@@ -147,28 +147,28 @@ const ROWS = [
   {
     name: "Next.js",
     icon: "next_js" as const,
-    desc: "App router, server components, SSR/SSG - building full-stack React apps with proper architecture and routing patterns.",
+    desc: "App router, server components, SSR/SSG: building full-stack React apps with proper architecture and routing patterns.",
     badge: "Learning",
     badgeClass: "p-fb-learn",
   },
   {
     name: "Tailwind CSS",
     icon: "tailwind_css" as const,
-    desc: "Utility-first CSS at scale. Familiar territory conceptually - years of PostCSS component systems translate naturally.",
+    desc: "Utility-first CSS at scale. Familiar territory conceptually: years of PostCSS component systems translate naturally.",
     badge: "Active",
     badgeClass: "p-fb-active",
   },
   {
     name: "Rive Animation",
     icon: "rive_animation" as const,
-    desc: "Exploring interactive animation for UI and ad formats - building a PoC editor, leveraging prior ad format knowledge.",
+    desc: "Exploring interactive animation for UI and ad formats: building a PoC editor, leveraging prior ad format knowledge.",
     badge: "Exploring",
     badgeClass: "p-fb-explore",
   },
   {
     name: "AI-assisted Development",
     icon: "ai_assisted_development" as const,
-    desc: "Claude, Cursor - already in active use. This portfolio was built with this stack.",
+    desc: "Claude, Cursor: already in active use. This portfolio was built with this stack.",
     badge: "Active",
     badgeClass: "p-fb-active",
   },
@@ -194,7 +194,7 @@ export function PortfolioFocusSection() {
         </h2>
         <p className="p-focus-intro">
           After years working deeply in one product, I&apos;m actively learning
-          and building with modern frameworks and AI-assisted workflows -
+          and building with modern frameworks and AI-assisted workflows,
           bringing years of product intuition to fresh tooling.
         </p>
       </div>

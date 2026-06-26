@@ -247,7 +247,7 @@ function BrandLogo({
 const CAPS = [
   {
     t: "WYSIWYG Editor",
-    d: "Implemented the frontend of a drag-and-drop editor for online ads and story-based creatives — including canvas layout, element controls, and toolbar interactions.",
+    d: "Implemented the frontend of a drag-and-drop editor for online ads and story-based creatives, including canvas layout, element controls, and toolbar interactions.",
   },
   {
     t: "Multi-format Creatives",
@@ -255,7 +255,7 @@ const CAPS = [
   },
   {
     t: "Dataset-driven Creatives",
-    d: "Designed UI workflows for dataset-driven creatives — templates and tabular data generating hundreds of ad variations in a single pass.",
+    d: "Designed UI workflows for dataset-driven creatives: templates and tabular data generating hundreds of ad variations in a single pass.",
   },
   {
     t: "Campaign Management UI",
@@ -672,7 +672,7 @@ export function PortfolioWorkSection() {
 
               <ul className="p-project-bullets">
                 <li>
-                  Implemented <strong>UI across the platform</strong> -
+                  Implemented <strong>UI across the platform</strong>:
                   editor, dashboards, asset management, reporting.
                 </li>
                 <li>

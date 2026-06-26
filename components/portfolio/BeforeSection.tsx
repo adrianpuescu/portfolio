@@ -1,7 +1,7 @@
 const ITEMS = [
   {
     title: "Online Advertising Campaigns",
-    desc: "Digital campaigns for major local and international brands - display advertising, landing pages, and interactive formats across multiple agencies.",
+    desc: "Digital campaigns for major local and international brands: display advertising, landing pages, and interactive formats across multiple agencies.",
   },
   {
     title: "Rich Media & Interactive Ads",
@@ -9,7 +9,7 @@ const ITEMS = [
   },
   {
     title: "HTML/CSS & Graphics",
-    desc: "Frontend implementation and graphic design work across multiple clients - the hands-on foundation for everything that followed.",
+    desc: "Frontend implementation and graphic design work across multiple clients: the hands-on foundation for everything that followed.",
   },
 ]
 
@@ -37,7 +37,7 @@ export function PortfolioBeforeSection() {
           </div>
           <p className="p-before-intro">
             Before transitioning to product work, I spent years in online
-            advertising and interactive campaigns - creating graphics,
+            advertising and interactive campaigns: creating graphics,
             animations, and rich media for agencies and brands. That foundation
             in visual design and technical constraints shaped how I approach
             product UI today.
