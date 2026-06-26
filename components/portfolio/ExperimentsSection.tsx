@@ -30,9 +30,11 @@ function hostFromHref(href: string) {
 function ProjectSlideshow({
   href,
   slides,
+  slideshowSurface = "dark",
 }: {
   href: string
   slides: { src: string; title: string }[]
+  slideshowSurface?: "dark" | "light"
 }) {
   const n = slides.length
   const [active, setActive] = useState(0)
@@ -49,8 +51,11 @@ function ProjectSlideshow({
 
   const currentTitle = slides[active]?.title ?? ""
 
+  const surfaceClass =
+    slideshowSurface === "light" ? " p-exp-slideshow-block--light-surface" : ""
+
   return (
-    <div className="p-exp-slideshow-block">
+    <div className={`p-exp-slideshow-block${surfaceClass}`}>
       <div className="p-slideshow-wrap">
         <div className="p-exp-slideshow-label-row">
           <div className="p-exp-slide-title" aria-live="polite">
@@ -124,10 +129,82 @@ const RECENT_PROJECTS: {
   stack: string[];
   href: string;
   slides: { src: string; title: string }[];
+  slideshowSurface?: "dark" | "light";
 }[] = [
   {
+    title: "Purrr",
+    period: "Jun 2026 – Present",
+    lede: "A cat adoption marketplace for Romania - users list cats for adoption or post adoption requests, with automatic matching and an internal messaging system.",
+    more: "Solo full-stack build - database, auth, SEO-optimized pages with structured data, admin panel and deploy infrastructure.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Vercel",
+      "SEO",
+    ],
+    href: "https://purrr.ro/",
+    slideshowSurface: "light",
+    slides: [
+      { src: "/images/experiments/purrr/1-homepage.jpg", title: "Homepage" },
+      {
+        src: "/images/experiments/purrr/2-homepage-adoption_steps.jpg",
+        title: "Adoption steps",
+      },
+      {
+        src: "/images/experiments/purrr/3-cats_to_adopt.jpg",
+        title: "Cats to adopt",
+      },
+      {
+        src: "/images/experiments/purrr/4-cat_requests.jpg",
+        title: "Adoption requests",
+      },
+      {
+        src: "/images/experiments/purrr/5-user-dashboard.jpg",
+        title: "User dashboard",
+      },
+      {
+        src: "/images/experiments/purrr/6-admin-dashboard.jpg",
+        title: "Admin dashboard",
+      },
+    ],
+  },
+  {
+    title: "mySpoils",
+    period: "Jun 2026 – Present",
+    lede: "A personal scrapbook for life experiences - movies, books, concerts, places - logged manually and organized by category or timeline. Public profiles at custom URLs.",
+    more: "Built end-to-end as product owner and technical architect - specs, stack decisions, data model and AI-assisted implementation via Cursor. Currently in private beta.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Prisma",
+      "NextAuth",
+      "AI-assisted dev",
+    ],
+    href: "https://myspoils.app/",
+    slideshowSurface: "light",
+    slides: [
+      { src: "/images/experiments/myspoils/1-waitlist.jpg", title: "Waitlist" },
+      {
+        src: "/images/experiments/myspoils/2-waitlist_product_preview.jpg",
+        title: "Product preview",
+      },
+      {
+        src: "/images/experiments/myspoils/3-collection-grid_view.jpg",
+        title: "Collection grid",
+      },
+      {
+        src: "/images/experiments/myspoils/4-collection-list_view.jpg",
+        title: "Collection list",
+      },
+    ],
+  },
+  {
     title: "Cadu",
-    period: "2026 – Present",
+    period: "Mar 2026 – Present",
     lede: "WhatsApp-native website builder - businesses describe themselves in chat and Cadu generates and manages their site. No login, no dashboard, no technical knowledge needed.",
     more: "My contribution: naming, logo, landing page, copywriting, animations, visual guidelines, communication strategy, marketing planning and product logic.",
     stack: [
@@ -142,11 +219,16 @@ const RECENT_PROJECTS: {
       "Frontend",
     ],
     href: "https://cadu.app/",
+    slideshowSurface: "light",
     slides: [
-      { src: "/images/experiments/cadu/hero.png", title: "Hero" },
-      { src: "/images/experiments/cadu/how-it-works.png", title: "How it works" },
-      { src: "/images/experiments/cadu/features.png", title: "Features" },
-      { src: "/images/experiments/cadu/pricing.png", title: "Pricing" }
+      { src: "/images/experiments/cadu/1-hero.jpg", title: "Hero" },
+      {
+        src: "/images/experiments/cadu/2-how-it-works.jpg",
+        title: "How it works",
+      },
+      { src: "/images/experiments/cadu/3-features.jpg", title: "Features" },
+      { src: "/images/experiments/cadu/4-pricing.jpg", title: "Pricing" },
+      { src: "/images/experiments/cadu/5-faq.jpg", title: "FAQ" },
     ],
   },
   {
@@ -164,14 +246,16 @@ const RECENT_PROJECTS: {
     ],
     href: "https://boardly.games/",
     slides: [
-      { src: "/images/experiments/boardly/login.png", title: "Login" },
-      { src: "/images/experiments/boardly/lobby.png", title: "Lobby" },
-      { src: "/images/experiments/boardly/dashboard.png", title: "Dashboard" },
+      { src: "/images/experiments/boardly/1-login.jpg", title: "Login" },
+      { src: "/images/experiments/boardly/2-dashboard.jpg", title: "Dashboard" },
+      { src: "/images/experiments/boardly/3-lobby.jpg", title: "Lobby" },
       {
-        src: "/images/experiments/boardly/chess-game.png",
+        src: "/images/experiments/boardly/4-chess_game.jpg",
         title: "Chess game",
       },
-      { src: "/images/experiments/boardly/profile.png", title: "Profile" },
+      { src: "/images/experiments/boardly/5-rankings.jpg", title: "Rankings" },
+      { src: "/images/experiments/boardly/6-friends.jpg", title: "Friends" },
+      { src: "/images/experiments/boardly/7-profile.jpg", title: "Profile" },
     ],
   },
   {
@@ -189,18 +273,19 @@ const RECENT_PROJECTS: {
       "Front-end",
     ],
     href: "https://riveads.webz.ro/",
+    slideshowSurface: "light",
     slides: [
       {
-        src: "/images/experiments/riveads/homepage.png",
-        title: "Homepage",
+        src: "/images/experiments/riveads/1-waitlist.jpg",
+        title: "Waitlist",
       },
       {
-        src: "/images/experiments/riveads/editor.png",
-        title: "Editor canvas",
-      },
-      {
-        src: "/images/experiments/riveads/dashboard.png",
+        src: "/images/experiments/riveads/2-dashboard.jpg",
         title: "Dashboard",
+      },
+      {
+        src: "/images/experiments/riveads/3-editor.jpg",
+        title: "Editor",
       },
     ],
   },
@@ -273,7 +358,11 @@ export function PortfolioExperimentsSection() {
                 </div>
               </div>
               <div className="p-project-visual">
-                <ProjectSlideshow href={project.href} slides={project.slides} />
+                <ProjectSlideshow
+                  href={project.href}
+                  slides={project.slides}
+                  slideshowSurface={project.slideshowSurface}
+                />
               </div>
             </div>
           </article>

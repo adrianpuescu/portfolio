@@ -1228,10 +1228,10 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   margin-right: auto;
 }
 .p-exp-heading {
-  font-size: clamp(28px, 3vw, 44px);
+  font-size: clamp(32px, 3.5vw, 52px);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
   margin: 0;
 }
 .p-exp-intro {
@@ -1278,17 +1278,22 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   margin: 0 0 6px;
   min-height: 1.2em;
 }
-/* Side projects: 1440×900 (16:10) assets — fill frame, no letterboxing */
+/* Side projects: 1280×1024 JPG slideshows (5∶4); per-card surface via modifier */
 #recent-work .p-slideshow {
-  aspect-ratio: 1440 / 900;
+  aspect-ratio: 5 / 4;
   background: #0f1117;
 }
 #recent-work .p-slide {
   background: #0f1117;
 }
 #recent-work .p-slide img {
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
+}
+
+#recent-work .p-exp-slideshow-block--light-surface .p-slideshow,
+#recent-work .p-exp-slideshow-block--light-surface .p-slide {
+  background: #f4f6fa;
 }
 
 #recent-work .p-exp-launch--corner {
@@ -1334,12 +1339,12 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   padding-top: 0.06em;
 }
 
-/* Recent work: same card shell as NWS; side preview + smaller titles than Featured Work */
+/* Recent work: same card shell as NWS; project titles below section heading in hierarchy */
 #recent-work .p-project-name {
-  font-size: clamp(26px, 3.2vw, 34px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: clamp(24px, 2.6vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin-bottom: 4px;
 }
 /* Single meta block: NWS uses a 2-col grid — one block only gets half the row; use full width */
