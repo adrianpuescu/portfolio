@@ -1160,6 +1160,9 @@ body.brand-modal-open .p-cursor-ring.is-hover {
 #work .p-work-project-info-tail {
   padding: 0 48px 28px;
 }
+#work .p-work-project-info-tail .p-project-meta {
+  grid-template-columns: 1fr;
+}
 /* More details caps: full card width (same as legacy layout) */
 #work .p-work-more-details-panel.p-caps-grid {
   margin-top: 20px;

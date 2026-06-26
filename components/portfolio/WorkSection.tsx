@@ -721,6 +721,8 @@ export function PortfolioWorkSection() {
                     "CSS/PostCSS",
                     "JS",
                     "UI Architecture",
+                    "Project logic & management",
+                    "Graphics",
                   ].map((t) => (
                     <span key={t} className="p-pmeta-chip">
                       {t}
