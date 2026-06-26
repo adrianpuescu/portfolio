@@ -694,21 +694,23 @@ export function PortfolioWorkSection() {
                 {moreDetailsOpen ? "Hide details" : "More details"}
               </button>
             </div>
+          </div>
 
-            {moreDetailsOpen ? (
-              <div
-                id="work-more-details-panel"
-                className="p-caps-grid p-work-more-details-panel"
-              >
-                {CAPS.map((cap) => (
-                  <div key={cap.t} className="p-cap">
-                    <div className="p-cap-t">{cap.t}</div>
-                    <div className="p-cap-d">{cap.d}</div>
-                  </div>
-                ))}
-              </div>
-            ) : null}
+          {moreDetailsOpen ? (
+            <div
+              id="work-more-details-panel"
+              className="p-caps-grid p-work-more-details-panel"
+            >
+              {CAPS.map((cap) => (
+                <div key={cap.t} className="p-cap">
+                  <div className="p-cap-t">{cap.t}</div>
+                  <div className="p-cap-d">{cap.d}</div>
+                </div>
+              ))}
+            </div>
+          ) : null}
 
+          <div className="p-work-project-info-tail">
             <div className="p-project-meta">
               <div>
                 <div className="p-pmeta-label">Primary Focus</div>

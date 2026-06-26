@@ -1137,8 +1137,35 @@ body.brand-modal-open .p-cursor-ring.is-hover {
 #work .p-work-feature-slideshow-timeline .p-timeline-arrow:hover {
   transform: translateY(-50%) scale(1.15);
 }
-#work .p-work-card-inner .p-project-info {
-  padding: 36px 48px 28px;
+#work .p-work-card-inner > .p-project-info {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+#work .p-work-card-inner > .p-project-info:first-of-type {
+  padding-top: 36px;
+  padding-bottom: 0;
+}
+#work .p-work-project-info-tail {
+  padding: 0 48px 28px;
+}
+/* More details caps: full card width (same as legacy layout) */
+#work .p-work-more-details-panel.p-caps-grid {
+  margin-top: 20px;
+  border-bottom: 1px solid var(--p-border);
+}
+#work .p-work-more-details-panel .p-cap {
+  border-top: 1px solid var(--p-border);
+}
+#work .p-work-more-details-panel .p-cap:nth-child(-n + 3) {
+  border-top: none;
+}
+#work .p-work-card-inner:has(.p-work-more-details-panel) .p-work-project-info-tail {
+  padding-top: 24px;
+}
+#work .p-work-card-inner:has(.p-work-more-details-panel) .p-work-project-info-tail .p-project-meta {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
 }
 .p-work-detail-wrap {
   padding: 0 40px;
@@ -1170,27 +1197,6 @@ body.brand-modal-open .p-cursor-ring.is-hover {
 .p-work-more-details-btn:focus-visible {
   outline: 2px solid var(--p-blue);
   outline-offset: 3px;
-}
-/* More details caps: full bleed inside card info padding */
-#work .p-work-card-inner .p-work-more-details-panel.p-caps-grid {
-  margin: 24px -48px 0;
-  width: auto;
-  box-sizing: border-box;
-  border: none;
-  border-top: 1px solid var(--p-border);
-  border-bottom: 1px solid var(--p-border);
-}
-#work .p-work-more-details-panel .p-cap {
-  border-top: 1px solid var(--p-border);
-}
-/* One top rule only (panel border); not doubled on first row */
-#work .p-work-more-details-panel .p-cap:nth-child(-n + 3) {
-  border-top: none;
-}
-#work .p-project-info:has(.p-work-more-details-panel) .p-project-meta {
-  border-top: none;
-  margin-top: 20px;
-  padding-top: 0;
 }
 
 .p-project-card {
@@ -2543,15 +2549,14 @@ body.brand-modal-open .p-cursor-ring.is-hover {
   #work > .p-work-detail-wrap {
     margin-top: 32px;
   }
-  #work .p-work-card-inner .p-project-info {
-    padding: 28px 24px 24px;
+  #work .p-work-card-inner > .p-project-info:first-of-type {
+    padding: 28px 24px 0;
+  }
+  #work .p-work-project-info-tail {
+    padding: 0 24px 24px;
   }
   #work .p-brands-strip {
     padding: 28px 24px 24px;
-  }
-  #work .p-work-card-inner .p-work-more-details-panel {
-    margin-left: -24px;
-    margin-right: -24px;
   }
   #work .p-work-more-details-panel .p-cap:nth-child(-n + 3) {
     border-top: 1px solid var(--p-border);
