@@ -489,12 +489,13 @@ export function PortfolioWorkSection() {
                 and brands.
               </p>
             </div>
-            <div className="p-work-media-toolbar p-work-media-toolbar--head">
-              <WorkMediaTabs
-                workMediaTab={workMediaTab}
-                onSelectTab={setWorkMediaTab}
-              />
-            </div>
+          </div>
+
+          <div className="p-work-media-toolbar p-work-media-toolbar--corner">
+            <WorkMediaTabs
+              workMediaTab={workMediaTab}
+              onSelectTab={setWorkMediaTab}
+            />
           </div>
         </div>
 
