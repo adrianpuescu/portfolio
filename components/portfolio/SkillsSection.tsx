@@ -28,6 +28,16 @@ const CERT_SLIDES: {
   href?: string;
 }[] = [
   {
+    label: "Scrimba · Learn TypeScript",
+    src: "/images/certs/scrimba-typescript.jpg",
+    href: SCRIMBA_CERTIFICATES_PAGE,
+  },
+  {
+    label: "Scrimba · Learn Express.js",
+    src: "/images/certs/scrimba-expressjs.jpg",
+    href: SCRIMBA_CERTIFICATES_PAGE,
+  },
+  {
     label: "Scrimba · Learn React",
     src: "/images/certs/scrimba-react.jpg",
     href: SCRIMBA_CERTIFICATES_PAGE,
