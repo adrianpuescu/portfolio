@@ -339,6 +339,7 @@ const GROUPS = [
       "CSS / PostCSS",
       "JavaScript",
       "React.js",
+      "TypeScript",
       "SVG",
       "Animation & Motion",
       "Ad Format Development",
